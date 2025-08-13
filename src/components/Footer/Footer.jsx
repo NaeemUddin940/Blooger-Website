@@ -52,7 +52,7 @@ const popularPosts = [
 
 // Reusable component for the list items
 const FooterPostCard = ({ post }) => (
-  <div className="flex gap-4 items-center py-2 cursor-pointer hover:text-white transition-colors">
+  <div className="flex gap-4 items-center hover:scale-[1.02] transition-transform duration-300 ease-in-out py-2 cursor-pointer hover:text-primary">
     <div className="flex-shrink-0">
       <img
         src={post.imageUrl}
@@ -61,7 +61,7 @@ const FooterPostCard = ({ post }) => (
       />
     </div>
     <div className="flex-1">
-      <h3 className="text-sm font-bold leading-tight text-gray-200">
+      <h3 className="text-sm font-bold leading-tight text-primary">
         {post.title}
       </h3>
       <p className="text-xs text-gray-400 mt-1">{post.date}</p>
@@ -78,7 +78,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-8 mb-8 border-b border-gray-700 pb-8">
           {/* Categories & Main Tags */}
           <div>
-            <h3 className="text-lg font-extrabold tracking-wide text-white mb-4">
+            <h3 className="text-lg font-extrabold tracking-wide text-foreground mb-4">
               CATEGORIES
             </h3>
             <ul className="flex flex-col gap-2 mb-6">
@@ -86,7 +86,7 @@ export const Footer = () => {
                 (category, index) => (
                   <li
                     key={index}
-                    className="flex justify-between items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
+                    className="flex justify-between items-center text-gray-400 hover:text-chart-5 transition-colors cursor-pointer">
                     <span>{category}</span>
                     <span className="text-sm text-gray-500">(6)</span>
                   </li>
@@ -94,7 +94,7 @@ export const Footer = () => {
               )}
             </ul>
 
-            <h3 className="text-lg font-extrabold tracking-wide text-white mb-4">
+            <h3 className="text-lg font-extrabold tracking-wide text-foreground mb-4">
               MAIN TAGS
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -112,7 +112,7 @@ export const Footer = () => {
 
           {/* Latest Posts */}
           <div className="lg:col-span-1 md:col-span-1">
-            <h3 className="text-lg font-extrabold tracking-wide text-white mb-4">
+            <h3 className="text-lg font-extrabold tracking-wide text-foreground mb-4">
               LATEST POSTS
             </h3>
             <div className="flex flex-col gap-4">
@@ -124,7 +124,7 @@ export const Footer = () => {
 
           {/* Popular Posts */}
           <div className="lg:col-span-1 md:col-span-1">
-            <h3 className="text-lg font-extrabold tracking-wide text-white mb-4">
+            <h3 className="text-lg font-extrabold tracking-wide text-foreground mb-4">
               POPULAR POSTS
             </h3>
             <div className="flex flex-col gap-4">
@@ -140,7 +140,7 @@ export const Footer = () => {
           <div className="flex items-center flex-col md:flex-row text-center md:text-left mb-4 md:mb-0">
             <div className="flex-shrink-0 mb-2 md:mb-0">
               {/* SVG for 'newsspot' logo, assuming it's text-based or can be represented */}
-              <h2 className="text-2xl font-bold text-white tracking-wide">
+              <h2 className="text-2xl font-bold text-foreground tracking-wide">
                 newsspot
               </h2>
             </div>
@@ -178,17 +178,17 @@ export const Footer = () => {
         {/* Copyright Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center text-xs mt-4">
           <p>Design by - Pro Blogger Templates</p>
-          <div className="flex gap-4 mt-2 md:mt-0">
-            <a href="#" className="hover:text-white">
+          <div className="flex gap-4 mt-2 md:mt-0 text-primary mb-10">
+            <a href="#" className="hover:text-foreground">
               Home
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="#" className="hover:text-foreground">
               About Us
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="#" className="hover:text-foreground">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="#" className="hover:text-foreground">
               Contact
             </a>
           </div>

@@ -123,7 +123,7 @@ function FeaturedArticle({ article }) {
         alt={article.title}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
       <div className="absolute bottom-0 left-0 p-8">
         <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
           {article.category}

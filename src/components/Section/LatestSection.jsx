@@ -87,14 +87,14 @@ const ArticleCard = ({ article }) => (
       </span>
     </div>
     <div className="flex-1 mt-4 md:mt-0">
-      <h3 className="text-lg md:text-xl font-extrabold leading-tight text-gray-50">
+      <h3 className="text-lg md:text-xl font-extrabold leading-tight text-primary">
         {article.title}
       </h3>
-      <p className="text-sm text-gray-400 mt-2">
-        by <span className="text-gray-300 font-medium">{article.author}</span> -{" "}
+      <p className="text-sm text-primary mt-2">
+        by <span className="text-blue-600 font-medium">{article.author}</span> -{" "}
         {article.date}
       </p>
-      <p className="text-gray-300 text-sm mt-3 hidden md:block">
+      <p className="text-primary text-sm mt-3 hidden md:block">
         {article.description}
       </p>
     </div>

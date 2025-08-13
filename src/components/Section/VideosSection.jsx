@@ -62,10 +62,10 @@ const VideoCard = ({ video }) => (
       </span>
     </div>
     <div className="px-2 flex-1 flex flex-col justify-between py-2">
-      <h3 className="text-lg md:text-xl line-clamp-2 font-medium leading-tight text-gray-50">
+      <h3 className="text-lg md:text-xl line-clamp-2 font-medium leading-tight text-primary">
         {video.title}
       </h3>
-      <p className="text-sm text-gray-400 mt-2">{video.date}</p>
+      <p className="text-sm text-primary mt-2">{video.date}</p>
     </div>
   </div>
 );
@@ -95,11 +95,11 @@ export const VideosSection = () => {
               <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                 {featuredVideo.tag}
               </span>
-              <h1 className="text-2xl md:text-4xl font-extrabold leading-tight mt-2 text-white drop-shadow-md">
+              <h1 className="text-2xl md:text-4xl font-extrabold leading-tight mt-2 text-primary drop-shadow-md">
                 {featuredVideo.title}
               </h1>
-              <p className="text-sm text-gray-200 mt-2">
-                by <span className="font-medium">{featuredVideo.author}</span> -{" "}
+              <p className="text-sm text-primary mt-2">
+                by <span className="font-medium text-blue-600">{featuredVideo.author}</span> -{" "}
                 {featuredVideo.date}
               </p>
             </div>
