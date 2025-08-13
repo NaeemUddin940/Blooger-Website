@@ -1,5 +1,5 @@
 "use client";
-import { HeroSection } from "@/components/HeroSection/HeroSection";
+import { HeroSection } from "@/components/Section/HeroSection";
 import { DualScrollLayout } from "@/components/MainContentDualSection/DualScrollLayout";
 export default function Home() {
 
