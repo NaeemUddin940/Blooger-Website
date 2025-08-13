@@ -54,7 +54,9 @@ export function HeroSection() {
       {/* Trending Section */}
       <div className="flex mt-4 items-center border-1 justify-between bg-secondery shadow-xl p-4 rounded-lg">
         <div className="flex items-center space-x-4 ">
-          <span className="font-bold text-sm text-white px-2 py-1 bg-black">TRENDING</span>
+          <span className="font-bold text-sm text-white px-2 py-1 bg-black">
+            TRENDING
+          </span>
           <span className="text-gray-500 text-sm lg:text-lg line-clamp-1">
             {trendingData}
           </span>
@@ -69,13 +71,13 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-4 gap-4 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-4 gap-2 mt-2">
         {/* Item 1 */}
 
         {featuredArticle && (
           <Link
             href={"#"}
-            className="lg:col-span-2 md:col-span-2 lg:row-span-4 h-60 lg:h-125">
+            className="lg:col-span-2 md:col-span-2 lg:row-span-4 lg:h-125">
             <FeaturedArticle article={featuredArticle} />
           </Link>
         )}
@@ -84,8 +86,7 @@ export function HeroSection() {
         {article2 && (
           <Link
             href={"#"}
-            className="lg:col-span-2
- lg:row-span-2 lg:col-start-3 h-60">
+            className="lg:col-span-2 lg:row-span-2 lg:col-start-3 ">
             <SideArticle article={article2} />
           </Link>
         )}
@@ -94,7 +95,7 @@ export function HeroSection() {
         {article3 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 h-60">
+            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 ">
             <SideArticle article={article3} />
           </Link>
         )}
@@ -103,7 +104,7 @@ export function HeroSection() {
         {article4 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 h-60">
+            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 ">
             <SideArticle article={article4} />
           </Link>
         )}
@@ -115,7 +116,7 @@ export function HeroSection() {
 // Component for the large, featured article on the left.
 function FeaturedArticle({ article }) {
   return (
-    <div className="relative rounded-lg overflow-hidden h-full">
+    <div className="relative overflow-hidden h-full">
       <img
         src={article.image}
         alt={article.title}
@@ -142,7 +143,7 @@ function FeaturedArticle({ article }) {
 // Component for the smaller, side articles.
 function SideArticle({ article }) {
   return (
-    <div className="relative rounded-lg overflow-hidden h-full">
+    <div className="relative overflow-hidden h-full">
       <img
         src={article.image}
         alt={article.title}

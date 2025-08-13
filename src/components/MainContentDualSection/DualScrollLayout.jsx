@@ -18,15 +18,13 @@ export const DualScrollLayout = () => {
         <div
           ref={mainContainerRef}
           id="main-container"
-          className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white rounded-xl shadow-lg">
+          className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 bg-background shadow-lg">
           {/* বাম দিকের কলাম - দীর্ঘ কন্টেন্ট */}
           <div
             ref={leftColumnRef}
             id="left-column"
-            className="lg:col-span-2 space-y-2">
-            <div className="bg-gray-50 text-background p-6 rounded-lg shadow-sm">
-              <LeftSide />
-            </div>
+            className="lg:col-span-2">
+            <LeftSide />
           </div>
 
           {/* ডান দিকের কলাম - সংক্ষিপ্ত কন্টেন্ট */}
@@ -34,7 +32,7 @@ export const DualScrollLayout = () => {
             <div
               ref={rightColumnRef}
               id="right-column"
-              className="bg-blue-50 text-background p-1 rounded-lg shadow-sm"
+              className="p-1 rounded-lg shadow-sm"
               style={rightColumnStyle}>
               <RightSide />
             </div>
