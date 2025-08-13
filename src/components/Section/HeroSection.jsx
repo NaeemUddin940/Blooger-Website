@@ -114,7 +114,7 @@ export function HeroSection() {
         {article2 && (
           <Link
             href={"#"}
-            className="lg:col-span-2 lg:row-span-2 lg:col-start-3 h-40">
+            className="lg:col-span-2 lg:row-span-2 lg:col-start-3 h-40 md:h-[100%]">
             <SideArticle article={article2} />
           </Link>
         )}
@@ -123,7 +123,7 @@ export function HeroSection() {
         {article3 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 h-40">
+            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 h-40 md:h-[100%]">
             <SideArticle article={article3} />
           </Link>
         )}
@@ -132,7 +132,7 @@ export function HeroSection() {
         {article4 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 h-40">
+            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 h-40 md:h-[100%]">
             <SideArticle article={article4} />
           </Link>
         )}

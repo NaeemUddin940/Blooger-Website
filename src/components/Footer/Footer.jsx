@@ -73,7 +73,7 @@ const FooterPostCard = ({ post }) => (
 export const Footer = () => {
   return (
     <footer className="px-2">
-      <div className="w-5xl mx-auto mt-5 border-t-1 border-gray-50">
+      <div className="lg:w-5xl mx-auto mt-5 border-t-1 border-gray-50">
         {/* Top section with categories and posts */}
         <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-8 mb-8 border-b border-gray-700 pb-8">
           {/* Categories & Main Tags */}
@@ -133,10 +133,83 @@ export const Footer = () => {
               ))}
             </div>
           </div>
+
+          <div className="hidden md:block lg:hidden">
+            {/* About Us & Social Media */}
+            <div className="flex flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 mb-4">
+              <div className="flex flex-col items-center text-center md:text-left mb-4 md:mb-0">
+                <div className="flex-shrink-0 mb-2 md:mb-0">
+                  {/* SVG for 'newsspot' logo, assuming it's text-based or can be represented */}
+                  <h2 className="text-2xl font-bold text-foreground tracking-wide">
+                    newsspot
+                  </h2>
+                </div>
+                <div className="md:ml-4 max-w-sm">
+                  <p className="text-sm">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <a
+                    href="#"
+                    className="p-3 bg-gray-800 rounded-full hover:bg-blue-500 transition-colors">
+                    <Facebook
+                      size={20}
+                      className="text-gray-400 hover:text-black"
+                    />
+                  </a>
+                  <a
+                    href="#"
+                    className="p-3 bg-gray-800 rounded-full hover:bg-blue-400 transition-colors">
+                    <Twitter
+                      size={20}
+                      className="text-gray-400 hover:text-black"
+                    />
+                  </a>
+                  <a
+                    href="#"
+                    className="p-3 bg-gray-800 rounded-full hover:bg-red-500  transition-colors">
+                    <Youtube
+                      size={20}
+                      className="text-gray-400 hover:text-black"
+                    />
+                  </a>
+                  <a
+                    href="#"
+                    className="p-3 bg-gray-800 rounded-full hover:bg-orange-500 transition-colors">
+                    <Instagram
+                      size={20}
+                      className="text-gray-400 hover:text-black"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Copyright Bar */}
+            <div className="flex flex-col gap-5 text-lg justify-between items-center mt-4">
+              <p>Design by - Pro Blogger Templates</p>
+              <div className="flex gap-4 mt-2 md:mt-0 text-primary mb-10">
+                <a href="#" className="hover:text-foreground">
+                  Home
+                </a>
+                <a href="#" className="hover:text-foreground">
+                  About Us
+                </a>
+                <a href="#" className="hover:text-foreground">
+                  Privacy Policy
+                </a>
+                <a href="#" className="hover:text-foreground">
+                  Contact
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* About Us & Social Media */}
-        <div className="flex flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 mb-4">
+        <div className="flex md:hidden flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 mb-4">
           <div className="flex items-center flex-col md:flex-row text-center md:text-left mb-4 md:mb-0">
             <div className="flex-shrink-0 mb-2 md:mb-0">
               {/* SVG for 'newsspot' logo, assuming it's text-based or can be represented */}
@@ -176,7 +249,7 @@ export const Footer = () => {
         </div>
 
         {/* Copyright Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs mt-4">
+        <div className="flex md:hidden flex-col md:flex-row justify-between items-center text-lg mt-4">
           <p>Design by - Pro Blogger Templates</p>
           <div className="flex gap-4 mt-2 md:mt-0 text-primary mb-10">
             <a href="#" className="hover:text-foreground">

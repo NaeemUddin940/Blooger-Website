@@ -110,7 +110,7 @@ export const LatestSection = () => {
       <ContentHeaderAndViewAll HeaderTitle={"Latest News"} />
 
       {/* List of articles */}
-      <div className="md:grid md:grid-cols-2 lg:flex lg:flex-col gap-4">
+      <div className="flex flex-col gap-4">
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article} />
         ))}

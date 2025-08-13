@@ -18,14 +18,14 @@ export const DualScrollLayout = () => {
         <div
           ref={mainContainerRef}
           id="main-container"
-          className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 bg-background">
+          className="relative grid grid-cols-1 md:grid-cols-3 gap-8 bg-background">
           {/* বাম দিকের কলাম - দীর্ঘ কন্টেন্ট */}
-          <div ref={leftColumnRef} id="left-column" className="lg:col-span-2">
+          <div ref={leftColumnRef} id="left-column" className="md:col-span-2">
             <LeftSide />
           </div>
 
           {/* ডান দিকের কলাম - সংক্ষিপ্ত কন্টেন্ট */}
-          <div ref={rightColumnParentRef} className="lg:col-span-1 relative">
+          <div ref={rightColumnParentRef} className="md:col-span-1 relative hidden md:block">
             <div
               ref={rightColumnRef}
               id="right-column"
