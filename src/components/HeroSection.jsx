@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
@@ -49,43 +50,21 @@ export function HeroSection() {
   const [article2, article3, article4] = sideArticles;
 
   return (
-    <div className="max-w-7xl mx-auto px-5">
+    <div className="max-w-7xl mx-auto px-5 lg:px-0 z-10">
       {/* Trending Section */}
-      <div className="flex mt-4 items-center justify-between bg-secondery shadow-xl p-4 rounded-lg">
-        <div className="flex items-center space-x-4">
-          <span className="font-bold text-sm text-yellow-400">TRENDING</span>
-          <span className="text-gray-300 text-sm line-clamp-1">
+      <div className="flex mt-4 items-center border-1 justify-between bg-secondery shadow-xl p-4 rounded-lg">
+        <div className="flex items-center space-x-4 ">
+          <span className="font-bold text-sm text-white px-2 py-1 bg-black">TRENDING</span>
+          <span className="text-gray-500 text-sm lg:text-lg line-clamp-1">
             {trendingData}
           </span>
         </div>
         <div className="flex space-x-2 text-gray-500">
-          <button className="hover:text-white transition duration-200">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"></path>
-            </svg>
+          <button className="hover:bg-violet-500 text-foreground cursor-pointer transition duration-200">
+            <ChevronLeft />
           </button>
-          <button className="hover:text-white transition duration-200">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 5l7 7-7 7"></path>
-            </svg>
+          <button className="hover:bg-violet-500 text-foreground cursor-pointer transition duration-200">
+            <ChevronRight />
           </button>
         </div>
       </div>
@@ -94,28 +73,37 @@ export function HeroSection() {
         {/* Item 1 */}
 
         {featuredArticle && (
-          <Link href={"#"} className="lg:col-span-2 md:col-span-2 lg:row-span-4 h-60 lg:h-125">
+          <Link
+            href={"#"}
+            className="lg:col-span-2 md:col-span-2 lg:row-span-4 h-60 lg:h-125">
             <FeaturedArticle article={featuredArticle} />
           </Link>
         )}
 
         {/* Item 2 */}
         {article2 && (
-          <Link href={"#"} className="lg:col-span-2 lg:row-span-2 lg:col-start-3 h-60">
+          <Link
+            href={"#"}
+            className="lg:col-span-2
+ lg:row-span-2 lg:col-start-3 h-60">
             <SideArticle article={article2} />
           </Link>
         )}
 
         {/* Item 3 */}
         {article3 && (
-          <Link href={"#"} className="lg:row-span-2  lg:col-start-3 lg:row-start-3 h-60">
+          <Link
+            href={"#"}
+            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 h-60">
             <SideArticle article={article3} />
           </Link>
         )}
 
         {/* Item 4 */}
         {article4 && (
-          <Link href={"#"} className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 h-60">
+          <Link
+            href={"#"}
+            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 h-60">
             <SideArticle article={article4} />
           </Link>
         )}

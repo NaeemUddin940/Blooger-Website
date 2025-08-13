@@ -57,20 +57,6 @@ const components: {
     href: "/docs/primitives/scroll-area",
     description: "Visually or semantically separates content.",
   },
-  {
-    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
 ];
 
 import { Button } from "@/components/ui/button";
@@ -106,21 +92,8 @@ export function Navigation() {
     });
   };
 
-  const [openMenus, setOpenMenus] = React.useState({
-    products: false,
-    orders: false,
-  });
-
-  // Function to toggle the state of a specific menu.
-  const toggleMenu = (menuName) => {
-    setOpenMenus((prevState) => ({
-      ...prevState,
-      [menuName]: !prevState[menuName],
-    }));
-  };
-
   return (
-    <div className="flex justify-center pl-2 py-2 shadow dark:shadow-accent-foreground pr-5">
+    <div className="flex justify-center pl-2 z-100 py-2 shadow-sm dark:shadow-accent-foreground pr-5">
       <div className="flex justify-between w-5xl">
         <div className="flex items-center cursor-pointer lg:hidden">
           <Sheet>
@@ -130,7 +103,7 @@ export function Navigation() {
               </Button>
             </SheetTrigger>
             <SheetContent>
-              <Sidebar/>
+              <Sidebar />
             </SheetContent>
           </Sheet>
         </div>
@@ -154,7 +127,7 @@ export function Navigation() {
             {/* Category Section */}
             <NavigationMenuItem>
               <NavigationMenuTrigger>Category</NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent className="z-100">
                 <ul className="grid w-[300px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>
@@ -189,8 +162,8 @@ export function Navigation() {
             {/* Mega Menu Section */}
             <NavigationMenuItem>
               <NavigationMenuTrigger>Mega Menu</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid  gap-2  md:grid-cols-2 items-center w-100 ">
+              <NavigationMenuContent className="z-100 tansform -translate-x-[35%]">
+                <ul className="grid gap-2 md:grid-cols-4 items-center w-250 ">
                   {components.map((component) => (
                     <div key={component.title}>
                       <Link href={component.href} className="overflow-x-auto">
@@ -200,10 +173,10 @@ export function Navigation() {
                           src={component.src}
                           alt={component.title}
                         />
-                        <div className="text-sm leading-none font-medium">
+                        <div className="text-sm leading-none font-medium p-2">
                           {component.title}
                         </div>
-                        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                        <p className="text-muted-foreground px-2 line-clamp-2 text-sm leading-snug">
                           {component.description}
                         </p>
                       </Link>
@@ -215,7 +188,7 @@ export function Navigation() {
 
             <NavigationMenuItem>
               <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent className="z-100">
                 <ul className="grid w-[200px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>
@@ -234,7 +207,7 @@ export function Navigation() {
 
             <NavigationMenuItem>
               <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent className="z-100">
                 <ul className="grid w-[200px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>

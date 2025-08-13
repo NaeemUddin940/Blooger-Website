@@ -63,7 +63,7 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
+  --accent: rgb(169, 169, 171);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
@@ -97,7 +97,7 @@
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
+  --accent: oklch(28.199% 0.00145 16.029);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -130,5 +130,8 @@
 @layer utilities{
   .hoverState{
     @apply cursor-pointer hover:text-violet-500 font-bold
+  }
+  .shadow{
+    @apply shadow-[10px_10px_10px_#c5c5c5,-10px_-10px_12px_#ffffff]
   }
 }
