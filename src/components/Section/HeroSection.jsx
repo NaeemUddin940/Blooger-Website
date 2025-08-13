@@ -44,6 +44,33 @@ const heroArticles = [
   },
 ];
 
+// Component for the large, featured article on the left.
+function FeaturedArticle({ article }) {
+  return (
+    <div className="relative overflow-hidden h-full">
+      <img
+        src={article.image}
+        alt={article.title}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
+      <div className="absolute bottom-0 left-0 p-8">
+        <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          {article.category}
+        </span>
+        <h2 className="mt-2 lg:text-3xl line-clamp-2 hover:text-blue-500 text-white font-bold leading-tight">
+          {article.title}
+        </h2>
+        {article.author && (
+          <p className="text-gray-300 text-sm mt-1">
+            {article.author} - {article.date}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function HeroSection() {
   const featuredArticle = heroArticles.find((article) => article.isFeatured);
   const sideArticles = heroArticles.filter((article) => !article.isFeatured);
@@ -51,7 +78,7 @@ export function HeroSection() {
   const [article2, article3, article4] = sideArticles;
 
   return (
-    <div className="max-w-7xl mx-auto px-5 lg:px-0 z-10">
+    <div className="max-w-7xl lg:px-0 z-10">
       {/* Trending Section */}
       <div className="flex mt-4 items-center border-1 justify-between bg-secondery shadow-xl p-4 rounded-lg">
         <div className="flex items-center space-x-4 ">
@@ -72,13 +99,13 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-4 gap-2 mt-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-4 gap-2 mt-2">
         {/* Item 1 */}
 
         {featuredArticle && (
           <Link
             href={"#"}
-            className="lg:col-span-2 md:col-span-2 lg:row-span-4 lg:h-125">
+            className="lg:col-span-2 md:col-span-2 lg:row-span-4 h-40 md:h-70 lg:h-125">
             <FeaturedArticle article={featuredArticle} />
           </Link>
         )}
@@ -87,7 +114,7 @@ export function HeroSection() {
         {article2 && (
           <Link
             href={"#"}
-            className="lg:col-span-2 lg:row-span-2 lg:col-start-3 ">
+            className="lg:col-span-2 lg:row-span-2 lg:col-start-3 h-40">
             <SideArticle article={article2} />
           </Link>
         )}
@@ -96,7 +123,7 @@ export function HeroSection() {
         {article3 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 ">
+            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 h-40">
             <SideArticle article={article3} />
           </Link>
         )}
@@ -105,36 +132,9 @@ export function HeroSection() {
         {article4 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 ">
+            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 h-40">
             <SideArticle article={article4} />
           </Link>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// Component for the large, featured article on the left.
-function FeaturedArticle({ article }) {
-  return (
-    <div className="relative overflow-hidden h-full">
-      <img
-        src={article.image}
-        alt={article.title}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
-      <div className="absolute bottom-0 left-0 p-8">
-        <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-          {article.category}
-        </span>
-        <h2 className="mt-2 text-3xl hover:text-blue-500 text-white font-bold leading-tight">
-          {article.title}
-        </h2>
-        {article.author && (
-          <p className="text-gray-300 text-sm mt-1">
-            {article.author} - {article.date}
-          </p>
         )}
       </div>
     </div>

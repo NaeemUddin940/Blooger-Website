@@ -5,7 +5,7 @@ export default function Home() {
 
   return (
     <main className="flex justify-center">
-      <section className="w-5xl ">
+      <section className="w-5xl px-2">
         <HeroSection />
 
         <DualScrollLayout />

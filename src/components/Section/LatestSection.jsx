@@ -73,10 +73,11 @@ const articles = [
 
 // Reusable component for a single article card in the list
 const ArticleCard = ({ article }) => (
-  <div className="flex flex-col md:flex-row hover:scale-[1.02] transition-transform duration-300 ease-in-out items-start gap-5 py-2 cursor-pointer ">
+  <div className="flex hover:scale-[1.02] transition-transform duration-300 ease-in-out items-start gap-5 py-2 cursor-pointer ">
     <div className="relative flex-shrink-0 ">
-      <Image height={100}
-      width={100}
+      <Image
+        height={100}
+        width={100}
         src={article.imageUrl}
         alt={article.title}
         className="w-full md:w-48 h-32 object-cover"
@@ -94,7 +95,7 @@ const ArticleCard = ({ article }) => (
         by <span className="text-blue-600 font-medium">{article.author}</span> -{" "}
         {article.date}
       </p>
-      <p className="text-primary text-sm mt-3 hidden md:block">
+      <p className="text-primary lg:block text-sm mt-3 hidden">
         {article.description}
       </p>
     </div>
@@ -109,7 +110,7 @@ export const LatestSection = () => {
       <ContentHeaderAndViewAll HeaderTitle={"Latest News"} />
 
       {/* List of articles */}
-      <div className="flex flex-col gap-4">
+      <div className="md:grid md:grid-cols-2 lg:flex lg:flex-col gap-4">
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article} />
         ))}
