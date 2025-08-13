@@ -7,6 +7,7 @@ import {
   CircleHelpIcon,
   CircleIcon,
   Globe,
+  Menu,
   Moon,
   Search,
   Sun,
@@ -21,38 +22,50 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import Image from "next/image";
 
-const components: { title: string; href: string; description: string }[] = [
+const components: {
+  src: string;
+  title: string;
+  href: string;
+  description: string;
+}[] = [
   {
+    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
     title: "Alert Dialog",
     href: "/docs/primitives/alert-dialog",
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
   },
   {
+    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
     title: "Hover Card",
     href: "/docs/primitives/hover-card",
     description:
       "For sighted users to preview content available behind a link.",
   },
   {
+    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
     title: "Progress",
     href: "/docs/primitives/progress",
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
   {
+    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
     title: "Scroll-area",
     href: "/docs/primitives/scroll-area",
     description: "Visually or semantically separates content.",
   },
   {
+    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
     title: "Tabs",
     href: "/docs/primitives/tabs",
     description:
       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
   },
   {
+    src: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
     title: "Tooltip",
     href: "/docs/primitives/tooltip",
     description:
@@ -60,76 +73,111 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
+import { Button } from "@/components/ui/button";
+
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/Sheet";
+import { Sidebar } from "../Sidebar/Sidebar";
+
 export function Navigation() {
   const [activeSearch, setActiveSearch] = React.useState(false);
-    const [isDarkMode, setIsDarkMode] = React.useState(false);
-  
-    // Load saved theme on mount
-    React.useEffect(() => {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "dark") {
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  // Load saved theme on mount
+  React.useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  // Toggle dark mode
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      const newMode = !prev;
+      if (newMode) {
         document.documentElement.classList.add("dark");
-        setIsDarkMode(true);
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
       }
-    }, []);
-  
-    // Toggle dark mode
-    const toggleTheme = () => {
-      setIsDarkMode((prev) => {
-        const newMode = !prev;
-        if (newMode) {
-          document.documentElement.classList.add("dark");
-          localStorage.setItem("theme", "dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-          localStorage.setItem("theme", "light");
-        }
-        return newMode;
-      });
-    };
+      return newMode;
+    });
+  };
+
+  const [openMenus, setOpenMenus] = React.useState({
+    products: false,
+    orders: false,
+  });
+
+  // Function to toggle the state of a specific menu.
+  const toggleMenu = (menuName) => {
+    setOpenMenus((prevState) => ({
+      ...prevState,
+      [menuName]: !prevState[menuName],
+    }));
+  };
+
   return (
-    <div className="flex justify-center pl-2 py-2 pr-5">
+    <div className="flex justify-center pl-2 py-2 shadow dark:shadow-accent-foreground pr-5">
       <div className="flex justify-between w-5xl">
+        <div className="flex items-center cursor-pointer lg:hidden">
+          <Sheet>
+            <SheetTrigger asChild className="cursor-pointer">
+              <Button variant="outline">
+                <Menu size={30} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <Sidebar/>
+            </SheetContent>
+          </Sheet>
+        </div>
         <NavigationMenu viewport={false}>
+          {/* Icon And Heading Section */}
           <NavigationMenuList>
             <Link href={"/"} className="flex items-center gap-2">
               <Globe size={30} />
               <h3 className="text-3xl font-bold">Newspot</h3>
             </Link>
           </NavigationMenuList>
+
           <NavigationMenuList className="lg:ml-3 hidden lg:flex">
+            {/* Home Section */}
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}>
               <Link href="/">Home</Link>
             </NavigationMenuLink>
 
+            {/* Category Section */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger>List</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Category</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[300px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>
                       <Link href="#">
-                        <div className="font-medium">Components</div>
+                        <div className="font-medium">Health</div>
                         <div className="text-muted-foreground">
-                          Browse all components in the library.
+                          World Best Health Conscious tips.
                         </div>
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <Link href="#">
-                        <div className="font-medium">Documentation</div>
+                        <div className="font-medium">Gadget</div>
                         <div className="text-muted-foreground">
-                          Learn how to use the library.
+                          Modern Gadget Here You will Found.
                         </div>
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <Link href="#">
-                        <div className="font-medium">Blog</div>
+                        <div className="font-medium">Technology</div>
                         <div className="text-muted-foreground">
-                          Read our latest blog posts.
+                          Advanced Technology You can Adventure.
                         </div>
                       </Link>
                     </NavigationMenuLink>
@@ -138,17 +186,28 @@ export function Navigation() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
+            {/* Mega Menu Section */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Mega Menu</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                <ul className="grid  gap-2  md:grid-cols-2 items-center w-100 ">
                   {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}>
-                      {component.description}
-                    </ListItem>
+                    <div key={component.title}>
+                      <Link href={component.href} className="overflow-x-auto">
+                        <Image
+                          width={300}
+                          height={300}
+                          src={component.src}
+                          alt={component.title}
+                        />
+                        <div className="text-sm leading-none font-medium">
+                          {component.title}
+                        </div>
+                        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                          {component.description}
+                        </p>
+                      </Link>
+                    </div>
                   ))}
                 </ul>
               </NavigationMenuContent>
@@ -238,7 +297,7 @@ export function Navigation() {
               />
               <Search
                 onClick={() => setActiveSearch((prev) => !prev)}
-                className="bg-violet-500 h-8 p-2 w-8 cursor-pointer rounded-full"
+                className="bg-violet-500 h-10 p-2 w-10 cursor-pointer rounded-full"
                 color="#000000"
                 absoluteStrokeWidth
               />
@@ -247,25 +306,5 @@ export function Navigation() {
         </NavigationMenu>
       </div>
     </div>
-  );
-}
-
-function ListItem({
-  title,
-  children,
-  href,
-  ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
-  return (
-    <li {...props}>
-      <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
   );
 }
