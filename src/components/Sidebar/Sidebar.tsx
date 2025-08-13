@@ -11,7 +11,7 @@ export function Sidebar() {
   });
 
   // Function to toggle the state of a specific menu.
-  const toggleMenu = (menuName) => {
+  const toggleMenu = (menuName: "products" | "orders") => {
     setOpenMenus((prevState) => ({
       ...prevState,
       [menuName]: !prevState[menuName],
