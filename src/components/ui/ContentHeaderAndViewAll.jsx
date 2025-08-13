@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function ContentHeaderAndViewAll({HeaderTitle}) {
   return (
     <div className="flex justify-between border-b-1 border-foreground mt-2">
-      <div className="bg-primary inline-block px-3 py-1 font-bold dark:border-b-black text-background">
+      <div className="bg-primary inline-block px-3 py-1 font-bold dark:border-b-black uppercase text-background">
         {" "}
         {HeaderTitle}
       </div>

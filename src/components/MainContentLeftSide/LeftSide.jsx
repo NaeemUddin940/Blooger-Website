@@ -1,6 +1,7 @@
 import { WorldNewsPost } from "../Section/WorldNewsPost";
 import { ReviewsSection } from "@/components/Section/ReviewsSection";
-import  GadgetAndLaptopSections from "@/components/Section/GadgetAndLaptopSection";
+import GadgetAndLaptopSections from "@/components/Section/GadgetAndLaptopSection";
+import { LatestSection } from "@/components/Section/LatestSection";
 
 
 export default function LeftSide() {
@@ -10,9 +11,11 @@ export default function LeftSide() {
 
       <ReviewsSection />
 
-      <GadgetAndLaptopSections/>
+      <GadgetAndLaptopSections />
 
+      <LatestSection />
 
+     
     </section>
   );
 }
