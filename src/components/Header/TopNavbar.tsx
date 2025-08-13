@@ -4,7 +4,7 @@ import React from "react";
 
 export default function TopNavbar() {
   return (
-    <section className="flex justify-center bg-accent-foreground text-white py-1">
+    <section className="hidden px-5 lg:flex justify-center bg-gray-100 dark:bg-zinc-900 text-black dark:text-gray-50 py-1">
       <div className="flex justify-between w-5xl">
         <div>
           <ul className="flex gap-5 [&>li:hover]:text-violet-500">
