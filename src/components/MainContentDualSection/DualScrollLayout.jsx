@@ -20,10 +20,7 @@ export const DualScrollLayout = () => {
           id="main-container"
           className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 bg-background">
           {/* বাম দিকের কলাম - দীর্ঘ কন্টেন্ট */}
-          <div
-            ref={leftColumnRef}
-            id="left-column"
-            className="lg:col-span-2">
+          <div ref={leftColumnRef} id="left-column" className="lg:col-span-2">
             <LeftSide />
           </div>
 
@@ -39,11 +36,6 @@ export const DualScrollLayout = () => {
           </div>
         </div>
       </div>
-
-      {/* ফুটার */}
-      <footer className="mt-8 py-4 text-center text-gray-600 bg-gray-100 rounded-t-xl">
-        <p>© 2023 ডায়নামিক স্ক্রলিং লেআউট।</p>
-      </footer>
     </div>
   );
 };

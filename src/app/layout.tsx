@@ -4,6 +4,7 @@ import "./globals.css";
 import TopNavbar from "@/components/Header/TopNavbar";
 import { Navigation } from "@/components/Header/Navigation";
 import { BlogContextProvider } from "@/context/BlogContext";
+import {Footer} from "@/components/Footer/Footer"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <TopNavbar />
         <Navigation />
         <BlogContextProvider>{children}</BlogContextProvider>
+        <Footer/>
       </body>
     </html>
   );
