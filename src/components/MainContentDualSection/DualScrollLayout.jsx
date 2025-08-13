@@ -18,7 +18,7 @@ export const DualScrollLayout = () => {
         <div
           ref={mainContainerRef}
           id="main-container"
-          className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 bg-background shadow-lg">
+          className="relative grid grid-cols-1 lg:grid-cols-3 gap-8 bg-background">
           {/* বাম দিকের কলাম - দীর্ঘ কন্টেন্ট */}
           <div
             ref={leftColumnRef}

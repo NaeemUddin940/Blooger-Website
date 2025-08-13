@@ -1,5 +1,7 @@
 import { WorldNewsPost } from "../Section/WorldNewsPost";
 import { ReviewsSection } from "@/components/Section/ReviewsSection";
+import  GadgetAndLaptopSections from "@/components/Section/GadgetAndLaptopSection";
+
 
 export default function LeftSide() {
   return (
@@ -7,6 +9,10 @@ export default function LeftSide() {
       <WorldNewsPost />
 
       <ReviewsSection />
+
+      <GadgetAndLaptopSections/>
+
+
     </section>
   );
 }

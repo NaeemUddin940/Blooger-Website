@@ -1,5 +1,6 @@
 import React from "react";
 import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
+import Image from "next/image";
 
 // Mock data for the articles in the new three-column layout
 const articles = [
@@ -31,9 +32,11 @@ const articles = [
 
 // Reusable component for an article card
 const ArticleCard = ({ article }) => (
-  <div className="overflow-hidden shadow-lg flex flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+  <div className="overflow-hidden flex flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
     <div className="relative">
-      <img
+      <Image
+        width={100}
+        height={100}
         src={article.imageUrl}
         alt={article.title}
         className="w-full object-cover"
