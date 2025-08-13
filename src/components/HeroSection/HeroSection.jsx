@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
@@ -144,7 +145,9 @@ function FeaturedArticle({ article }) {
 function SideArticle({ article }) {
   return (
     <div className="relative overflow-hidden h-full">
-      <img
+      <Image
+      width={100}
+      height={100}
         src={article.image}
         alt={article.title}
         className="absolute inset-0 w-full h-full object-cover"

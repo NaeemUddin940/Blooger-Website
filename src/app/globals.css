@@ -1,6 +1,11 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'); */
 
 @custom-variant dark (&:where(.dark, .dark *));
+/* 
+body{
+  font-family: "Inter", sans-serif;
+} */
 
 @import "tw-animate-css";
 
@@ -50,6 +55,9 @@
 }
 
 :root {
+    --font-geist-sans: sans-serif; /* fallback */
+  --font-geist-mono: monospace;  /* fallback */
+  --font-inter: sans-serif;      /* fallback */
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -116,6 +124,18 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+body {
+  font-family: var(--font-geist-sans);
+}
+
+code {
+  font-family: var(--font-geist-mono);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter);
 }
 
 @layer base {
