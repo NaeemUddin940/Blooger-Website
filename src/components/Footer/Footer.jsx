@@ -1,5 +1,6 @@
 import React from "react";
-import { Facebook, Youtube, Twitter, Instagram } from "lucide-react";
+
+import SocialMedia from "@/components/ui/SocialMedia";
 
 // Mock data for the footer sections
 const latestPosts = [
@@ -102,7 +103,7 @@ export const Footer = () => {
                 (tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-gray-800 text-gray-300 text-sm font-medium rounded-full cursor-pointer hover:bg-gray-700 transition-colors">
+                    className="px-3 py-1 bg-gray-200 dark:bg-gray-800 text-foreground text-sm font-medium rounded-full cursor-pointer hover:bg-teal-500 transition-colors">
                     {tag}
                   </span>
                 )
@@ -136,12 +137,12 @@ export const Footer = () => {
 
           <div className="hidden md:block lg:hidden">
             {/* About Us & Social Media */}
-            <div className="flex flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 mb-4">
-              <div className="flex flex-col items-center text-center md:text-left mb-4 md:mb-0">
+            <div className="flex flex-col md:flex-row lg:flex-col justify-between items-center py-4 border-b border-gray-700 mb-4">
+              <div className="flex flex-col lg:flex-row items-center text-center md:text-left mb-4 md:mb-0">
                 <div className="flex-shrink-0 mb-2 md:mb-0">
-                  {/* SVG for 'newsspot' logo, assuming it's text-based or can be represented */}
+                  {/* SVG for 'Newsspot' logo, assuming it's text-based or can be represented */}
                   <h2 className="text-2xl font-bold text-foreground tracking-wide">
-                    newsspot
+                    Newsspot
                   </h2>
                 </div>
                 <div className="md:ml-4 max-w-sm">
@@ -151,38 +152,7 @@ export const Footer = () => {
                   </p>
                 </div>
                 <div className="flex gap-2">
-                  <a
-                    href="#"
-                    className="p-3 bg-gray-800 rounded-full hover:bg-blue-500 transition-colors">
-                    <Facebook
-                      size={20}
-                      className="text-gray-400 hover:text-black"
-                    />
-                  </a>
-                  <a
-                    href="#"
-                    className="p-3 bg-gray-800 rounded-full hover:bg-blue-400 transition-colors">
-                    <Twitter
-                      size={20}
-                      className="text-gray-400 hover:text-black"
-                    />
-                  </a>
-                  <a
-                    href="#"
-                    className="p-3 bg-gray-800 rounded-full hover:bg-red-500  transition-colors">
-                    <Youtube
-                      size={20}
-                      className="text-gray-400 hover:text-black"
-                    />
-                  </a>
-                  <a
-                    href="#"
-                    className="p-3 bg-gray-800 rounded-full hover:bg-orange-500 transition-colors">
-                    <Instagram
-                      size={20}
-                      className="text-gray-400 hover:text-black"
-                    />
-                  </a>
+                  <SocialMedia />
                 </div>
               </div>
             </div>
@@ -208,8 +178,11 @@ export const Footer = () => {
           </div>
         </div>
 
+
+
+        {/* For Mobile Device */}
         {/* About Us & Social Media */}
-        <div className="flex md:hidden flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 mb-4">
+        <div className="flex md:hidden lg:flex flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 mb-4">
           <div className="flex items-center flex-col md:flex-row text-center md:text-left mb-4 md:mb-0">
             <div className="flex-shrink-0 mb-2 md:mb-0">
               {/* SVG for 'newsspot' logo, assuming it's text-based or can be represented */}
@@ -225,31 +198,12 @@ export const Footer = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <a
-              href="#"
-              className="p-3 bg-gray-800 rounded-full hover:bg-blue-500 transition-colors">
-              <Facebook size={20} className="text-gray-400 hover:text-black" />
-            </a>
-            <a
-              href="#"
-              className="p-3 bg-gray-800 rounded-full hover:bg-blue-400 transition-colors">
-              <Twitter size={20} className="text-gray-400 hover:text-black" />
-            </a>
-            <a
-              href="#"
-              className="p-3 bg-gray-800 rounded-full hover:bg-red-500  transition-colors">
-              <Youtube size={20} className="text-gray-400 hover:text-black" />
-            </a>
-            <a
-              href="#"
-              className="p-3 bg-gray-800 rounded-full hover:bg-orange-500 transition-colors">
-              <Instagram size={20} className="text-gray-400 hover:text-black" />
-            </a>
+            <SocialMedia />
           </div>
         </div>
 
         {/* Copyright Bar */}
-        <div className="flex md:hidden flex-col md:flex-row justify-between items-center text-lg mt-4">
+        <div className="flex md:hidden lg:flex flex-col md:flex-row justify-between items-center text-lg mt-4">
           <p>Design by - Pro Blogger Templates</p>
           <div className="flex gap-4 mt-2 md:mt-0 text-primary mb-10">
             <a href="#" className="hover:text-foreground">

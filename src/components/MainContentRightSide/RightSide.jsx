@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Facebook,
-  Youtube,
-  Twitter,
-  Instagram,
-} from "lucide-react";
+import { Facebook, Youtube, Twitter, Instagram } from "lucide-react";
 import { HorizontalPostCard } from "../ui/HorizontalPostCard";
 import Image from "next/image";
 
@@ -128,8 +123,8 @@ export default function RightSide() {
               key={post.id}
               className="relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
               <Image
-              height={100}
-              width={100}
+                height={100}
+                width={100}
                 src={post.imageUrl}
                 alt={post.title}
                 className="w-full h-32 object-cover"
@@ -154,11 +149,11 @@ export default function RightSide() {
           <input
             type="email"
             placeholder="Enter Email Address"
-            className="w-full p-3 rounded-lg bg-gray-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 rounded-lg bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
           />
           <button
             type="submit"
-            className="mt-3 w-full p-3 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-700 transition-colors">
+            className="mt-3 w-full p-3 rounded-lg bg-teal-600 text-white font-bold hover:bg-teal-700 transition-colors">
             Subscribe
           </button>
         </form>
@@ -195,7 +190,7 @@ export default function RightSide() {
             (tag, index) => (
               <span
                 key={index}
-                className="px-4 py-2 bg-gray-800 text-gray-300 text-sm font-medium rounded-full cursor-pointer hover:bg-gray-700 transition-colors">
+                className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-foreground text-sm font-medium rounded-full cursor-pointer hover:bg-teal-500 transition-colors">
                 {tag}
               </span>
             )
