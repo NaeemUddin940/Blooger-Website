@@ -158,5 +158,7 @@ h6 {
   .Shadow {
     @apply hover:shadow-[10px_10px_10px_#c5c5c5,-10px_-10px_12px_#ffffff];
   }
-
+  .dark-Shadow {
+    @apply hover:shadow-[6px_6px_12px_#000,-6px_-6px_12px_#2f2f2f];
+  }
 }

@@ -121,7 +121,7 @@ export default function RightSide() {
           {travelPosts.map((post) => (
             <div
               key={post.id}
-              className="relative overflow-hidden cursor-pointer hover:scale-[1.02] hover:rounded-lg Shadow transition-transform duration-300 ease-in-out">
+              className="relative overflow-hidden dark-Shadow cursor-pointer hover:scale-[1.02] hover:rounded-lg Shadow transition-transform duration-300 ease-in-out">
               <Image
                 height={100}
                 width={100}
@@ -149,7 +149,7 @@ export default function RightSide() {
           <input
             type="email"
             placeholder="Enter Email Address"
-            className="w-full p-3 rounded-lg bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="w-full p-3 rounded-lg bg-background text-foreground text-sm border-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
           />
           <button
             type="submit"
@@ -169,7 +169,7 @@ export default function RightSide() {
             (category, index) => (
               <li
                 key={index}
-                className="flex justify-between items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
+                className="flex justify-between items-center text-gray-400 hover:text-teal-500  transition-colors cursor-pointer">
                 <span>{category}</span>
                 <span className="text-sm text-gray-500">
                   ({(index + 1) * 50})
