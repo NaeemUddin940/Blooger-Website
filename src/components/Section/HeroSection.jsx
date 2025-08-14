@@ -1,6 +1,8 @@
+"use client"
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
 
@@ -54,7 +56,7 @@ function FeaturedArticle({ article }) {
         className="absolute group-hover:scale-125 transition-transform duration-300 inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
-      <div className="absolute bottom-0 left-0 p-8">
+      <div className="absolute bottom-0 left-0 lg:p-8 p-2">
         <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
           {article.category}
         </span>
@@ -74,69 +76,73 @@ function FeaturedArticle({ article }) {
 export function HeroSection() {
   const featuredArticle = heroArticles.find((article) => article.isFeatured);
   const sideArticles = heroArticles.filter((article) => !article.isFeatured);
-
+  const pathName = usePathname();
   const [article2, article3, article4] = sideArticles;
 
   return (
-    <div className="max-w-7xl lg:px-0 z-10">
-      {/* Trending Section */}
-      <div className="flex mt-4 items-center border-1 justify-between bg-secondery shadow-xl p-4 rounded-lg">
-        <div className="flex items-center space-x-4 ">
-          <span className="font-bold text-sm text-white px-2 py-1 bg-black">
-            TRENDING
-          </span>
-          <span className="text-gray-500 text-sm lg:text-lg line-clamp-1">
-            {trendingData}
-          </span>
+    <div>
+      {pathName === "/" && (
+        <div className="max-w-7xl lg:px-0 z-10">
+          {/* Trending Section */}
+          <div className="flex mt-4 items-center border-1 justify-between bg-secondery shadow-xl p-4 rounded-lg">
+            <div className="flex items-center space-x-4 ">
+              <span className="font-bold text-sm text-white px-2 py-1 bg-black">
+                TRENDING
+              </span>
+              <span className="text-gray-500 text-sm lg:text-lg line-clamp-1">
+                {trendingData}
+              </span>
+            </div>
+            <div className="flex space-x-2 text-gray-500">
+              <button className="hover:bg-violet-500 text-foreground cursor-pointer transition duration-200">
+                <ChevronLeft />
+              </button>
+              <button className="hover:bg-violet-500 text-foreground cursor-pointer transition duration-200">
+                <ChevronRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-4 gap-2 mt-2">
+            {/* Item 1 */}
+
+            {featuredArticle && (
+              <Link
+                href={"#"}
+                className="lg:col-span-2 group md:col-span-2 lg:row-span-4 h-40 md:h-70 lg:h-125">
+                <FeaturedArticle article={featuredArticle} />
+              </Link>
+            )}
+
+            {/* Item 2 */}
+            {article2 && (
+              <Link
+                href={"#"}
+                className="lg:col-span-2 group lg:row-span-2 lg:col-start-3 h-40 md:h-[100%]">
+                <SideArticle article={article2} />
+              </Link>
+            )}
+
+            {/* Item 3 */}
+            {article3 && (
+              <Link
+                href={"#"}
+                className="lg:row-span-2 group lg:col-start-3 lg:row-start-3 h-40 md:h-[100%]">
+                <SideArticle article={article3} />
+              </Link>
+            )}
+
+            {/* Item 4 */}
+            {article4 && (
+              <Link
+                href={"#"}
+                className="lg:row-span-2 group md:col-span-2 lg:col-start-4 lg:row-start-3 h-40 md:h-[100%]">
+                <SideArticle article={article4} />
+              </Link>
+            )}
+          </div>
         </div>
-        <div className="flex space-x-2 text-gray-500">
-          <button className="hover:bg-violet-500 text-foreground cursor-pointer transition duration-200">
-            <ChevronLeft />
-          </button>
-          <button className="hover:bg-violet-500 text-foreground cursor-pointer transition duration-200">
-            <ChevronRight />
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-4 gap-2 mt-2">
-        {/* Item 1 */}
-
-        {featuredArticle && (
-          <Link
-            href={"#"}
-            className="lg:col-span-2 group md:col-span-2 lg:row-span-4 h-40 md:h-70 lg:h-125">
-            <FeaturedArticle article={featuredArticle} />
-          </Link>
-        )}
-
-        {/* Item 2 */}
-        {article2 && (
-          <Link
-            href={"#"}
-            className="lg:col-span-2 group lg:row-span-2 lg:col-start-3 h-40 md:h-[100%]">
-            <SideArticle article={article2} />
-          </Link>
-        )}
-
-        {/* Item 3 */}
-        {article3 && (
-          <Link
-            href={"#"}
-            className="lg:row-span-2 group lg:col-start-3 lg:row-start-3 h-40 md:h-[100%]">
-            <SideArticle article={article3} />
-          </Link>
-        )}
-
-        {/* Item 4 */}
-        {article4 && (
-          <Link
-            href={"#"}
-            className="lg:row-span-2 group md:col-span-2 lg:col-start-4 lg:row-start-3 h-40 md:h-[100%]">
-            <SideArticle article={article4} />
-          </Link>
-        )}
-      </div>
+      )}
     </div>
   );
 }
@@ -157,7 +163,7 @@ function SideArticle({ article }) {
         <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">
           {article.category}
         </span>
-        <h3 className="mt-1 text-base hover:text-blue-500 text-white font-bold leading-tight">
+        <h3 className="mt-1 text-base hover:text-blue-500 text-white font-bold line-clamp-2 leading-tight">
           {article.title}
         </h3>
         <p className="text-gray-100 text-xs mt-1">{article.date}</p>

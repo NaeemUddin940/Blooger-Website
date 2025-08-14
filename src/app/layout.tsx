@@ -44,10 +44,11 @@ export default function RootLayout({
               <HeroSection />
             </div>
           </div>
+
           <div className="flex justify-center">
-            <div className="w-5xl grid grid-cols-1 gap-5 lg:grid-cols-4">
-              <div className="col-span-3">{children}</div>
-              <div>
+            <div className="w-5xl grid grid-cols-1 md:grid-cols-5 gap-5 lg:grid-cols-4">
+              <div className="lg:col-span-3 md:col-span-3">{children}</div>
+              <div  className="md:col-span-5 md:col-start-4">
                 <RightSide />
               </div>
             </div>
