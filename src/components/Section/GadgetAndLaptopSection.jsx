@@ -77,14 +77,14 @@ const rightColumnArticles = {
 
 // Reusable component for the side article cards
 const SideArticleCard = ({ article }) => (
-  <div className="flex items-center gap-4 py-2 hover:scale-[1.02] transition-transform duration-300 ease-in-out rounded-lg  cursor-pointer">
+  <div className="flex items-center gap-4 hover:rounded-lg Shadow hover:scale-[1.02] transition-transform duration-300 py-1 ease-in-out rounded-lg  cursor-pointer">
     <img
       src={article.imageUrl}
       alt={article.title}
       className="w-24 h-16 object-cover "
     />
     <div className="flex-1">
-      <h3 className="text-sm md:text-base font-bold text-primary">
+      <h3 className="text-sm md:text-base line-clamp-2 font-bold text-primary">
         {article.title}
       </h3>
       <p className="text-xs text-gray-400 mt-1">{article.date}</p>
@@ -99,7 +99,7 @@ const NewsSection = ({ data }) => (
     <ContentHeaderAndViewAll HeaderTitle={data.sectionTitle} />
 
     {/* Featured Article */}
-    <div className="overflow-hidden flex flex-col hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+    <div className="overflow-hidden flex flex-col hover:rounded-lg Shadow hover:scale-[1.02] transition-transform duration-300 ease-in-out">
       <div className="relative">
         <Image
           width={100}

@@ -51,7 +51,7 @@ function FeaturedArticle({ article }) {
       <img
         src={article.image}
         alt={article.title}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute group-hover:scale-125 transition-transform duration-300 inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
       <div className="absolute bottom-0 left-0 p-8">
@@ -105,7 +105,7 @@ export function HeroSection() {
         {featuredArticle && (
           <Link
             href={"#"}
-            className="lg:col-span-2 md:col-span-2 lg:row-span-4 h-40 md:h-70 lg:h-125">
+            className="lg:col-span-2 group md:col-span-2 lg:row-span-4 h-40 md:h-70 lg:h-125">
             <FeaturedArticle article={featuredArticle} />
           </Link>
         )}
@@ -114,7 +114,7 @@ export function HeroSection() {
         {article2 && (
           <Link
             href={"#"}
-            className="lg:col-span-2 lg:row-span-2 lg:col-start-3 h-40 md:h-[100%]">
+            className="lg:col-span-2 group lg:row-span-2 lg:col-start-3 h-40 md:h-[100%]">
             <SideArticle article={article2} />
           </Link>
         )}
@@ -123,7 +123,7 @@ export function HeroSection() {
         {article3 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 lg:col-start-3 lg:row-start-3 h-40 md:h-[100%]">
+            className="lg:row-span-2 group lg:col-start-3 lg:row-start-3 h-40 md:h-[100%]">
             <SideArticle article={article3} />
           </Link>
         )}
@@ -132,7 +132,7 @@ export function HeroSection() {
         {article4 && (
           <Link
             href={"#"}
-            className="lg:row-span-2 md:col-span-2 lg:col-start-4 lg:row-start-3 h-40 md:h-[100%]">
+            className="lg:row-span-2 group md:col-span-2 lg:col-start-4 lg:row-start-3 h-40 md:h-[100%]">
             <SideArticle article={article4} />
           </Link>
         )}
@@ -150,7 +150,7 @@ function SideArticle({ article }) {
         height={100}
         src={article.image}
         alt={article.title}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full group-hover:scale-125 transition-transform duration-300 h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
       <div className="absolute bottom-0 left-0 p-4">

@@ -55,9 +55,9 @@ body{
 }
 
 :root {
-    --font-geist-sans: sans-serif; /* fallback */
-  --font-geist-mono: monospace;  /* fallback */
-  --font-inter: sans-serif;      /* fallback */
+  --font-geist-sans: sans-serif; /* fallback */
+  --font-geist-mono: monospace; /* fallback */
+  --font-inter: sans-serif; /* fallback */
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -134,7 +134,12 @@ code {
   font-family: var(--font-geist-mono);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-inter);
 }
 
@@ -145,13 +150,13 @@ h1, h2, h3, h4, h5, h6 {
   body {
     @apply bg-background text-foreground overflow-x-hidden;
   }
-
 }
-@layer utilities{
-  .hoverState{
-    @apply cursor-pointer hover:text-violet-500 font-bold
+@layer utilities {
+  .hoverState {
+    @apply cursor-pointer hover:text-violet-500 font-bold;
   }
-  .shadow{
-    @apply shadow-[10px_10px_10px_#c5c5c5,-10px_-10px_12px_#ffffff]
+  .Shadow {
+    @apply hover:shadow-[10px_10px_10px_#c5c5c5,-10px_-10px_12px_#ffffff];
   }
+
 }

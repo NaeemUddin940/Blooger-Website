@@ -43,7 +43,7 @@ const otherVideos = [
 
 // Reusable component for the smaller video cards
 const VideoCard = ({ video }) => (
-  <div className="overflow-hidden flex flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+  <div className="overflow-hidden flex hover:rounded-lg Shadow flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
     <div className="relative">
       <Image
       width={100}

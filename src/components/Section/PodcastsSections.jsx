@@ -65,7 +65,7 @@ export default function PodcastsSections() {
         <ContentHeaderAndViewAll HeaderTitle={"Podcasts"}/>
       <div className="lg:col-span-2 py-2 grid grid-cols-2 gap-5 md:grid-cols-3 overflow-hidden">
         {podcastArticles.map((featuredArticle) => (
-          <Link key={featuredArticle.id} href={"#"} className="hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+          <Link key={featuredArticle.id} href={"#"} className="hover:scale-[1.02] hover:rounded-lg Shadow transition-transform duration-300 ease-in-out">
             <div className="relative">
               <Image
                 height={100}

@@ -32,7 +32,7 @@ const articles = [
 
 // Reusable component for an article card
 const ArticleCard = ({ article }) => (
-  <div className="overflow-hidden flex flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+  <div className="overflow-hidden flex flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 hover:rounded-lg Shadow ease-in-out">
     <div className="relative">
       <Image
         width={100}

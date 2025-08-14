@@ -53,7 +53,7 @@ const popularPosts = [
 
 // Reusable component for the list items
 const FooterPostCard = ({ post }) => (
-  <div className="flex gap-4 items-center hover:scale-[1.02] transition-transform duration-300 ease-in-out py-2 cursor-pointer hover:text-primary">
+  <div className="flex gap-4 items-center hover:rounded-lg Shadow hover:scale-[1.02] transition-transform duration-300 ease-in-out py-2 cursor-pointer hover:text-primary">
     <div className="flex-shrink-0">
       <img
         src={post.imageUrl}
@@ -87,7 +87,7 @@ export const Footer = () => {
                 (category, index) => (
                   <li
                     key={index}
-                    className="flex justify-between items-center text-gray-400 hover:text-chart-5 transition-colors cursor-pointer">
+                    className="flex justify-between items-center text-gray-400 hover:text-teal-500 transition-colors cursor-pointer">
                     <span>{category}</span>
                     <span className="text-sm text-gray-500">(6)</span>
                   </li>

@@ -121,7 +121,7 @@ export default function RightSide() {
           {travelPosts.map((post) => (
             <div
               key={post.id}
-              className="relative overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+              className="relative overflow-hidden cursor-pointer hover:scale-[1.02] hover:rounded-lg Shadow transition-transform duration-300 ease-in-out">
               <Image
                 height={100}
                 width={100}
