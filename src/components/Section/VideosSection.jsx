@@ -43,11 +43,11 @@ const otherVideos = [
 
 // Reusable component for the smaller video cards
 const VideoCard = ({ video }) => (
-  <div className="overflow-hidden flex hover:rounded-lg Shadow dark-Shadow flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+  <div className="overflow-hidden flex hover:rounded-lg shadow-sm hover:shadow-lg flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
     <div className="relative">
       <Image
-      width={100}
-      height={100}
+        width={100}
+        height={100}
         src={video.imageUrl}
         alt={video.title}
         className="w-full h-48 object-cover"
@@ -99,8 +99,11 @@ export const VideosSection = () => {
                 {featuredVideo.title}
               </h1>
               <p className="text-sm text-primary mt-2">
-                by <span className="font-medium text-blue-600">{featuredVideo.author}</span> -{" "}
-                {featuredVideo.date}
+                by{" "}
+                <span className="font-medium text-blue-600">
+                  {featuredVideo.author}
+                </span>{" "}
+                - {featuredVideo.date}
               </p>
             </div>
           </div>

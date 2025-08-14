@@ -53,7 +53,7 @@ const popularPosts = [
 
 // Reusable component for the list items
 const FooterPostCard = ({ post }) => (
-  <div className="flex gap-4 items-center hover:rounded-lg Shadow hover:scale-[1.02] transition-transform dark-Shadow duration-300 ease-in-out py-2 cursor-pointer hover:text-primary">
+  <div className="flex gap-4 items-center hover:rounded-lg shadow-sm hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out py-2 cursor-pointer hover:text-primary">
     <div className="flex-shrink-0">
       <img
         src={post.imageUrl}

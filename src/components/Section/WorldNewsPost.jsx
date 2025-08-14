@@ -56,7 +56,7 @@ export const WorldNewsPost = () => {
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
         {/* Featured Article section */}
-        <Link href={"#"} className="lg:col-span-2 py-2 hover:rounded-lg Shadow dark-Shadow hover:scale-[1.02] transition-transform duration-300  ease-in-out overflow-hidden flex flex-col">
+        <Link href={"#"} className="lg:col-span-2 py-2 hover:rounded-lg shadow-sm hover:shadow-lg hover:scale-[1.02] transition-transform duration-300  ease-in-out overflow-hidden flex flex-col">
           <div className="relative">
             <img
               src={featuredArticle.imageUrl}

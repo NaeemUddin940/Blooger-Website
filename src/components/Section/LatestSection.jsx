@@ -73,7 +73,7 @@ const articles = [
 
 // Reusable component for a single article card in the list
 const ArticleCard = ({ article }) => (
-  <div className="flex hover:scale-[1.02] dark-Shadow hover:rounded-lg Shadow transition-transform duration-300 ease-in-out items-start gap-5 py-2 cursor-pointer ">
+  <div className="flex hover:scale-[1.02] shadow-sm hover:shadow-lg hover:rounded-lg transition-transform duration-300 ease-in-out items-start gap-5 py-2 cursor-pointer ">
     <div className="relative flex-shrink-0 ">
       <Image
         height={100}

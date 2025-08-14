@@ -4,7 +4,9 @@ import "./globals.css";
 import TopNavbar from "@/components/Header/TopNavbar";
 import { Navigation } from "@/components/Header/Navigation";
 import { BlogContextProvider } from "@/context/BlogContext";
-import {Footer} from "@/components/Footer/Footer"
+import { Footer } from "@/components/Footer/Footer";
+import { HeroSection } from "@/components/Section/HeroSection";
+import RightSide from "@/components/MainContentRightSide/RightSide";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +20,7 @@ const geistMono = Geist_Mono({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-})
+});
 
 export const metadata: Metadata = {
   title: "Blogger Website || By NAEEM UDDIN",
@@ -34,10 +36,24 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}>
-        <TopNavbar />
-        <Navigation />
-        <BlogContextProvider>{children}</BlogContextProvider>
-        <Footer/>
+        <BlogContextProvider>
+          <TopNavbar />
+          <Navigation />
+          <div className="flex justify-center">
+            <div className="w-5xl">
+              <HeroSection />
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="w-5xl grid grid-cols-1 gap-5 lg:grid-cols-4">
+              <div className="col-span-3">{children}</div>
+              <div>
+                <RightSide />
+              </div>
+            </div>
+          </div>
+          <Footer />
+        </BlogContextProvider>
       </body>
     </html>
   );

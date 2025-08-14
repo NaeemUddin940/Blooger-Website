@@ -65,7 +65,7 @@ export default function PodcastsSections() {
         <ContentHeaderAndViewAll HeaderTitle={"Podcasts"}/>
       <div className="lg:col-span-2 py-2 grid grid-cols-2 gap-5 md:grid-cols-3 overflow-hidden">
         {podcastArticles.map((featuredArticle) => (
-          <Link key={featuredArticle.id} href={"#"} className="hover:scale-[1.02] hover:rounded-lg Shadow dark-Shadow transition-transform duration-300 ease-in-out">
+          <Link key={featuredArticle.id} href={"#"} className="hover:scale-[1.02] hover:rounded-lg shadow-sm hover:shadow-lg transition-transform duration-300 ease-in-out">
             <div className="relative">
               <Image
                 height={100}
@@ -81,7 +81,7 @@ export default function PodcastsSections() {
             </div>
             <div className="px-2 flex-1 flex flex-col justify-between">
               <div>
-                <h1 className="text-2xl md:text-2xl line-clamp-2 hover:text-blue-600 font-extrabold leading-tight text-foreground">
+                <h1 className="text-lg line-clamp-2 hover:text-blue-600 font-extrabold leading-tight text-foreground">
                   {featuredArticle.title}
                 </h1>
                 <p className="text-sm text-primary mt-2">

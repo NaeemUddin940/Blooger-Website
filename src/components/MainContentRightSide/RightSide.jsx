@@ -78,7 +78,7 @@ const travelPosts = [
 // Main RightSide component for the sidebar
 export default function RightSide() {
   return (
-    <div>
+    <div className="sticky top-0 pt-2">
       {/* Follow Us Section */}
       <div className="mb-8">
         <h2 className="text-xl font-extrabold tracking-wide mb-4 border-b border-gray-700 pb-2">
@@ -121,7 +121,7 @@ export default function RightSide() {
           {travelPosts.map((post) => (
             <div
               key={post.id}
-              className="relative overflow-hidden dark-Shadow cursor-pointer hover:scale-[1.02] hover:rounded-lg Shadow transition-transform duration-300 ease-in-out">
+              className="relative overflow-hidden shadow-sm hover:shadow-lg cursor-pointer hover:scale-[1.02] hover:rounded-lg transition-transform duration-300 ease-in-out">
               <Image
                 height={100}
                 width={100}
