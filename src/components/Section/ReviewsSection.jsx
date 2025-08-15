@@ -3,33 +3,6 @@ import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
 import Image from "next/image";
 import { posts } from "@/Data/db";
 
-// Mock data for the articles in the new three-column layout
-const articles = [
-  {
-    id: 1,
-    tag: "REVIEWS",
-    title: "The Best Xbox 360 Co-Op Offline Split-Screen Games",
-    date: "July 31, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNJ4d41mNy4vXBAJA2ExWYnujw2uqN6ZcIOwgWXQBbWkIWeEXEiQXl6aYrtbNzZfeKcf4QPeyEjNJMLp34A2qXXC1_PcP1BUJ4OuIn8JxPzHPMogvoDIRe-TuwrQ9eONOCesXnBP9Hax4/s16000/pbt55.jpg",
-  },
-  {
-    id: 2,
-    tag: "CONSOLES",
-    title: "Great Local Multiplayer Games to Play on PS5",
-    date: "July 31, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJghik19LN34KlhH3ZZhdUNGABNFBCu9TL7w7sQbwbLfu3rBJBz0gJlSJ8ITqGtQdkOMImlAd1ORV-YKvRH-mtHGG8ChrtCHw4MNZUk2zCSveiIk-lN1191gvgkD-b4B6aclZ5BD_LULU/s16000/pbt54.jpg",
-  },
-  {
-    id: 3,
-    tag: "DEALS",
-    title: "How to Equip Your Studio Like the Top Tech",
-    date: "July 31, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQq61wdeQRFM6rzph6NEZXe4_B4TNbVbXZTXzGoT4O1ZDdYnxlwg_wG2BX9BnLLNirt1I244-TmKowkqk3TvCut9hISGpSHYewk0D68AgkYsI7llFX-ErU_r9_qQPgWP75LhFf9dv_dhY/s16000/pbt53.jpg",
-  },
-];
 
 // Main ReviewsSection component
 export const ReviewsSection = () => {

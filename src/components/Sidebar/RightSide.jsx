@@ -107,7 +107,7 @@ export default function RightSide() {
         </h2>
         <div className="flex flex-col gap-4">
           {popularPosts.map((post) => (
-            <HorizontalPostCard key={post.id} article={post} />
+            <HorizontalPostCard key={post.id} post={post} />
           ))}
         </div>
       </div>

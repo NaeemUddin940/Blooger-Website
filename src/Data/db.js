@@ -198,14 +198,15 @@ export const posts = [
   },
   {
     id: 15,
-    isFeatured: true,
+    isFeatured: false,
     category: "Laptop",
     title: "Gaming Laptops Ranked",
     author: "Sophia Davis",
     description: "Our ranking of the best gaming laptops for every budget.",
     content: "Gaming laptops now rival desktops in power...",
     date: "2025-08-15",
-    image: "/images/laptop3.jpg",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNJ4d41mNy4vXBAJA2ExWYnujw2uqN6ZcIOwgWXQBbWkIWeEXEiQXl6aYrtbNzZfeKcf4QPeyEjNJMLp34A2qXXC1_PcP1BUJ4OuIn8JxPzHPMogvoDIRe-TuwrQ9eONOCesXnBP9Hax4/s16000/pbt55.jpg",
     isLatest: false,
     Popular: true,
   },
@@ -240,7 +241,7 @@ export const posts = [
   {
     id: 18,
     isFeatured: false,
-    category: "Travel",
+    category: "Health",
     title: "Budget-Friendly European Cities",
     author: "Noah Anderson",
     description: "Affordable yet stunning destinations in Europe.",
@@ -255,7 +256,7 @@ export const posts = [
   {
     id: 19,
     isFeatured: true,
-    category: "Video",
+    category: "Gadget",
     title: "Top 5 Drone Reviews",
     author: "Isabella Thompson",
     description: "We test and review the top drones for photography.",
@@ -358,6 +359,68 @@ export const posts = [
     image:
       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZcd90d9g6ZUGP3mBOi9d7-wOe9wDkWU1J2i4kOsYr9dFOH6kwK7n6vrGdjCDtYivw-QI9rdMA3Y1TgdRMjYkGB1i2-70mFDrV6NCVKGHPRaQ13DqVTOj45qWKH2JtrIGhWBZwn7sz5fU/w253-h165-p-k-no-nu/pbt38.jpg=w72-h72-p-k-no-nu",
     isLatest: false,
+    Popular: false,
+  },
+  {
+    id: 26,
+    isFeatured: false,
+    category: "Gadget",
+    title: "Stress Management Techniques",
+    author: "Dr. Tanvir Mahmud",
+    description:
+      "Effective ways to reduce and manage stress in your daily life.",
+    content:
+      "From deep breathing exercises to time management, learn how to keep stress under control for better health...",
+    date: "2025-08-14",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZcd90d9g6ZUGP3mBOi9d7-wOe9wDkWU1J2i4kOsYr9dFOH6kwK7n6vrGdjCDtYivw-QI9rdMA3Y1TgdRMjYkGB1i2-70mFDrV6NCVKGHPRaQ13DqVTOj45qWKH2JtrIGhWBZwn7sz5fU/w253-h165-p-k-no-nu/pbt38.jpg=w72-h72-p-k-no-nu",
+    isLatest: false,
+    Popular: false,
+  },
+  {
+    id: 27,
+    isFeatured: false,
+    category: "Gadget",
+    title: "Stress Management Techniques",
+    author: "Dr. Tanvir Mahmud",
+    description:
+      "Effective ways to reduce and manage stress in your daily life.",
+    content:
+      "From deep breathing exercises to time management, learn how to keep stress under control for better health...",
+    date: "2025-08-14",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrF9WB5fOlRXqNsj2JFujGX2vwssliXkewpUXuXcmidhAsLc6kdm7I01Aok4tRs6tnXxTyxCoYYphj02oAg1t1ICgf3NqARVqboWNoI3NOG3RgC8TiKvTbZj0XcfBg2Jjs0IRAMcaAPzA/w253-h165-p-k-no-nu/pbt39.jpg=w72-h72-p-k-no-nu",
+    isLatest: false,
+    Popular: false,
+  },
+  {
+    id: 28,
+    isFeatured: false,
+    category: "Gadget",
+    title: "Stress Management Techniques",
+    author: "Dr. Tanvir Mahmud",
+    description:
+      "Effective ways to reduce and manage stress in your daily life.",
+    content:
+      "From deep breathing exercises to time management, learn how to keep stress under control for better health...",
+    date: "2025-08-14",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrF9WB5fOlRXqNsj2JFujGX2vwssliXkewpUXuXcmidhAsLc6kdm7I01Aok4tRs6tnXxTyxCoYYphj02oAg1t1ICgf3NqARVqboWNoI3NOG3RgC8TiKvTbZj0XcfBg2Jjs0IRAMcaAPzA/w253-h165-p-k-no-nu/pbt39.jpg=w72-h72-p-k-no-nu",
+    isLatest: false,
+    Popular: false,
+  },
+    {
+    id: 29,
+    isFeatured: false,
+    category: "Laptop",
+    title: "Smartwatch Comparison 2025",
+    author: "Daniel Scott",
+    description: "We compare the top smartwatches of the year.",
+    content: "From fitness tracking to battery life, here's what you need...",
+    date: "2025-08-14",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_mzdhXxcGYgg5QtmnBjIXYLCYBrh1BthbuhKvIjJfKBd0ANNeq7owC5ghJjCeS_fN3qgPTZUZ0Y3h4M-raGAulnqWZZiFi8BsxhrQ72sWgqyeQeczG-xFvLgGK8Z9p1EhBzq_DY0viDQ/w253-h165-p-k-no-nu/pbt57.jpg=w72-h72-p-k-no-nu",
+    isLatest: true,
     Popular: false,
   },
 ];

@@ -62,7 +62,7 @@ export const WorldNewsPost = () => {
         {/* Side Articles List */}
         <div className="lg:col-span-2 flex flex-col gap-4 p-2">
           {HealthNormalPosts.map((post) => (
-            <HorizontalPostCard key={post.id} article={post} />
+            <HorizontalPostCard key={post.id} post={post} />
           ))}
         </div>
       </div>
