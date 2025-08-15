@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import Image from "next/image";
 
+// Mega Menu Lists
 const components: {
   src: string;
   title: string;
@@ -56,6 +57,45 @@ const components: {
     title: "Scroll-area",
     href: "/docs/primitives/scroll-area",
     description: "Visually or semantically separates content.",
+  },
+];
+
+// Category Lists
+const categoriesList = [
+  {
+    title: "Laptop",
+    description: "Explore the latest and most powerful laptops.",
+    href: "/laptop",
+  },
+  {
+    title: "Latest News",
+    description: "Stay updated with current events and tech news.",
+    href: "/latest-news",
+  },
+  {
+    title: "Popular Posts",
+    description: "Read the most popular and trending articles.",
+    href: "/popular-posts",
+  },
+  {
+    title: "Travel",
+    description: "Discover beautiful destinations and travel tips.",
+    href: "/travel",
+  },
+  {
+    title: "Videos",
+    description: "Watch engaging and informative video content.",
+    href: "/videos",
+  },
+  {
+    title: "Podcast",
+    description: "Listen to inspiring and educational podcasts.",
+    href: "/podcast",
+  },
+  {
+    title: "Reviews",
+    description: "Honest reviews of gadgets, apps, and services.",
+    href: "/reviews",
   },
 ];
 
@@ -127,33 +167,19 @@ export function Navigation() {
             {/* Category Section */}
             <NavigationMenuItem>
               <NavigationMenuTrigger>Category</NavigationMenuTrigger>
-              <NavigationMenuContent className="z-100">
+              <NavigationMenuContent className="z-100 -left-20">
                 <ul className="grid w-[300px] gap-4">
                   <li>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">
-                        <div className="font-medium">Health</div>
-                        <div className="text-muted-foreground">
-                          World Best Health Conscious tips.
-                        </div>
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">
-                        <div className="font-medium">Gadget</div>
-                        <div className="text-muted-foreground">
-                          Modern Gadget Here You will Found.
-                        </div>
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">
-                        <div className="font-medium">Technology</div>
-                        <div className="text-muted-foreground">
-                          Advanced Technology You can Adventure.
-                        </div>
-                      </Link>
-                    </NavigationMenuLink>
+                    {categoriesList.map((category) => (
+                      <NavigationMenuLink key={category.title} asChild>
+                        <Link href={category.href}>
+                          <div className="font-bold tracking-widest text-lg">{category.title}</div>
+                          <div>
+                            {category.description}
+                          </div>
+                        </Link>
+                      </NavigationMenuLink>
+                    ))}
                   </li>
                 </ul>
               </NavigationMenuContent>
