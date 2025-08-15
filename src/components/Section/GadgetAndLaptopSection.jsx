@@ -4,12 +4,10 @@ import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
 import Image from "next/image";
 import { posts } from "@/Data/db";
 
-
 // Main GadgetAndLaptopSection component
 const GadgetAndLaptopSection = () => {
   const gadgetSection = posts.filter((post) => post.category === "Gadget");
   const laptopSection = posts.filter((post) => post.category === "Laptop");
-
 
   return (
     <div>

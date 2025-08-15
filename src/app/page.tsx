@@ -6,7 +6,7 @@ import { VideosSection } from "@/components/Section/VideosSection";
 import PodcastsSections from "@/components/Section/PodcastsSections";
 export default function Home() {
   return (
-    <main>
+    <main className="px-2 lg:px-0">
       <section>
         <WorldNewsPost />
 
