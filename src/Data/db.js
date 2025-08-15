@@ -66,7 +66,7 @@ export const posts = [
     date: "2025-08-05",
     link: "https://www.youtube.com/embed/NgrljB7UU34",
     isLatest: false,
-    Popular: true,
+    Popular: false,
   },
   {
     id: 6,
