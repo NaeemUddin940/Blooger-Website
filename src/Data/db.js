@@ -280,4 +280,84 @@ export const posts = [
     isLatest: true,
     Popular: false,
   },
+  {
+    id: 21,
+    isFeatured: true,
+    category: "Health",
+    title: "10 Daily Habits for a Healthier Life",
+    author: "Dr. Anika Rahman",
+    description:
+      "Learn simple daily habits to boost your physical and mental health.",
+    content:
+      "Incorporating small daily habits like walking, proper hydration, and meditation can significantly improve your overall well-being...",
+    date: "2025-08-10",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5AcWi3HiMeQrvhHkF_Wd-uA4G71MMjiTmSZBx7lCYM31G_mIE_6wJxaUsuUsW64mpj3VoHcLaEM3kkz3AR4On4noLQE8ERw7QbNRhBP6-JhZsEqVucyM80kFcwk1Gig8wLPR-aKkk8tc/w338-h198-p-k-no-nu/pbt42.jpg=w72-h72-p-k-no-nu",
+    isLatest: true,
+    Popular: false,
+  },
+  {
+    id: 22,
+    isFeatured: false,
+    category: "Health",
+    title: "Best Superfoods for Immunity",
+    author: "Shahidul Islam",
+    description:
+      "Discover the top superfoods that can strengthen your immune system naturally.",
+    content:
+      "Foods like garlic, ginger, spinach, and turmeric are packed with nutrients that can boost immunity and keep illnesses at bay...",
+    date: "2025-08-11",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgl7kA3KaVish2moJyQZLILWySl_3p0rgokyAoYpA_36VpJ1gIAAP8SwgCq_-kCCSXt5O7uEME-r8ivcQB_jl5ZDwD91iRL1OWR3KiWHD1BN6wqms4Kjx23oSsH6wQ1SGEp98zyxpcQsOk/w253-h165-p-k-no-nu/pbt41.jpg=w72-h72-p-k-no-nu",
+    isLatest: false,
+    Popular: true,
+  },
+  {
+    id: 23,
+    isFeatured: false,
+    category: "Health",
+    title: "The Science Behind Quality Sleep",
+    author: "Dr. Farhana Akter",
+    description:
+      "Understand why quality sleep is essential for health and productivity.",
+    content:
+      "Sleep affects hormone regulation, mental clarity, and even weight control. Here's how to improve your sleep schedule...",
+    date: "2025-08-12",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_Yg3mLs2Ql59M1QYiHTJDnFxIA4eFVneSi-GZ-iy7gwkLRaKzB1DVdsEykZKOUzifk1f1cm25fQDAqJMU-jva0V3AvfxmyV5JUtSmN3JCfTOEVMwpuC46wm-Jqu8fxODvWmHF1cc9yPI/w253-h165-p-k-no-nu/pbt40.jpg=w72-h72-p-k-no-nu",
+    isLatest: false,
+    Popular: false,
+  },
+  {
+    id: 24,
+    isFeatured: false,
+    category: "Health",
+    title: "Beginner’s Guide to Home Workouts",
+    author: "Rafiul Hasan",
+    description:
+      "Stay fit from the comfort of your home with these easy workouts.",
+    content:
+      "Bodyweight exercises like push-ups, squats, and planks can help you stay active without the need for gym equipment...",
+    date: "2025-08-13",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrF9WB5fOlRXqNsj2JFujGX2vwssliXkewpUXuXcmidhAsLc6kdm7I01Aok4tRs6tnXxTyxCoYYphj02oAg1t1ICgf3NqARVqboWNoI3NOG3RgC8TiKvTbZj0XcfBg2Jjs0IRAMcaAPzA/w253-h165-p-k-no-nu/pbt39.jpg=w72-h72-p-k-no-nu",
+    isLatest: true,
+    Popular: true,
+  },
+  {
+    id: 25,
+    isFeatured: false,
+    category: "Health",
+    title: "Stress Management Techniques",
+    author: "Dr. Tanvir Mahmud",
+    description:
+      "Effective ways to reduce and manage stress in your daily life.",
+    content:
+      "From deep breathing exercises to time management, learn how to keep stress under control for better health...",
+    date: "2025-08-14",
+    image:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZcd90d9g6ZUGP3mBOi9d7-wOe9wDkWU1J2i4kOsYr9dFOH6kwK7n6vrGdjCDtYivw-QI9rdMA3Y1TgdRMjYkGB1i2-70mFDrV6NCVKGHPRaQ13DqVTOj45qWKH2JtrIGhWBZwn7sz5fU/w253-h165-p-k-no-nu/pbt38.jpg=w72-h72-p-k-no-nu",
+    isLatest: false,
+    Popular: false,
+  },
 ];

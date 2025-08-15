@@ -6,10 +6,10 @@ export const HorizontalPostCard = ({ article }) => (
     href={"#"}
     className="flex hover:scale-[1.02] p-1 shadow-sm hover:shadow-lg hover:rounded-lg transition-transform duration-300 ease-in-out items-center gap-4 cursor-pointer">
     <Image
+      src={article?.image}
+      alt={article.title}
       width={100}
       height={100}
-      src={article.imageUrl}
-      alt={article.title}
       className="w-[30%] object-cover"
     />
     <div>

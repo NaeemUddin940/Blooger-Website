@@ -6,7 +6,7 @@ import { Navigation } from "@/components/Header/Navigation";
 import { BlogContextProvider } from "@/context/BlogContext";
 import { Footer } from "@/components/Footer/Footer";
 import { HeroSection } from "@/components/Section/HeroSection";
-import RightSide from "@/components/MainContentRightSide/RightSide";
+import RightSide from "@/components/Sidebar/RightSide";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
