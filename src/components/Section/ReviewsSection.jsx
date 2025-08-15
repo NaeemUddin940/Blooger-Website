@@ -60,7 +60,7 @@ export const ReviewsSection = () => {
   return (
     <div className="">
       {/* Header section */}
-      <ContentHeaderAndViewAll HeaderTitle={"Reviews"} />
+      <ContentHeaderAndViewAll HeaderTitle={"Reviews"}   path="/reviews"/>
 
       {/* Main content grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">

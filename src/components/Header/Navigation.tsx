@@ -63,6 +63,11 @@ const components: {
 // Category Lists
 const categoriesList = [
   {
+    title: "Health",
+    description: "Tips for healthy living and well-being.",
+    href: "/world-news/health",
+  },
+  {
     title: "Laptop",
     description: "Explore the latest and most powerful laptops.",
     href: "/laptop",
@@ -173,10 +178,10 @@ export function Navigation() {
                     {categoriesList.map((category) => (
                       <NavigationMenuLink key={category.title} asChild>
                         <Link href={category.href}>
-                          <div className="font-bold tracking-widest text-lg">{category.title}</div>
-                          <div>
-                            {category.description}
+                          <div className="font-bold tracking-widest text-lg">
+                            {category.title}
                           </div>
+                          <div>{category.description}</div>
                         </Link>
                       </NavigationMenuLink>
                     ))}

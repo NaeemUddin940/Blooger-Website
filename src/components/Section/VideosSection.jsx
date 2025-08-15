@@ -75,7 +75,7 @@ export const VideosSection = () => {
   return (
     <div>
       {/* Header section */}
-      <ContentHeaderAndViewAll HeaderTitle={"Video"} />
+      <ContentHeaderAndViewAll HeaderTitle={"Video"}  path="/videos"/>
 
       {/* Main content grid */}
       <div className="grid grid-cols-1 gap-8 py-2">

@@ -107,7 +107,7 @@ export const LatestSection = () => {
   return (
     <div>
       {/* Header section */}
-      <ContentHeaderAndViewAll HeaderTitle={"Latest News"} />
+      <ContentHeaderAndViewAll HeaderTitle={"Latest News"}  path="/latest-news"/>
 
       {/* List of articles */}
       <div className="flex flex-col gap-4">

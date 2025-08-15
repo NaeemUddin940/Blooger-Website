@@ -1,10 +1,12 @@
+"use client"
 import React from "react";
 import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
 import Image from "next/image";
 
 // Mock data for the two main sections
-const leftColumnArticles = {
+const gadgetSection = {
   sectionTitle: "GADGETS",
+  href: "/gadgets",
   featured: {
     id: 1,
     tag: "GADGETS",
@@ -39,8 +41,9 @@ const leftColumnArticles = {
   ],
 };
 
-const rightColumnArticles = {
+const laptopSection = {
   sectionTitle: "LAPTOPS",
+  href: "/laptop",
   featured: {
     id: 5,
     tag: "APPLE",
@@ -93,55 +96,63 @@ const SideArticleCard = ({ article }) => (
 );
 
 // Reusable component for a single news section
-const NewsSection = ({ data }) => (
-  <div className="flex-1 ">
-    {/* Header section for each column */}
-    <ContentHeaderAndViewAll HeaderTitle={data.sectionTitle} />
+const NewsSection = ({ data }) => {
+  console.log(data.href);
+  return (
+    <div className="flex-1 ">
+      {/* Header section for each column */}
+      <ContentHeaderAndViewAll
+        HeaderTitle={data.sectionTitle}
+        path={data.href}
+      />
 
-    {/* Featured Article */}
-    <div className="overflow-hidden shadow-sm hover:shadow-lg flex flex-col hover:rounded-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out">
-      <div className="relative">
-        <Image
-          width={100}
-          height={100}
-          src={data.featured.imageUrl}
-          alt={data.featured.title}
-          className="w-full h-48 object-cover"
-        />
-        <span className="absolute bottom-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-          {data.featured.tag}
-        </span>
+      {/* Featured Article */}
+      <div className="overflow-hidden shadow-sm hover:shadow-lg flex flex-col hover:rounded-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+        <div className="relative">
+          <Image
+            width={100}
+            height={100}
+            src={data.featured.imageUrl}
+            alt={data.featured.title}
+            className="w-full h-48 object-cover"
+          />
+          <span className="absolute bottom-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+            {data.featured.tag}
+          </span>
+        </div>
+        <div className="py-1 px-2">
+          <h3 className="text-lg md:text-xl line-clamp-2 font-extrabold leading-tight text-primary">
+            {data.featured.title}
+          </h3>
+          <p className="text-sm text-primary mt-2">
+            by{" "}
+            <span className="text-blue-600 font-medium">
+              {data.featured.author}
+            </span>{" "}
+            - {data.featured.date}
+          </p>
+        </div>
       </div>
-      <div className="py-1 px-2">
-        <h3 className="text-lg md:text-xl line-clamp-2 font-extrabold leading-tight text-primary">
-          {data.featured.title}
-        </h3>
-        <p className="text-sm text-primary mt-2">
-          by{" "}
-          <span className="text-blue-600 font-medium">
-            {data.featured.author}
-          </span>{" "}
-          - {data.featured.date}
-        </p>
+
+      {/* Side Articles List */}
+      <div className="flex flex-col gap-4">
+        {data.list.map((article) => (
+          <SideArticleCard key={article.id} article={article} />
+        ))}
       </div>
     </div>
-
-    {/* Side Articles List */}
-    <div className="flex flex-col gap-4">
-      {data.list.map((article) => (
-        <SideArticleCard key={article.id} article={article} />
-      ))}
-    </div>
-  </div>
-);
+  );
+};
 
 // Main GadgetAndLaptopSection component
 const GadgetAndLaptopSection = () => {
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 py-2">
-        <NewsSection data={leftColumnArticles} />
-        <NewsSection data={rightColumnArticles} />
+        {/* Gadget Section */}
+        <NewsSection data={gadgetSection} />
+        {/* Laptop Section */}
+        <NewsSection data={laptopSection} />
       </div>
     </div>
   );

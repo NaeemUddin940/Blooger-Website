@@ -51,7 +51,7 @@ const sideArticles = [
 export const WorldNewsPost = () => {
   return (
     <div>
-      <ContentHeaderAndViewAll HeaderTitle="World News" />
+      <ContentHeaderAndViewAll HeaderTitle="World News"  path="/world-news/health" />
 
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">

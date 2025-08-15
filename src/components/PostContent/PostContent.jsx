@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Facebook, Twitter, Instagram } from "lucide-react";
 import SocialMedia from "../ui/SocialMedia";
-export default function MainContent() {
+export default function PostContent() {
   const article = {
     title: "11 of Best Laptops Evaluated Based on Budget",
     author: "John Doe",
