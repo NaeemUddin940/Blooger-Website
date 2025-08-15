@@ -13,7 +13,7 @@ export const HorizontalPostCard = ({ article }) => (
       className="w-[30%] object-cover"
     />
     <div>
-      <h3 className="text-sm md:text-base font-bold hover:text-blue-600 line-clamp-2 text-foreground">
+      <h3 className="text-sm md:text-base font-bold hover:text-teal-400 line-clamp-2 text-foreground">
         {article.title}
       </h3>
       <p className="text-xs text-primary mt-1">{article.date}</p>

@@ -39,7 +39,7 @@ export const WorldNewsPost = () => {
             </div>
             <div className="px-2 flex-1 flex flex-col justify-between">
               <div>
-                <h1 className="text-2xl mt-5 md:text-2xl line-clamp-2 hover:text-teal-500 font-extrabold leading-tight text-foreground">
+                <h1 className="text-2xl mt-5 md:text-2xl line-clamp-2 hover:text-teal-400 font-extrabold leading-tight text-foreground">
                   {post.title}
                 </h1>
                 <p className="text-sm text-primary mt-2">

@@ -347,7 +347,7 @@ export const posts = [
   {
     id: 25,
     isFeatured: false,
-    category: "Health",
+    category: "Reviews",
     title: "Stress Management Techniques",
     author: "Dr. Tanvir Mahmud",
     description:
