@@ -1,47 +1,6 @@
 import React from "react";
-import { PlayCircle } from "lucide-react"; // Example icon library for the play button
 import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
-import Image from "next/image";
 import { posts } from "@/Data/db";
-import Link from "next/link";
-
-// Mock data for the videos
-const featuredVideo = {
-  id: 1,
-  tag: "BMW",
-  title: "What's in the Most Recent Upgrade Package",
-  author: "John Doe",
-  date: "July 31, 2021",
-  imageUrl:
-    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsKwK9QzbS1GiTjRXCDG1iFB4SqorsAjTCF6HVp8h6fwu71wlfRbFvmFg-WQ1V5Q1FMd4dnvb54BZltAMUD8HPyvVJOPE-G1EMgx1byZNFDoofx_ehchQPxpyXBUExumDcsGP0cOhZpJk/s16000/pbt35.jpg",
-};
-
-const otherVideos = [
-  {
-    id: 2,
-    tag: "CARS",
-    title: "Elegant Business Style Cars for Heavy Traffic",
-    date: "July 31, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht7PCNDcNNuGQSq-WwUwt7a6lf58VqO3BS07Xa-FyG2ggW3o1rhMcMCf_41hfdGg-5XZbkXkZgUvqbSt93WJDrgNdF4N7AUGFNLl5QKVKDKQb1csUConsajDykGDrSS209oliNcNF4g_4/s16000/pbt34.jpg",
-  },
-  {
-    id: 3,
-    tag: "BMW",
-    title: "Why Navigation System Doesn't Work Always",
-    date: "July 31, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOoPd0o4DM4A7IewiTUKC7hwOzz9xJwNImhD82OCx0pj2F3MPheJKjphFTI08lzS3nxfHt30XbUGrX5v_B2bBuGNEZCXvWigfewnVHH28Ir6e7aUPETZTsD9q-fMUMnRsN8eWq0QAeTQU/s16000/pbt33.jpg",
-  },
-  {
-    id: 4,
-    tag: "BMW",
-    title: "Do You Like the Maneuvers of Your Car?",
-    date: "July 31, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUbVNVZfQdWLjnHWDMvQVV5Jn-lA7qT73C_dF19OAAijj_MoOiQp5nad3N15Zo6vlrk3lF9cnGW2RvSQt7TNHWpo7iGY3A5RgG7gFINnnV_2o8WtIgntjV8BgQ7cDU60uyMRR28jvLRGM/s16000/pbt36.jpg",
-  },
-];
 
 // Main VideosSection component
 export const VideosSection = () => {

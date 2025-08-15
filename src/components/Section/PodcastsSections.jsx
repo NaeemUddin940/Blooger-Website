@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
+import {posts} from "@/Data/db"
 
 const podcastArticles = [
   {
@@ -60,17 +61,18 @@ const podcastArticles = [
 ];
 
 export default function PodcastsSections() {
+  const podcastSection = posts.filter((post) => post.category === "Podcast")
   return (
     <div>
-        <ContentHeaderAndViewAll HeaderTitle={"Podcasts"}  path="/podcast"/>
+        <ContentHeaderAndViewAll HeaderTitle={"Podcast"}  path="/podcast"/>
       <div className="lg:col-span-2 py-2 grid grid-cols-2 gap-5 md:grid-cols-2 lg:grid-cols-3 overflow-hidden">
-        {podcastArticles.map((featuredArticle) => (
+        {podcastSection.map((featuredArticle) => (
           <Link key={featuredArticle.id} href={"#"} className="hover:scale-[1.02] hover:rounded-lg shadow-sm hover:shadow-lg transition-transform duration-300 ease-in-out">
             <div className="relative">
               <Image
                 height={100}
                 width={100}
-                src={featuredArticle.imageUrl}
+                src={featuredArticle.image}
                 alt={featuredArticle.title}
                 className="w-full h-40 object-cover"
               />
