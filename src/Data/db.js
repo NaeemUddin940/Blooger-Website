@@ -16,7 +16,7 @@ export const posts = [
   {
     id: 2,
     isFeatured: false,
-    category: "Latest News",
+    category: "Travel",
     title: "Tech Industry Sees Rapid AI Growth",
     author: "Jane Smith",
     description: "AI adoption accelerates across industries in 2025.",
@@ -114,7 +114,7 @@ export const posts = [
   {
     id: 9,
     isFeatured: true,
-    category: "Latest News",
+    category: "Reviews",
     title: "Breakthrough in Quantum Computing",
     author: "James Brown",
     description: "Scientists achieve new milestones in quantum tech.",
@@ -211,7 +211,7 @@ export const posts = [
   {
     id: 16,
     isFeatured: false,
-    category: "Latest News",
+    category: "Travel",
     title: "Global Chip Shortage Eases",
     author: "Liam Wilson",
     description: "Manufacturers report improvements in supply chains.",

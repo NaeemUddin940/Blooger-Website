@@ -2,6 +2,7 @@ import React from "react";
 import { posts } from "@/Data/db";
 import SocialMedia from "@/components/ui/SocialMedia";
 import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
+import Categories from "../Sidebar/Categories";
 
 // Main Footer component for the footer
 export const Footer = () => {
@@ -12,39 +13,10 @@ export const Footer = () => {
     <footer className="px-2">
       <div className="lg:w-5xl mx-auto mt-5 border-t-1 border-gray-50">
         {/* Top section with categories and posts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-8 mb-8 border-b border-gray-700 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-8 border-b border-gray-700">
           {/* Categories & Main Tags */}
           <div>
-            <h3 className="text-lg font-extrabold tracking-wide text-foreground mb-4">
-              CATEGORIES
-            </h3>
-            <ul className="flex flex-col gap-2 mb-6">
-              {["Gadgets", "Healthy", "Podcasts", "Reviews"].map(
-                (category, index) => (
-                  <li
-                    key={index}
-                    className="flex justify-between items-center text-gray-400 hover:text-teal-500 transition-colors cursor-pointer">
-                    <span>{category}</span>
-                    <span className="text-sm text-gray-500">(6)</span>
-                  </li>
-                )
-              )}
-            </ul>
-
-            <h3 className="text-lg font-extrabold tracking-wide text-foreground mb-4">
-              MAIN TAGS
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {["Gadgets", "Games", "Healthy", "Podcasts", "Reviews"].map(
-                (tag, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-gray-200 dark:bg-gray-800 text-foreground text-sm font-medium rounded-full cursor-pointer hover:bg-teal-500 transition-colors">
-                    {tag}
-                  </span>
-                )
-              )}
-            </div>
+            <Categories />
           </div>
 
           {/* Latest Posts */}
@@ -117,7 +89,7 @@ export const Footer = () => {
 
         {/* For Mobile Device */}
         {/* About Us & Social Media */}
-        <div className="flex md:hidden lg:flex flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 mb-4">
+        <div className="flex md:hidden lg:flex flex-col md:flex-row justify-between items-center py-4 border-b border-gray-700 my-4">
           <div className="flex items-center flex-col md:flex-row text-center md:text-left mb-4 md:mb-0">
             <div className="flex-shrink-0 mb-2 md:mb-0">
               {/* SVG for 'newsspot' logo, assuming it's text-based or can be represented */}

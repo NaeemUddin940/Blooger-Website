@@ -10,7 +10,10 @@ export const WorldNewsPost = () => {
 
   return (
     <div>
-      <ContentHeaderAndViewAll HeaderTitle="World News" path={`/all-posts/health`}/>
+      <ContentHeaderAndViewAll
+        HeaderTitle="World News"
+        path={`/all-posts/health`}
+      />
 
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
