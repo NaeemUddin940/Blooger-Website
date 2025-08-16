@@ -4,7 +4,15 @@ import SocialMedia from "../../../components/ui/SocialMedia";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { posts } from "../../../Data/db";
 import { useParams } from "next/navigation";
-
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 
 const relatedPosts = [
   {
@@ -43,27 +51,58 @@ const comments = [
 ];
 
 export default function PostContent() {
-  const { id } = useParams();
-  // function slugify(text) {
-  //   return text
-  //     .toLowerCase()
-  //     .replace(/ /g, "-")
-  //     .replace(/[^\w-]+/g, "");
-  // }
-  // const text = slugify("Hello World")
-  // console.log(text);
+  const { id, category } = useParams();
 
-  const post = posts.find((post) => (post.id) == id);
+  const post = posts.find((post) => post.id == id);
 
-if(!post){
-  return <div className="text-5xl text-center text-red-500">Post not Found!</div>
-}
+  if (!post) {
+    return (
+      <div className="text-5xl text-center text-red-500">Post not Found!</div>
+    );
+  }
 
   const [commentText, setCommentText] = useState("");
 
   return (
     <div className="flex flex-col mt-1">
       <div>
+        <div className="mt-5">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/" className="text-lg">
+                    <span>Home</span>
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/all-posts" className="text-lg">
+                    <span>All Posts</span>
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    href={`/all-posts/${category.toLocaleLowerCase()}`}
+                    className="text-lg">
+                    <span>{category}</span>
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-lg">
+                  {post.title}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
         <article>
           {/* Header */}
           <div>
@@ -213,8 +252,6 @@ if(!post){
           </div>
         </article>
       </div>
-
-
 
       {/* Footer Navigation */}
       <div className="flex justify-between items-center mt-12 pt-6 border-t border-gray-700 text-sm text-gray-400">

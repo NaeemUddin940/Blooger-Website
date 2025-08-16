@@ -1,3 +1,6 @@
+"use client";
+import Link from "next/link";
+// import { useParams } from "next/navigation";
 import { posts } from "../../Data/db";
 import HorizontalPostBigCard from "../../components/PostCard/HorizontalPostBigCard";
 import {
@@ -9,36 +12,31 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-export default function Health() {
-  const content = posts.filter((post) => post?.category === "Health");
-  console.log(content);
-  if (content.length === 0) {
-    return (
-      <h1 className="text-2xl text-center mt-5 font-bold">
-        No health posts found
-      </h1>
-    );
-  }
+export default function page() {
   return (
     <div>
-      <div>
+      <div className="mt-5">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink asChild>
+                <Link href="/" className="text-lg">
+                  <span>Home</span>
+                </Link>
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              <BreadcrumbPage asChild>
+                <Link href="/all-posts" className="text-lg">
+                  <span>All Posts</span>
+                </Link>
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      {content.map((post) => (
+      {posts.map((post) => (
         <HorizontalPostBigCard key={post.id} post={post} />
       ))}
     </div>
