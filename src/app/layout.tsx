@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+"use client";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import TopNavbar from "@/components/Header/TopNavbar";
@@ -7,6 +7,10 @@ import { BlogContextProvider } from "@/context/BlogContext";
 import { Footer } from "@/components/Footer/Footer";
 import { HeroSection } from "@/components/Section/HeroSection";
 import RightSide from "@/components/Sidebar/RightSide";
+import { usePathname } from "next/navigation";
+import { AdminSidebar } from "@/components/Sidebar/Admin/AdminSidebar";
+import AdminHeader from "@/components/Header/AdminHeader";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,39 +26,50 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Blogger Website || By NAEEM UDDIN",
-  description: "This is a blog website",
-};
+<metadata />;
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const pathname = usePathname();
+
+  const isAdminRoute = pathname.startsWith("/admin");
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}>
-        <BlogContextProvider>
-          <TopNavbar />
-          <Navigation />
-          <div className="flex justify-center">
-            <div className="w-5xl">
-              <HeroSection />
-            </div>
-          </div>
+        {isAdminRoute ? (
+          <main>
+            <AdminHeader/>
+            {children}
+            </main>
+        ) : (
+          // 🔹 Blog Layout
+          <BlogContextProvider>
+            <TopNavbar />
+            <Navigation />
 
-          <div className="flex justify-center">
-            <div className="w-5xl grid grid-cols-1 md:grid-cols-5 gap-5 lg:grid-cols-4">
-              <div className="lg:col-span-3 md:col-span-3">{children}</div>
-              <div  className="md:col-span-5 md:col-start-4">
-                <RightSide />
+            <div className="flex justify-center">
+              <div className="w-5xl">
+                <HeroSection />
               </div>
             </div>
-          </div>
-          <Footer />
-        </BlogContextProvider>
+
+            <div className="flex justify-center">
+              <div className="w-5xl grid grid-cols-1 md:grid-cols-5 gap-5 lg:grid-cols-4">
+                <div className="lg:col-span-3 md:col-span-3">{children}</div>
+                <div className="md:col-span-5 md:col-start-4">
+                  <RightSide />
+                </div>
+              </div>
+            </div>
+
+            <Footer />
+          </BlogContextProvider>
+        )}
       </body>
     </html>
   );

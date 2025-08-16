@@ -109,7 +109,9 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/Sheet";
 import { Sidebar } from "../Sidebar/Sidebar";
 
-export function Navigation() {
+import { cn } from "@/lib/utils";
+
+export function Navigation({ className }: { className?: string }) {
   const [activeSearch, setActiveSearch] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
@@ -138,7 +140,11 @@ export function Navigation() {
   };
 
   return (
-    <div className="flex justify-center pl-2 z-100 py-2 shadow-sm dark:shadow-accent-foreground pr-5">
+    <div
+      className={cn(
+        "flex justify-center pl-2 z-100 py-2 shadow-sm dark:shadow-accent-foreground pr-5",
+        className
+      )}>
       <div className="flex justify-between w-5xl">
         <div className="flex items-center cursor-pointer lg:hidden">
           <Sheet>
@@ -152,6 +158,7 @@ export function Navigation() {
             </SheetContent>
           </Sheet>
         </div>
+
         <NavigationMenu viewport={false}>
           {/* Icon And Heading Section */}
           <NavigationMenuList>

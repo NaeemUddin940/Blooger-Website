@@ -53,6 +53,10 @@ body{
   width: 210px;
   padding-left: 20px;
 }
+.active-search-max input{
+  width: 500px;
+   padding-left: 20px;
+}
 
 :root {
   --font-geist-sans: sans-serif; /* fallback */
@@ -160,5 +164,14 @@ h6 {
   }
   .dark-Shadow {
     @apply hover:shadow-[6px_6px_12px_#000,-6px_-6px_12px_#2f2f2f];
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

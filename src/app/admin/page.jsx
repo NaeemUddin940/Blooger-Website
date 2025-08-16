@@ -1,9 +1,9 @@
-import React from 'react'
-
-export default function AddPost() {
+import AdminHeader from "@/components/Header/AdminHeader";
+export default function Page() {
   return (
     <div>
-        admin page
+      {/* <AdminHeader/> */}
+      <h1 className="text-3xl font-bold w-7xl">Admin Dashboard</h1>
     </div>
-  )
+  );
 }
