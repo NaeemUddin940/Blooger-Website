@@ -59,7 +59,7 @@ const VideoCard = ({ video }) => (
       <h3 className="text-lg md:text-xl line-clamp-2 font-medium leading-tight text-primary">
         {video.title}
       </h3>
-      <p className="text-sm text-primary mt-2">{video.date}</p>
+      <p className="text-sm text-primary mt-2">{video.date} <span className="text-teal-500">{video.author}</span></p>
     </div>
   </div>
 );

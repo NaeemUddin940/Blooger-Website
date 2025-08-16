@@ -1,8 +1,7 @@
 import ContentHeaderAndViewAll from "@/components/ui/ContentHeaderAndViewAll";
-import { HorizontalPostCard } from "../ui/HorizontalPostCard";
+import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
 import Link from "next/link";
 import { posts } from "@/Data/db";
-
 
 export const WorldNewsPost = () => {
   const HealthPosts = posts.filter((post) => post.category === "Health");
@@ -11,19 +10,15 @@ export const WorldNewsPost = () => {
 
   return (
     <div>
-      <ContentHeaderAndViewAll
-        HeaderTitle="World News"
-        path="/world-news/health"
-      />
+      <ContentHeaderAndViewAll HeaderTitle="World News" path={`/all-posts/health`}/>
 
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
-
-
         {/* Featured Article section */}
         {featuredPost.map((post) => (
+          // <FeaturedCard key={post.id} post={post} />
           <Link
-            href={"#"}
+            href={`/${post.category}/${post.id}`}
             key={post.id}
             className="lg:col-span-2 py-2 hover:rounded-lg shadow-sm hover:shadow-lg hover:scale-[1.02] transition-transform duration-300  ease-in-out overflow-hidden flex flex-col">
             <div className="relative">
@@ -57,12 +52,10 @@ export const WorldNewsPost = () => {
           </Link>
         ))}
 
-
-        
         {/* Side Articles List */}
         <div className="lg:col-span-2 flex flex-col gap-4 p-2">
           {HealthNormalPosts.map((post) => (
-            <HorizontalPostCard key={post.id} post={post} />
+            <HorizontalPostSmallCard key={post.id} post={post} />
           ))}
         </div>
       </div>

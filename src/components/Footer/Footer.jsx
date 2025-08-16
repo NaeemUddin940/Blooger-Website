@@ -1,77 +1,13 @@
 import React from "react";
-
+import { posts } from "@/Data/db";
 import SocialMedia from "@/components/ui/SocialMedia";
-
-// Mock data for the footer sections
-const latestPosts = [
-  {
-    id: 1,
-    title: "11 of Best Laptops Evaluated Based on Budget",
-    date: "August 02, 2021",
-    imageUrl:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fblogger.googleusercontent.com%2Fimg%2Fb%2FR29vZ2xl%2FAVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI%2Fs16000%2Fpbt66.jpg&w=256&q=75",
-  },
-  {
-    id: 2,
-    title: "Apple Watch Series 5 is the Best One Yet By Consumer",
-    date: "August 02, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgf8-arWDMvbTeZBWVxA4Ky1H6aExuTk9SEJNdjPnPWgW4O7YXw3iQW6KvRvVr6Fz9crqCwp1YgkIbi3pHFs2xlIiA9GwPsEdIPkdilF28j964yXzX59AU_4NMHTVfUOudE7Kc5vnb_-0/s16000/pbt65.jpg",
-  },
-  {
-    id: 3,
-    title: "Here's What People Think of iOS 13 New Dark Mode",
-    date: "August 02, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKUIl2yc8d5warqlbvzvhxrk4yzGK0FXr4bnPDnW1iKNiJqg5YqvCuYFD4xX1q383w-wU_WJaN_5ZcCiNVDYSk26rQQo-iup04BZUdSkiDqbRuHWgYE9PmHpVjj_lyb1ozr3j4glvrfVs/s16000/pbt62.jpg",
-  },
-];
-
-const popularPosts = [
-  {
-    id: 4,
-    title: "11 of Best Laptops Evaluated Based on Budget",
-    date: "August 02, 2021",
-    imageUrl:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fblogger.googleusercontent.com%2Fimg%2Fb%2FR29vZ2xl%2FAVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI%2Fs16000%2Fpbt66.jpg&w=256&q=75",
-  },
-  {
-    id: 5,
-    title: "Opera Browser Lets You Apply Dark Mode to Web Page",
-    date: "August 02, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKFmqRoUH6Ma7ZWQn79BnSTTCu1wR4wSgRim9PKKmWkQNrvnOPpVaBql52-V6_gKVDIBoUyA3Rhpt00g1nc8VvnyECAFIl0nRqiK8xL4Ym4x2Mf6eSdBtn7PMIaQBHjaEBmuIndG68Xrs/s16000/pbt63.jpg",
-  },
-  {
-    id: 6,
-    title: "How to Get COVID-19 Related Alerts on Your Phone",
-    date: "July 31, 2021",
-    imageUrl:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5AcWi3HiMeQrvhHkF_Wd-uA4G71MMjiTmSZBx7lCYM31G_mIE_6wJxaUsuUsW64mpj3VoHcLaEM3kkz3AR4On4noLQE8ERw7QbNRhBP6-JhZsEqVucyM80kFcwk1Gig8wLPR-aKkk8tc/s16000/pbt42.jpg",
-  },
-];
-
-// Reusable component for the list items
-const FooterPostCard = ({ post }) => (
-  <div className="flex gap-4 items-center hover:rounded-lg shadow-sm hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out py-2 cursor-pointer hover:text-primary">
-    <div className="flex-shrink-0">
-      <img
-        src={post.imageUrl}
-        alt={post.title}
-        className="w-16 h-12 object-cover"
-      />
-    </div>
-    <div className="flex-1">
-      <h3 className="text-sm font-bold leading-tight text-primary">
-        {post.title}
-      </h3>
-      <p className="text-xs text-gray-400 mt-1">{post.date}</p>
-    </div>
-  </div>
-);
+import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
 
 // Main Footer component for the footer
 export const Footer = () => {
+  const latest = posts.filter((post) => post.isLatest);
+  const popular = posts.filter((post) => post.Popular);
+
   return (
     <footer className="px-2">
       <div className="lg:w-5xl mx-auto mt-5 border-t-1 border-gray-50">
@@ -117,8 +53,8 @@ export const Footer = () => {
               LATEST POSTS
             </h3>
             <div className="flex flex-col gap-4">
-              {latestPosts.map((post) => (
-                <FooterPostCard key={post.id} post={post} />
+              {latest.map((post) => (
+                <HorizontalPostSmallCard key={post.id} post={post} />
               ))}
             </div>
           </div>
@@ -129,8 +65,8 @@ export const Footer = () => {
               POPULAR POSTS
             </h3>
             <div className="flex flex-col gap-4">
-              {popularPosts.map((post) => (
-                <FooterPostCard key={post.id} post={post} />
+              {popular.map((post) => (
+                <HorizontalPostSmallCard key={post.id} post={post} />
               ))}
             </div>
           </div>
@@ -177,8 +113,6 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-
-
 
         {/* For Mobile Device */}
         {/* About Us & Social Media */}

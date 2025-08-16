@@ -5,40 +5,6 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 import { posts } from "../../../Data/db";
 import { useParams } from "next/navigation";
 
-const article = {
-  title: "11 of Best Laptops Evaluated Based on Budget",
-  author: "John Doe",
-  date: "August 09, 2023",
-  readTime: "11 min read",
-  heroImage: "https://placehold.co/1200x600/1e1e1e/fff?text=Laptop+Hero+Image",
-  body: [
-    {
-      type: "paragraph",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      type: "paragraph",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      type: "quote",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      type: "paragraph",
-      text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-    },
-    {
-      type: "paragraph",
-      text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-    },
-    {
-      type: "paragraph",
-      text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-    },
-  ],
-  tags: ["Laptops", "Tech"],
-};
 
 const relatedPosts = [
   {
@@ -77,11 +43,21 @@ const comments = [
 ];
 
 export default function PostContent() {
-  const { slug } = useParams();
+  const { id } = useParams();
+  // function slugify(text) {
+  //   return text
+  //     .toLowerCase()
+  //     .replace(/ /g, "-")
+  //     .replace(/[^\w-]+/g, "");
+  // }
+  // const text = slugify("Hello World")
+  // console.log(text);
 
-  console.log(slug);
-  const post = posts.find((post) => post.id == slug);
-  console.log(post);
+  const post = posts.find((post) => (post.id) == id);
+
+if(!post){
+  return <div className="text-5xl text-center text-red-500">Post not Found!</div>
+}
 
   const [commentText, setCommentText] = useState("");
 
@@ -100,7 +76,7 @@ export default function PostContent() {
                   By <span className="text-teal-500">{post.author}</span>
                 </span>
                 <span className="mr-4">{post.date}</span>
-                <span>{article.readTime}</span>
+                {/* <span>{article.readTime}</span> */}
               </div>
             </header>
 
@@ -237,6 +213,9 @@ export default function PostContent() {
           </div>
         </article>
       </div>
+
+
+
       {/* Footer Navigation */}
       <div className="flex justify-between items-center mt-12 pt-6 border-t border-gray-700 text-sm text-gray-400">
         <a

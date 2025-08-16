@@ -1,8 +1,9 @@
 import React from "react";
 import { Facebook, Youtube, Twitter, Instagram } from "lucide-react";
-import { HorizontalPostCard } from "../ui/HorizontalPostCard";
+import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
 import Image from "next/image";
 import { posts } from "@/Data/db";
+import Link from "next/link";
 
 // Main RightSide component for the sidebar
 export default function RightSide() {
@@ -38,7 +39,7 @@ export default function RightSide() {
         </h2>
         <div className="flex flex-col gap-4">
           {popularPosts.map((post) => (
-            <HorizontalPostCard key={post.id} post={post} />
+            <HorizontalPostSmallCard key={post.id} post={post} />
           ))}
         </div>
       </div>
@@ -50,7 +51,7 @@ export default function RightSide() {
         </h2>
         <div className="grid grid-cols-2 gap-4">
           {travelPosts.map((post) => (
-            <div
+            <Link href={`/${post.category}/${post.id}`}
               key={post.id}
               className="relative overflow-hidden shadow-sm hover:shadow-lg cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
               <Image
@@ -65,7 +66,7 @@ export default function RightSide() {
                   {post.title}
                 </h3>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

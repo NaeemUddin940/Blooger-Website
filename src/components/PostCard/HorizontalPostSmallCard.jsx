@@ -1,10 +1,9 @@
-"use client"
 import Image from "next/image";
 import Link from "next/link";
 
-export const HorizontalPostCard = ({ post }) => (
+export const HorizontalPostSmallCard = ({ post }) => (
   <Link
-    href={"#"}
+    href={`/${post.category}/${post.id}`}
     className="flex hover:scale-[1.02] p-1 shadow-sm hover:shadow-lg hover:rounded-lg transition-transform duration-300 ease-in-out items-center gap-4 cursor-pointer">
     <Image
       src={post.image}

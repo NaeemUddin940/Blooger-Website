@@ -1,5 +1,5 @@
-import { posts } from "../../../Data/db";
-import PostCard from "../../../components/PostList/PostCard";
+import { posts } from "../../Data/db";
+import HorizontalPostBigCard from "../../components/PostCard/HorizontalPostBigCard";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -39,9 +39,7 @@ export default function Health() {
         </Breadcrumb>
       </div>
       {content.map((post) => (
-        <div key={post.id}>
-          <PostCard post={post} />
-        </div>
+        <HorizontalPostBigCard key={post.id} post={post} />
       ))}
     </div>
   );
