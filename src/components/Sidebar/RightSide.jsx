@@ -7,7 +7,7 @@ import Link from "next/link";
 
 // Main RightSide component for the sidebar
 export default function RightSide() {
-  const popularPosts = posts.filter((post) => post.Popular);
+  const popularPosts = posts.filter((post) => post.Popular).slice(0,5);
   const travelPosts = posts.filter((post) => post.category === "Travel");
   return (
     <div className="sticky top-0 pt-2">
