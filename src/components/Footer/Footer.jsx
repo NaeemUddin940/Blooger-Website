@@ -5,8 +5,8 @@ import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
 
 // Main Footer component for the footer
 export const Footer = () => {
-  const latest = posts.filter((post) => post.isLatest);
-  const popular = posts.filter((post) => post.Popular);
+  const latest = posts.filter((post) => post.isLatest).slice(0, 3);
+  const popular = posts.filter((post) => post.Popular).slice(0, 3);
 
   return (
     <footer className="px-2">
@@ -57,6 +57,7 @@ export const Footer = () => {
                 <HorizontalPostSmallCard key={post.id} post={post} />
               ))}
             </div>
+            {/* <Button>Load More</Button> */}
           </div>
 
           {/* Popular Posts */}
