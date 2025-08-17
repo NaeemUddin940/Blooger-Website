@@ -8,9 +8,7 @@ import {
   CircleIcon,
   Globe,
   Menu,
-  Moon,
   Search,
-  Sun,
 } from "lucide-react";
 
 import {
@@ -23,7 +21,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Image from "next/image";
-import ThemeSwitcher from "@/components/ui/theme-switcher"
+import ThemeSwitcher from "@/components/ui/theme-switcher";
 // Mega Menu Lists
 const components: {
   src: string;
@@ -270,7 +268,7 @@ export function Navigation({ className }: { className?: string }) {
                 />
               )}
             </div> */}
-            <ThemeSwitcher/>
+            <ThemeSwitcher />
 
             <div
               className={`flex bg-gray-200 dark:bg-gray-700 ${
