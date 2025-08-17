@@ -8,9 +8,6 @@ import { Footer } from "@/components/Footer/Footer";
 import { HeroSection } from "@/components/Section/HeroSection";
 import RightSide from "@/components/Sidebar/RightSide";
 import { usePathname } from "next/navigation";
-import { AdminSidebar } from "@/components/Admin/AdminSidebar";
-import AdminHeader from "@/components/Admin/AdminHeader";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const geistSans = Geist({
@@ -48,24 +45,7 @@ export default function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange>
-            <SidebarProvider>
-              <div className="grid grid-cols-6 min-h-screen">
-                {/* Header across the top */}
-                <div className="col-span-6">
-                  <AdminHeader />
-                </div>
-
-                {/* Sidebar (left column) */}
-                <div className="col-span-1 row-span-5 row-start-2">
-                  <AdminSidebar />
-                </div>
-
-                {/* Main Content (right column) */}
-                <div className="col-span-5 row-span-5 row-start-2">
-                  {children}
-                </div>
-              </div>
-            </SidebarProvider>
+            {children}
           </ThemeProvider>
         ) : (
           // 🔹 Blog Layout
