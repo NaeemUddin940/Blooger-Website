@@ -37,11 +37,11 @@ const data = {
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
+    { title: "Posts", url: "/admin/posts", icon: IconListDetails },
     { title: "Dashboard", url: "/dashboard", icon: IconDashboard },
-    { title: "Posts", url: "/posts", icon: IconListDetails },
     { title: "Analytics", url: "/analytics", icon: IconChartBar },
     { title: "Hero Section", url: "/hero", icon: IconFolder },
-    { title: "Category", url: "/category", icon: IconUsers },
+    { title: "Category", url: "/admin/category", icon: IconUsers },
     { title: "Social Links", url: "/social", icon: UserIcon },
   ],
   navSecondary: [

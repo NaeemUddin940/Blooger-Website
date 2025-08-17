@@ -4,7 +4,9 @@ import React from "react";
 
 export default function FeaturedCard({ post }) {
   return (
-    <Link href={`/${post.category}/${post.id}`}>
+    <Link
+      href={`/${post.category}/${post.id}`}
+      className="hover:scale-[1.02] p-1 dark:shadow-gray-700 shadow-sm hover:shadow-lg transition-transform duration-300 ease-in-out ">
       <div className="relative mt-3">
         <Image
           width={100}

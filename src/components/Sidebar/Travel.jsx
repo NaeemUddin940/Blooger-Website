@@ -7,7 +7,7 @@ export default function Travel({travelPosts}) {
     <div>
       {" "}
       <div className="mb-8">
-        <h2 className="text-xl font-extrabold tracking-wide mb-4 border-b border-gray-700 pb-2">
+        <h2 className="text-xl font-extrabold  tracking-wide mb-4 border-b border-gray-700 pb-2">
           TRAVEL
         </h2>
         <div className="grid grid-cols-2 gap-4">
@@ -15,7 +15,7 @@ export default function Travel({travelPosts}) {
             <Link
               href={`/${post.category}/${post.id}`}
               key={post.id}
-              className="relative overflow-hidden shadow-sm hover:shadow-lg cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+              className="relative hover:scale-[1.02] p-1 dark:shadow-gray-700  hover:shadow-lg hover:rounded-lg  duration-300 ease-in-out  overflow-hidden shadow-sm  cursor-pointer  transition-transform  ">
               <Image
                 height={100}
                 width={100}

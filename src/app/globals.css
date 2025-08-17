@@ -7,6 +7,11 @@ body{
   font-family: "Inter", sans-serif;
 } */
 
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
 @import "tw-animate-css";
 
 @theme inline {

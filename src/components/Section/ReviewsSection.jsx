@@ -5,7 +5,7 @@ import FeaturedCard from "../PostCard/FeaturedCard";
 
 // Main ReviewsSection component
 export const ReviewsSection = () => {
-  const Reviews = posts.filter((post) => post.category === "Reviews");
+  const Reviews = posts.filter((post) => post.category === "Reviews").slice(0, 3);
   return (
     <div>
       {/* Header section */}

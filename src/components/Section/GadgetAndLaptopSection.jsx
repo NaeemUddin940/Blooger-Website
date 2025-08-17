@@ -7,8 +7,8 @@ import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
 
 // Main GadgetAndLaptopSection component
 const GadgetAndLaptopSection = () => {
-  const gadgetSection = posts.filter((post) => post.category === "Gadget");
-  const laptopSection = posts.filter((post) => post.category === "Laptop");
+  const gadgetSection = posts.filter((post) => post.category === "Gadget").slice(0, 4);
+  const laptopSection = posts.filter((post) => post.category === "Laptop").slice(0, 4);
 
   return (
     <div>

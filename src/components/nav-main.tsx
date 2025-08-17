@@ -14,6 +14,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Link from "next/link";
 
 interface NavMainItem {
   title: string;
@@ -35,8 +36,10 @@ export function NavMain({ items }: NavMainProps) {
             <Tooltip>
               <TooltipTrigger asChild>
                 <SidebarMenuButton className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear">
-                  <IconCirclePlusFilled className="w-4 h-4" />
-                  <span>Create Posts</span>
+                  <Link href="/admin/create-post" className="flex w-full gap-5 items-center">
+                    <IconCirclePlusFilled className="w-4 h-4" />
+                    <span>Create Posts</span>
+                  </Link>
                 </SidebarMenuButton>
               </TooltipTrigger>
               <TooltipContent>

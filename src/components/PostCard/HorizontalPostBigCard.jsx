@@ -5,7 +5,7 @@ export default function HorizontalPostBigCard({ post }) {
   return (
     <Link
       href={`/${post.category}/${post.id}`}
-      className="flex hover:scale-[1.02] shadow-sm hover:shadow-lg hover:rounded-lg transition-transform duration-300 ease-in-out items-start gap-5 cursor-pointer my-3">
+      className="flex hover:scale-[1.02] dark:shadow-gray-700 shadow-sm hover:shadow-lg hover:rounded-lg transition-transform duration-300 ease-in-out items-start gap-5 cursor-pointer my-1">
       <div className="relative flex-shrink-0 ">
         <Image
           src={post.image}

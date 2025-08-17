@@ -4,7 +4,7 @@ import { posts } from "@/Data/db";
 
 // Main VideosSection component
 export const VideosSection = () => {
-  const video = posts.filter((post) => post.category === "Video");
+  const video = posts.filter((post) => post.category === "Video").slice(0,4);
 
   return (
     <div>
@@ -45,7 +45,7 @@ export const VideosSection = () => {
 
 // Reusable component for the smaller video cards
 const VideoCard = ({ video }) => (
-  <div className="overflow-hidden flex shadow-sm hover:shadow-lg flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
+  <div className="overflow-hidden flex shadow-sm dark:shadow-gray-700 hover:shadow-lg flex-col cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out">
     <div className="relative">
       <iframe
         src={video.link}

@@ -1,6 +1,8 @@
 "use client";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { posts } from "@/Data/db";
+import { db } from "@/Firebase/Firebase";
+import { collection, getDocs } from "firebase/firestore";
 const BlogContext = createContext();
 
 export const BlogContextProvider = ({ children }) => {
@@ -13,6 +15,46 @@ export const BlogContextProvider = ({ children }) => {
   const latestPost = posts.filter((post) => post.isLatest);
   const popularPost = posts.filter((post) => post.Popular);
 
+  const [allposts, setAllPosts] = useState([]);
+  const collectionRef = collection(db, "posts");
+
+  const getPosts = async () => {
+    try {
+      const data = await getDocs(collectionRef);
+
+      const filteredData = data.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setAllPosts(filteredData);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
+
+  // Fetch posts only once when the component mounts
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const [formData, setFormData] = useState({
+    id: "",
+    isFeatured: false,
+    category: "",
+    title: "",
+    author: "",
+    description: "",
+    content: "",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    image: "",
+    isLatest: false,
+    isPopular: false,
+  });
+
   const state = {
     HealthPosts,
     Reviews,
@@ -22,6 +64,9 @@ export const BlogContextProvider = ({ children }) => {
     travelSection,
     latestPost,
     popularPost,
+    allposts,
+    formData,
+    setFormData,
   };
   return <BlogContext.Provider value={state}>{children}</BlogContext.Provider>;
 };
