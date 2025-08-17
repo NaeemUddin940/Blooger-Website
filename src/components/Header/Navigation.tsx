@@ -113,32 +113,6 @@ import { cn } from "@/lib/utils";
 
 export function Navigation({ className }: { className?: string }) {
   const [activeSearch, setActiveSearch] = React.useState(false);
-  // const [isDarkMode, setIsDarkMode] = React.useState(false);
-
-  // // Load saved theme on mount
-  // React.useEffect(() => {
-  //   const savedTheme = localStorage.getItem("theme");
-  //   if (savedTheme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //     setIsDarkMode(true);
-  //   }
-  // }, []);
-
-  // // Toggle dark mode
-  // const toggleTheme = () => {
-  //   setIsDarkMode((prev) => {
-  //     const newMode = !prev;
-  //     if (newMode) {
-  //       document.documentElement.classList.add("dark");
-  //       localStorage.setItem("theme", "dark");
-  //     } else {
-  //       document.documentElement.classList.remove("dark");
-  //       localStorage.setItem("theme", "light");
-  //     }
-  //     return newMode;
-  //   });
-  // };
-
   return (
     <div
       className={cn(
