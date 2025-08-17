@@ -4,8 +4,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Button } from "../ui/button";
+} from "./dropdown-menu";
+import { Button } from "./button";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 
