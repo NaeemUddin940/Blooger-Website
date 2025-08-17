@@ -3,6 +3,12 @@
 # dependencies
 /node_modules
 /.pnp
+/Firebase.js
+Firebase/
+# Firebase config
+/src/Firebase/Firebase.js
+/src/Firebase/Firebase.ts
+
 .pnp.*
 .yarn/*
 !.yarn/patches
