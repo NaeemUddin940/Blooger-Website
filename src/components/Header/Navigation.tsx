@@ -23,7 +23,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Image from "next/image";
-
+import ThemeSwitcher from "@/components/ui/theme-switcher"
 // Mega Menu Lists
 const components: {
   src: string;
@@ -113,31 +113,31 @@ import { cn } from "@/lib/utils";
 
 export function Navigation({ className }: { className?: string }) {
   const [activeSearch, setActiveSearch] = React.useState(false);
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  // const [isDarkMode, setIsDarkMode] = React.useState(false);
 
-  // Load saved theme on mount
-  React.useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDarkMode(true);
-    }
-  }, []);
+  // // Load saved theme on mount
+  // React.useEffect(() => {
+  //   const savedTheme = localStorage.getItem("theme");
+  //   if (savedTheme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //     setIsDarkMode(true);
+  //   }
+  // }, []);
 
-  // Toggle dark mode
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => {
-      const newMode = !prev;
-      if (newMode) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-      return newMode;
-    });
-  };
+  // // Toggle dark mode
+  // const toggleTheme = () => {
+  //   setIsDarkMode((prev) => {
+  //     const newMode = !prev;
+  //     if (newMode) {
+  //       document.documentElement.classList.add("dark");
+  //       localStorage.setItem("theme", "dark");
+  //     } else {
+  //       document.documentElement.classList.remove("dark");
+  //       localStorage.setItem("theme", "light");
+  //     }
+  //     return newMode;
+  //   });
+  // };
 
   return (
     <div
@@ -274,7 +274,7 @@ export function Navigation({ className }: { className?: string }) {
         </NavigationMenu>
         <NavigationMenu>
           <div className="flex gap-5">
-            <div
+            {/* <div
               className={`flex lg:flex items-center ${
                 activeSearch && "hidden"
               } gap-2 items-center`}>
@@ -295,7 +295,8 @@ export function Navigation({ className }: { className?: string }) {
                   absoluteStrokeWidth
                 />
               )}
-            </div>
+            </div> */}
+            <ThemeSwitcher/>
 
             <div
               className={`flex bg-gray-200 dark:bg-gray-700 ${

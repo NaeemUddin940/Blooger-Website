@@ -42,8 +42,8 @@ const items = [
 
 export function AdminSidebar() {
   return (
-    <div>
-      <Sidebar>
+    <div >
+      <Sidebar className="z-10 mt-14">
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Application</SidebarGroupLabel>
