@@ -26,7 +26,7 @@ export const BlogContextProvider = ({ children }) => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log(filteredData);
+
       setAllPosts(filteredData);
     } catch (error) {
       console.error("Error fetching posts:", error);

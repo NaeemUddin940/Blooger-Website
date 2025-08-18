@@ -111,7 +111,7 @@ export const Footer = () => {
 
         {/* Copyright Bar */}
         <div className="flex md:hidden lg:flex flex-col md:flex-row justify-between items-center text-lg mt-4">
-          <p>Design by - Pro Blogger Templates</p>
+          <p>Design by - MD. NAEEM UDDIN</p>
           <div className="flex gap-4 mt-2 md:mt-0 text-primary mb-10">
             <a href="#" className="hover:text-foreground">
               Home

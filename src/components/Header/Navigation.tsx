@@ -272,7 +272,7 @@ export function Navigation({ className }: { className?: string }) {
                     {user.role === "admin" && (
                       <DropdownMenuItem>
                         <Link
-                          href={`/${user.role}`}
+                          href={`/${user.role}/posts`}
                           className="flex items-center gap-2">
                           <UserIcon size={16} />
                           {user.role.charAt(0).toUpperCase() +

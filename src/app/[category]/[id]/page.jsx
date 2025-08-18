@@ -13,6 +13,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
+import { useBlogContext } from "@/context/BlogContext";
 
 const relatedPosts = [
   {
@@ -51,9 +52,10 @@ const comments = [
 ];
 
 export default function PostContent() {
+  const {allposts} = useBlogContext()
   const { id, category } = useParams();
 
-  const post = posts.find((post) => post.id == id);
+  const post = allposts.find((post) => post.id == id);
 
   if (!post) {
     return (
@@ -67,6 +69,8 @@ export default function PostContent() {
     <div className="flex flex-col mt-1">
       <div>
         <div className="mt-5">
+
+          {/* Breadcrumb */}
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -121,7 +125,7 @@ export default function PostContent() {
 
             {/* Hero Image */}
             <div className="mb-8 rounded-lg overflow-hidden">
-              <img src={post.image} alt="Laptop" className="w-full h-auto" />
+              <img src={post.image} alt="Laptop" className="w-full h-150 object-cover" />
             </div>
 
             {/* Body */}

@@ -38,7 +38,7 @@ const data = {
   },
   navMain: [
     { title: "Posts", url: "/admin/posts", icon: IconListDetails },
-    { title: "Dashboard", url: "/dashboard", icon: IconDashboard },
+    { title: "Layout", url: "/admin/layout", icon: IconDashboard },
     { title: "Analytics", url: "/analytics", icon: IconChartBar },
     { title: "Hero Section", url: "/hero", icon: IconFolder },
     { title: "Category", url: "/admin/category", icon: IconUsers },

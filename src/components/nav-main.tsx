@@ -42,7 +42,7 @@ export function NavMain({ items }: NavMainProps) {
                   </Link>
                 </SidebarMenuButton>
               </TooltipTrigger>
-              <TooltipContent>
+              <TooltipContent side="right">
                 <p>Create Posts</p>
               </TooltipContent>
             </Tooltip>
@@ -62,7 +62,7 @@ export function NavMain({ items }: NavMainProps) {
                     </a>
                   </SidebarMenuButton>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent  side="right">
                   <p>{item.title}</p>
                 </TooltipContent>
               </Tooltip>
