@@ -59,7 +59,7 @@ export default function PostContent() {
 
   if (!post) {
     return (
-      <div className="text-5xl text-center text-red-500">Post not Found!</div>
+      <div className="text-5xl text-center text-red-400">Post not Found!</div>
     );
   }
 
