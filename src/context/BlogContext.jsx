@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { posts } from "@/Data/db";
 import { db } from "@/Firebase/Firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -26,6 +26,7 @@ export const BlogContextProvider = ({ children }) => {
         id: doc.id,
         ...doc.data(),
       }));
+      console.log(filteredData);
       setAllPosts(filteredData);
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -33,9 +34,9 @@ export const BlogContextProvider = ({ children }) => {
   };
 
   // Fetch posts only once when the component mounts
-  useEffect(() => {
-    getPosts();
-  }, []);
+  getPosts();
+  // useEffect(() => {
+  // }, []);
 
   const [formData, setFormData] = useState({
     id: "",

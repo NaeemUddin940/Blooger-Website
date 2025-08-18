@@ -3,12 +3,13 @@
 import * as React from "react";
 import Link from "next/link";
 import {
-  CircleCheckIcon,
-  CircleHelpIcon,
-  CircleIcon,
+  EditIcon,
   Globe,
+  LogOutIcon,
   Menu,
   Search,
+  SettingsIcon,
+  UserIcon,
 } from "lucide-react";
 
 import {
@@ -108,6 +109,16 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/Sheet";
 import { Sidebar } from "../Sidebar/Sidebar";
 
 import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+
+const userRole = [{ role: "admin" }];
+const isViewer = userRole.some((user) => user.role === "viewer");
 
 export function Navigation({ className }: { className?: string }) {
   const [activeSearch, setActiveSearch] = React.useState(false);
@@ -118,6 +129,7 @@ export function Navigation({ className }: { className?: string }) {
         className
       )}>
       <div className="flex justify-between w-5xl">
+        {/* Mobile Menu Icon */}
         <div className="flex items-center cursor-pointer lg:hidden">
           <Sheet>
             <SheetTrigger asChild className="cursor-pointer">
@@ -133,7 +145,8 @@ export function Navigation({ className }: { className?: string }) {
 
         <NavigationMenu viewport={false}>
           {/* Icon And Heading Section */}
-          <NavigationMenuList>
+          <NavigationMenuList
+            className={`md:block ${activeSearch ? "hidden" : "block"}`}>
             <Link href={"/"} className="flex items-center gap-2">
               <Globe size={30} />
               <h3 className="text-3xl font-bold">Newspot</h3>
@@ -196,7 +209,7 @@ export function Navigation({ className }: { className?: string }) {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
               <NavigationMenuContent className="z-100">
                 <ul className="grid w-[200px] gap-4">
@@ -213,63 +226,19 @@ export function Navigation({ className }: { className?: string }) {
                   </li>
                 </ul>
               </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
-              <NavigationMenuContent className="z-100">
-                <ul className="grid w-[200px] gap-4">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link href="#" className="flex-row items-center gap-2">
-                        <CircleHelpIcon />
-                        Backlog
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#" className="flex-row items-center gap-2">
-                        <CircleIcon />
-                        To Do
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#" className="flex-row items-center gap-2">
-                        <CircleCheckIcon />
-                        Done
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
           </NavigationMenuList>
         </NavigationMenu>
-        <NavigationMenu>
-          <div className="flex gap-5">
-            {/* <div
-              className={`flex lg:flex items-center ${
-                activeSearch && "hidden"
-              } gap-2 items-center`}>
-              {isDarkMode ? (
-                <Moon
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                  color="#ffffff"
-                  strokeWidth={1.5}
-                  absoluteStrokeWidth
-                />
-              ) : (
-                <Sun
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                  color="#000000"
-                  strokeWidth={1.5}
-                  absoluteStrokeWidth
-                />
-              )}
-            </div> */}
-            <ThemeSwitcher />
 
+        {/* Theme Switcher SearchBox and Profile Icon */}
+        <NavigationMenu>
+          <div className="flex gap-5 items-center">
+            {/* Theme Switcher */}
+            <ThemeSwitcher
+              className={`md:block ${activeSearch ? "hidden" : "block"}`}
+            />
+
+            {/* Search Box */}
             <div
               className={`flex bg-gray-200 dark:bg-gray-700 ${
                 activeSearch && "active-search"
@@ -281,11 +250,58 @@ export function Navigation({ className }: { className?: string }) {
               />
               <Search
                 onClick={() => setActiveSearch((prev) => !prev)}
-                className="bg-violet-500 h-10 p-2 w-10 cursor-pointer rounded-full"
+                className="bg-violet-500 h-9 p-2 w-9 cursor-pointer rounded-full"
                 color="#000000"
                 absoluteStrokeWidth
               />
             </div>
+
+            {/* Profile Icon */}
+            <DropdownMenu>
+              {!isViewer && (
+                <DropdownMenuTrigger>
+                  <Avatar className="cursor-pointer">
+                    <AvatarImage src="../../public/profile.jpg" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+              )}
+              <DropdownMenuContent>
+                {userRole.map((user) => (
+                  <DropdownMenu key={user.role}>
+                    {user.role === "admin" && (
+                      <DropdownMenuItem>
+                        <Link
+                          href={`/${user.role}`}
+                          className="flex items-center gap-2">
+                          <UserIcon size={16} />
+                          {user.role.charAt(0).toUpperCase() +
+                            user.role.slice(1) +
+                            " Panel"}
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+                    {user.role === "editor" && (
+                      <DropdownMenuItem>
+                        <Link
+                          href={`/${user.role}`}
+                          className="flex items-center gap-2">
+                          <UserIcon size={16} />
+                          Create Post
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+                  </DropdownMenu>
+                ))}
+
+                <DropdownMenuItem>
+                  <Link href="/logout" className="flex items-center gap-2">
+                    <LogOutIcon size={16} />
+                    Logout
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </NavigationMenu>
       </div>

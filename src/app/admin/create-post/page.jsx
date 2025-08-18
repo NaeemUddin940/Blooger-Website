@@ -2,7 +2,7 @@
 import { useBlogContext } from "../../../context/BlogContext";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../../Firebase/Firebase"; // তোমার firebase config
+import { db } from "../../../Firebase/Firebase"; 
 
 export default function page() {
   const { formData, setFormData, allposts } = useBlogContext();
@@ -14,7 +14,7 @@ export default function page() {
       [name]: value,
     }));
   };
-
+  
   // Handle form submission
 
   const handleSubmit = async (e) => {

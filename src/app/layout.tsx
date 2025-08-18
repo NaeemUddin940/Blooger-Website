@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-import { AppSidebar } from "@/components/admin-sidebar";
+import { AppSidebar } from "@/components/Sidebar/admin-sidebar";
 import { SiteHeader } from "@/components/site-header";
 
 const geistSans = Geist({

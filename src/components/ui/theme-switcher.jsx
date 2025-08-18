@@ -8,11 +8,12 @@ import {
 import { Button } from "./button";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export default function ThemeSwitcher() {
+export default function ThemeSwitcher({className}) {
   const { setTheme } = useTheme();
   return (
-    <div>
+    <div className={cn(className)}>
       {" "}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

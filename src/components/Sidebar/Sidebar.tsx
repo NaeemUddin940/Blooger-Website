@@ -46,7 +46,7 @@ export function Sidebar() {
     // Sidebar Container
     <>
       <ul className="w-full py-10">
-        <div className="grid grid-cols-2">
+        <div className="grid">
           {MenuList.map((menu) => (
             <Link key={menu.title} href={menu.href} className="hoverState ">
               <li className="w-full flex gap-5 items-center p-3 text-base font-medium rounded-md hover:bg-gray-300 dark:hover:bg-gray-800 transition duration-200 focus:outline-none">

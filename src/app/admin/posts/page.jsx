@@ -4,6 +4,7 @@ import { useBlogContext } from "../../../context/BlogContext";
 
 export default function page() {
   const { allposts } = useBlogContext();
+  console.log(allposts);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 px-10">
       {allposts.map((post) => (
