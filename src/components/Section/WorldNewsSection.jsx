@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useBlogContext } from "@/context/BlogContext";
 import Image from "next/image";
 
-export const WorldNewsPost = () => {
+export const WorldNewsSection = () => {
   const { allposts } = useBlogContext();
   const HealthPosts = allposts.filter((post) => post.category === "Health");
   const featuredPost = HealthPosts.filter((post) => post.isFeatured);

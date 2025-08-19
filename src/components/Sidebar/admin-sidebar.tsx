@@ -37,21 +37,20 @@ const data = {
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
-    { title: "Posts", url: "/admin/posts", icon: IconListDetails },
-    { title: "Layout", url: "/admin/layout", icon: IconDashboard },
-    { title: "Analytics", url: "/analytics", icon: IconChartBar },
-    { title: "Hero Section", url: "/hero", icon: IconFolder },
-    { title: "Category", url: "/admin/category", icon: IconUsers },
-    { title: "Social Links", url: "/social", icon: UserIcon },
-  ],
-  navSecondary: [
-    { title: "Settings", url: "/settings", icon: IconSettings },
-    { title: "Get Help", url: "/help", icon: IconHelp },
-    { title: "Search", url: "/search", icon: IconSearch },
+    { title: "All Posts", url: "/admin/all-posts", icon: IconListDetails },
+    {
+      title: "Featured Posts",
+      url: "/admin/featured-posts",
+      icon: IconDashboard,
+    },
+    { title: "Leatest Posts", url: "/admin/latest-posts", icon: IconChartBar },
+    { title: "Popular Posts", url: "/admin/popular-posts", icon: IconFolder },
+    { title: "Category", url: "/admin/category-lists", icon: IconUsers },
+    { title: "Social Links", url: "/admin/social-links", icon: UserIcon },
   ],
 };
 
-export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+export function AdminSidebar(props: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       {/* Header Section */}
@@ -73,7 +72,6 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
       {/* Main Content */}
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
 
       {/* Footer (User Info) */}

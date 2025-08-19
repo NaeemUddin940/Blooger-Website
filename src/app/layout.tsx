@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-import { AppSidebar } from "@/components/Sidebar/admin-sidebar";
+import { AdminSidebar } from "@/components/Sidebar/admin-sidebar";
 import { SiteHeader } from "@/components/site-header";
 
 const geistSans = Geist({
@@ -57,7 +57,7 @@ export default function RootLayout({
                     "--header-height": "calc(var(--spacing) * 12)",
                   } as React.CSSProperties
                 }>
-                <AppSidebar variant="inset" />
+                <AdminSidebar variant="inset" />
                 <SidebarInset>
                   <SiteHeader />
                   <div className="flex flex-1 flex-col">

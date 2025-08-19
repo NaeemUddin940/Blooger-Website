@@ -25,7 +25,7 @@ export default function HorizontalPostBigCard({ post }) {
         </h3>
         <p className="text-sm text-primary mt-2">
           by <span className="text-teal-600 font-medium">{post.author}</span> -{" "}
-          {post.date}
+          {/* {post.data.createdAt?.toDate().toLocaleDateString()} */}
         </p>
         <p className="text-primary lg:block text-sm mt-3 hidden">
           {post.description}

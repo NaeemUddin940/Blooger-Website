@@ -56,10 +56,10 @@ export function NavMain({ items }: NavMainProps) {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-2">
+                    <Link href={item.url} className="flex items-center gap-2">
                       {item.icon && <item.icon className="w-4 h-4" />}
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </TooltipTrigger>
                 <TooltipContent  side="right">

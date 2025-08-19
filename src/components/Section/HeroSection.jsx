@@ -1,79 +1,58 @@
-"use client"
+"use client";
+import { useBlogContext } from "@/context/BlogContext";
+import { db } from "@/Firebase/Firebase";
+import { collection, getDocs } from "firebase/firestore";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
 
-const heroArticles = [
-  {
-    id: 1,
-    isFeatured: true,
-    category: "APPLE",
-    title: "11 of Best Laptops Evaluated Based on Budget",
-    author: "by John Doe",
-    date: "August 02, 2021",
-    image:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
-  },
-  {
-    id: 2,
-    isFeatured: false,
-    category: "LAPTOPS",
-    title: "Apple Watch Series 5 is the Best One Yet By Consumer",
-    date: "August 02, 2021",
-    image:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgf8-arWDMvbTeZBWVxA4Ky1H6aExuTk9SEJNdjPnPWgW4O7YXw3iQW6KvRvVr6Fz9crqCwp1YgkIbi3pHFs2xlIiA9GwPsEdIPkdilF28j964yXzX59AU_4NMHTVfUOudE7Kc5vnb_-0/s16000/pbt65.jpg",
-  },
-  {
-    id: 3,
-    isFeatured: false,
-    category: "LAPTOPS",
-    title: "Here's What People Think of iOS 13 New Dark Mode",
-    date: "August 02, 2021",
-    image:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUqASiDM5EEA5bWE5BxvKpAmitDCN37MT2LFNcgKY4i7K1EGip8XfmW1_s-IDaqD1aXN2Xfad5iOmNzF6SDWEG3wtlCGKAKtAa3iDMGrjlqYq-L528jopspUzR_yB3DheeAqK5PGpWeGI/s16000/pbt61.jpg",
-  },
-  {
-    id: 4,
-    isFeatured: false,
-    category: "APPLE",
-    title: "18 Practices for Building Responsive Web Applications",
-    date: "August 02, 2021",
-    image:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKUIl2yc8d5warqlbvzvhxrk4yzGK0FXr4bnPDnW1iKNiJqg5YqvCuYFD4xX1q383w-wU_WJaN_5ZcCiNVDYSk26rQQo-iup04BZUdSkiDqbRuHWgYE9PmHpVjj_lyb1ozr3j4glvrfVs/s16000/pbt62.jpg",
-  },
-];
-
-// Component for the large, featured article on the left.
-function FeaturedArticle({ article }) {
-  return (
-    <div className="relative overflow-hidden h-full">
-      <img
-        src={article.image}
-        alt={article.title}
-        className="absolute group-hover:scale-125 transition-transform duration-300 inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
-      <div className="absolute bottom-0 left-0 lg:p-8 p-2">
-        <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-          {article.category}
-        </span>
-        <h2 className="mt-2 lg:text-3xl line-clamp-2 hover:text-blue-500 text-white font-bold leading-tight">
-          {article.title}
-        </h2>
-        {article.author && (
-          <p className="text-gray-300 text-sm mt-1">
-            {article.author} - {article.date}
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
+// const heroArticles = [
+//   {
+//     id: 1,
+//     isFeatured: true,
+//     category: "APPLE",
+//     title: "11 of Best Laptops Evaluated Based on Budget",
+//     author: "by John Doe",
+//     date: "August 02, 2021",
+//     image:
+//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
+//   },
+//   {
+//     id: 2,
+//     isFeatured: false,
+//     category: "LAPTOPS",
+//     title: "Apple Watch Series 5 is the Best One Yet By Consumer",
+//     date: "August 02, 2021",
+//     image:
+//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgf8-arWDMvbTeZBWVxA4Ky1H6aExuTk9SEJNdjPnPWgW4O7YXw3iQW6KvRvVr6Fz9crqCwp1YgkIbi3pHFs2xlIiA9GwPsEdIPkdilF28j964yXzX59AU_4NMHTVfUOudE7Kc5vnb_-0/s16000/pbt65.jpg",
+//   },
+//   {
+//     id: 3,
+//     isFeatured: false,
+//     category: "LAPTOPS",
+//     title: "Here's What People Think of iOS 13 New Dark Mode",
+//     date: "August 02, 2021",
+//     image:
+//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUqASiDM5EEA5bWE5BxvKpAmitDCN37MT2LFNcgKY4i7K1EGip8XfmW1_s-IDaqD1aXN2Xfad5iOmNzF6SDWEG3wtlCGKAKtAa3iDMGrjlqYq-L528jopspUzR_yB3DheeAqK5PGpWeGI/s16000/pbt61.jpg",
+//   },
+//   {
+//     id: 4,
+//     isFeatured: false,
+//     category: "APPLE",
+//     title: "18 Practices for Building Responsive Web Applications",
+//     date: "August 02, 2021",
+//     image:
+//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKUIl2yc8d5warqlbvzvhxrk4yzGK0FXr4bnPDnW1iKNiJqg5YqvCuYFD4xX1q383w-wU_WJaN_5ZcCiNVDYSk26rQQo-iup04BZUdSkiDqbRuHWgYE9PmHpVjj_lyb1ozr3j4glvrfVs/s16000/pbt62.jpg",
+//   },
+// ];
 
 export function HeroSection() {
+ const {heroArticles} = useBlogContext()
+
   const featuredArticle = heroArticles.find((article) => article.isFeatured);
   const sideArticles = heroArticles.filter((article) => !article.isFeatured);
   const pathName = usePathname();
@@ -108,7 +87,7 @@ export function HeroSection() {
 
             {featuredArticle && (
               <Link
-                href={"#"}
+                href={`/${featuredArticle.category}/${featuredArticle.id}`}
                 className="lg:col-span-2 group md:col-span-2 lg:row-span-4 h-40 md:h-70 lg:h-125">
                 <FeaturedArticle article={featuredArticle} />
               </Link>
@@ -143,6 +122,33 @@ export function HeroSection() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// Component for the large, featured article on the left.
+function FeaturedArticle({ article }) {
+  return (
+    <div className="relative overflow-hidden h-full">
+      <img
+        src={article.image}
+        alt={article.title}
+        className="absolute group-hover:scale-125 transition-transform duration-300 inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
+      <div className="absolute bottom-0 left-0 lg:p-8 p-2">
+        <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          {article.category}
+        </span>
+        <h2 className="mt-2 lg:text-3xl line-clamp-2 hover:text-blue-500 text-white font-bold leading-tight">
+          {article.title}
+        </h2>
+        {article.author && (
+          <p className="text-gray-300 text-sm mt-1">
+            {article.author} - {article.date}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

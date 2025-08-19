@@ -35,8 +35,20 @@ export const BlogContextProvider = ({ children }) => {
 
   // Fetch posts only once when the component mounts
   getPosts();
-  // useEffect(() => {
-  // }, []);
+  const [heroArticles, setHeroArticles] = useState([]);
+  const heroArticleRef = collection(db, "heroArticle");
+
+  const getArticle = async () => {
+    try {
+      const data = await getDocs(heroArticleRef);
+      const articles = data.docs.map((doc) => doc.data());
+      setHeroArticles(articles);
+      console.log(articles);
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+    }
+  };
+  getArticle();
 
   const [formData, setFormData] = useState({
     id: "",
@@ -68,6 +80,7 @@ export const BlogContextProvider = ({ children }) => {
     allposts,
     formData,
     setFormData,
+    heroArticles,
   };
   return <BlogContext.Provider value={state}>{children}</BlogContext.Provider>;
 };
