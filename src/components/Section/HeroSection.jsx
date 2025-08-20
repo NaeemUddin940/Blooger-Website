@@ -1,12 +1,10 @@
 "use client";
 import { useBlogContext } from "@/context/BlogContext";
-import { db } from "@/Firebase/Firebase";
-import { collection, getDocs } from "firebase/firestore";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+
 
 const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
 

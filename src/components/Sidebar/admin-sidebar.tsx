@@ -40,13 +40,13 @@ const data = {
     { title: "All Posts", url: "/admin/all-posts", icon: IconListDetails },
     {
       title: "Featured Posts",
-      url: "/admin/featured-posts",
+      url: "/admin/featured",
       icon: IconDashboard,
     },
-    { title: "Leatest Posts", url: "/admin/latest-posts", icon: IconChartBar },
-    { title: "Popular Posts", url: "/admin/popular-posts", icon: IconFolder },
+    { title: "Leatest Posts", url: "/admin/latest", icon: IconChartBar },
+    { title: "Popular Posts", url: "/admin/popular", icon: IconFolder },
     { title: "Category", url: "/admin/category-lists", icon: IconUsers },
-    { title: "Social Links", url: "/admin/social-links", icon: UserIcon },
+    { title: "Social Links", url: "/admin/status", icon: UserIcon },
   ],
 };
 

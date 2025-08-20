@@ -1,11 +1,14 @@
 "use client";
 import { useBlogContext } from "../../../context/BlogContext";
-import { Checkbox } from "../../../components/ui/checkbox";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../../Firebase/Firebase"; 
+import { db } from "../../../Firebase/Firebase";
+import { useRouter } from "next/navigation";
+
 
 export default function page() {
-  const { formData, setFormData, allposts } = useBlogContext();
+
+  const router = useRouter()
+  const { formData, setFormData } = useBlogContext();
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,7 +17,7 @@ export default function page() {
       [name]: value,
     }));
   };
-  
+
   // Handle form submission
 
   const handleSubmit = async (e) => {
@@ -35,7 +38,7 @@ export default function page() {
       // Reset formData
       setFormData({
         id: "",
-        isFeatured: false,
+        status: "",
         category: "",
         title: "",
         author: "",
@@ -47,9 +50,10 @@ export default function page() {
           day: "numeric",
         }),
         image: "",
-        isLatest: false,
-        isPopular: false,
       });
+
+      router.push("/admin/all-posts")
+
     } catch (error) {
       console.error("❌ Error adding post:", error);
     }
@@ -80,23 +84,28 @@ export default function page() {
                 required
               />
             </div>
+
             <div>
               <label
-                htmlFor="category"
+                htmlFor="status"
                 className="block text-sm font-medium text-foreground mb-1">
-                Category
+                Status
               </label>
-              <input
-                type="text"
-                id="category"
-                name="category"
-                value={formData.category}
+              <select
+                id="status"
+                name="status"
+                value={formData.status}
                 onChange={handleChange}
-                className="w-full px-4 py-2 rounded-lg bg-background border-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="e.g., TECHNOLOGY, SPORTS"
-                required
-              />
+                className="w-full px-4 py-2 rounded-lg bg-background border-2 text-foreground placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                required>
+                <option value="">Select a status</option>
+                <option value="featured">Featured</option>
+                <option value="latest">Latest</option>
+                <option value="popular">Popular</option>
+                <option value="normal">Normal</option>
+              </select>
             </div>
+
             <div>
               <label
                 htmlFor="author"
@@ -114,6 +123,7 @@ export default function page() {
                 required
               />
             </div>
+
             <div>
               <label
                 htmlFor="image"
@@ -131,6 +141,7 @@ export default function page() {
                 required
               />
             </div>
+
             <div>
               <label
                 htmlFor="description"
@@ -146,6 +157,7 @@ export default function page() {
                 className="w-full px-4 py-2 rounded-lg bg-background border-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="A brief summary of the post..."></textarea>
             </div>
+
             <div>
               <label
                 htmlFor="content"
@@ -162,57 +174,7 @@ export default function page() {
                 placeholder="Full article content..."></textarea>
             </div>
           </div>
-          <div className="flex flex-wrap gap-4 pt-2">
-            <span className="text-red-400">
-              Featured Post have to Only One!
-            </span>
-            <div className="flex gap-3  items-center">
-              <Checkbox
-                className="cursor-pointer size-5 peer"
-                id="isFeatured"
-                name="isFeatured"
-                disabled={
-                  !formData.isFeatured &&
-                  allposts
-                    .filter((post) => post.category === formData.category)
-                    .some((post) => post.isFeatured)
-                }
-                checked={formData.isFeatured}
-                onCheckedChange={(checked) =>
-                  setFormData((prev) => ({ ...prev, isFeatured: checked }))
-                }
-              />
-              <label
-                className="peer-disabled:text-red-400 text-white"
-                htmlFor="isFeatured">
-                Featured
-              </label>
-            </div>
-            <div className="flex gap-3 items-center">
-              <Checkbox
-                className="cursor-pointer size-5"
-                id="isLatest"
-                name="isLatest"
-                checked={formData.isLatest}
-                onCheckedChange={(checked) =>
-                  setFormData((prev) => ({ ...prev, isLatest: checked }))
-                }
-              />
-              <label htmlFor="isLatest">Latest</label>
-            </div>
-            <div className="flex gap-3 items-center">
-              <Checkbox
-                className="cursor-pointer size-5"
-                id="isPopular"
-                name="isPopular"
-                checked={formData.isPopular}
-                onCheckedChange={(checked) =>
-                  setFormData((prev) => ({ ...prev, isPopular: checked }))
-                }
-              />
-              <label htmlFor="isPopular">Popular</label>
-            </div>
-          </div>
+
           <div className="flex justify-end space-x-4 pt-4">
             <button
               type="submit"
