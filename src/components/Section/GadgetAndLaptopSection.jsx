@@ -1,14 +1,19 @@
 "use client";
 import React from "react";
 import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
-import { posts } from "@/Data/db";
 import FeaturedCard from "@/components/PostCard/FeaturedCard";
 import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
+import { useBlogContext } from "@/context/BlogContext";
 
 // Main GadgetAndLaptopSection component
 const GadgetAndLaptopSection = () => {
-  const gadgetSection = posts.filter((post) => post.category === "Gadget").slice(0, 4);
-  const laptopSection = posts.filter((post) => post.category === "Laptop").slice(0, 4);
+  const { allposts, category } = useBlogContext();
+  const gadgetSection = allposts
+    .filter((post) => post.category === category[2]?.title)
+    .slice(0, 4);
+  const laptopSection = allposts
+    .filter((post) => post.category === category[3]?.title)
+    .slice(0, 4);
 
   return (
     <div>
@@ -16,14 +21,14 @@ const GadgetAndLaptopSection = () => {
         {/* Gadget Section */}
         <FeaturedSection
           data={gadgetSection}
-          HeaderTitle={"Gadgets"}
-          link={`/all-posts/gadget`}
+          HeaderTitle={category[2]?.title}
+          link={`/all-posts/${category[2]?.title}`}
         />
         {/* Laptop Section */}
         <FeaturedSection
           data={laptopSection}
-          HeaderTitle={"Laptops"}
-          link={`/all-posts/Laptop`}
+          HeaderTitle={category[3]?.title}
+          link={`/all-posts/${category[3]?.title}`}
         />
       </div>
     </div>
@@ -40,7 +45,7 @@ const FeaturedSection = ({ data, HeaderTitle, link }) => {
       {/* Featured Article */}
       <div className="overflow-hidden shadow-sm hover:shadow-lg flex flex-col hover:rounded-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out">
         {data
-          .filter((post) => post.isFeatured)
+          .filter((post) => post.status === "featured")
           .map((post) => (
             <FeaturedCard key={post.id} post={post} />
           ))}
@@ -49,7 +54,7 @@ const FeaturedSection = ({ data, HeaderTitle, link }) => {
       {/* Side Articles List */}
       <div className="flex flex-col gap-4">
         {data
-          .filter((post) => !post.isFeatured)
+          .filter((post) => post.status !== "featured")
           .map((post) => (
             <HorizontalPostSmallCard key={post.id} post={post} />
           ))}
