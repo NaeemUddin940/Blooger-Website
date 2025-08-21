@@ -16,7 +16,6 @@ export default function Page() {
     allposts,
     category,
     setAllPosts,
-    setCategory,
     statusPostId,
     setStatusPostId,
     loading,
@@ -52,9 +51,9 @@ export default function Page() {
       const postRef = doc(db, "posts", postId);
       await updateDoc(postRef, { category: newCategory });
 
-      setCategory((prevCategory) =>
-        prevCategory.map((cat) =>
-          cat._id === postId ? { ...cat, category: newCategory } : cat
+      setAllPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post._id === postId ? { ...post, category: newCategory } : post
         )
       );
 
@@ -72,7 +71,7 @@ export default function Page() {
       {status === "category-lists" ? (
         <CategoryList />
       ) : (
-        <div className="grid grid-cols-1 xl:grid-cols-2 px-5">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 px-5">
           {loading ? (
             <div className="flex justify-center items-center mt-30">
               <p className="text-5xl dark:text-teal-600">Loading....</p>
@@ -84,7 +83,7 @@ export default function Page() {
           ) : (
             postToShow.map((post) => (
               <AdminPostCard
-                key={post._id}
+                key={post.title}
                 post={post}
                 setStatusPostId={setStatusPostId}
               />

@@ -4,14 +4,21 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/Popover";
 import { Button } from "./ui/button";
-import { Plus } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { db } from "@/Firebase/Firebase";
 import { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
+import { useBlogContext } from "@/context/BlogContext";
+import { usePathname } from "next/navigation";
 
 export function SiteHeader() {
   const [inputValue, setInputValue] = useState("");
+  const { tabId, setCategory, category } = useBlogContext();
 
+  // get category-list for render add-category button and delete button on category-lists page
+  const route = usePathname();
+
+  
   const collectionRef = collection(db, "categoryList");
 
   const addCategory = async () => {
@@ -20,8 +27,25 @@ export function SiteHeader() {
     try {
       await addDoc(collectionRef, { title: inputValue });
       setInputValue(""); // input clear
+      setCategory([...category, { id: doc.id, title: inputValue }]);
     } catch (error) {
       console.error("Error adding category:", error);
+    }
+  };
+
+  const handleDelete = async (categoryId) => {
+    try {
+      const categoryRef = doc(db, "categoryList", categoryId);
+
+      // Firestore থেকে delete
+      await deleteDoc(categoryRef);
+
+      // UI থেকেও remove
+      setCategory(category.filter((cat) => cat.id !== categoryId));
+
+      console.log("Category deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting category:", error);
     }
   };
 
@@ -42,30 +66,36 @@ export function SiteHeader() {
           <h1 className="text-base font-medium">Admin Panel</h1>
         </div>
 
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button className="cursor-pointer">
-              <Plus />
-              Add Category
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="flex justify-center gap-4 items-center">
-            <form onSubmit={formSubmit}>
-              <input
-                name="category"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                className="px-2 py-1.5 w-45 border-2 rounded-lg border-gray-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 outline-none"
-                type="text"
-                placeholder="Add Category"
-              />
-
-              <Button type="submit" className="cursor-pointer">
-                Add
+        {route === "/admin/category-lists" && (
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button className="cursor-pointer">
+                <Plus />
+                Add Category
               </Button>
-            </form>
-          </PopoverContent>
-        </Popover>
+            </PopoverTrigger>
+            <PopoverContent className="flex justify-center gap-4 items-center">
+              <form onSubmit={formSubmit}>
+                <input
+                  name="category"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  className="px-2 py-1.5 w-45 border-2 rounded-lg border-gray-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 outline-none"
+                  type="text"
+                  placeholder="Add Category"
+                />
+
+                <Button type="submit" className="cursor-pointer">
+                  Add
+                </Button>
+              </form>
+            </PopoverContent>
+            <Trash2
+              onClick={() => handleDelete(tabId)}
+              className="hover:text-red-500 cursor-pointer"
+            />
+          </Popover>
+        )}
 
         <div className="ml-auto  gap-2">
           <Avatar className="cursor-pointer">

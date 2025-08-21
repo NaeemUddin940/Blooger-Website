@@ -10,6 +10,7 @@ export const BlogContextProvider = ({ children }) => {
   const [allposts, setAllPosts] = useState([]);
   const [bigPost, setBigPost] = useState([]);
   const [category, setCategory] = useState([]);
+  const [tabId, setTabId] = useState();
   const [loading, setLoading] = useState(false);
   const [statusPostId, setStatusPostId] = useState(null);
   const [formData, setFormData] = useState({
@@ -28,7 +29,6 @@ export const BlogContextProvider = ({ children }) => {
     image: "",
   });
 
-  
   // All Filter Based On categorised in page
   const HealthPosts = posts.filter((post) => post.category === "Health");
   const Reviews = posts.filter((post) => post.category === "Reviews");
@@ -108,6 +108,8 @@ export const BlogContextProvider = ({ children }) => {
     laptopSection,
     travelSection,
     latestPost,
+    tabId,
+    setTabId,
     popularPost,
     loading,
     setLoading,

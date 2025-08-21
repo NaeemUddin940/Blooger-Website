@@ -30,7 +30,7 @@ export default function AdminPostCard({ post, setStatusPostId }) {
       <div
         key={post._id}
         onClick={() => setStatusPostId(post._id)}
-        className="flex gap-5">
+        className="flex gap-5 w-9/10">
         <div className="relative flex-shrink-0">
           <Image
             src={post.image}

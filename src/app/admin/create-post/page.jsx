@@ -4,11 +4,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../Firebase/Firebase";
 import { useRouter } from "next/navigation";
 
-
 export default function page() {
-
-  const router = useRouter()
-  const { formData, setFormData } = useBlogContext();
+  const router = useRouter();
+  const { formData, setFormData, setAllPosts } = useBlogContext();
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,18 +22,19 @@ export default function page() {
     e.preventDefault();
 
     try {
-      // Firestore "posts" collection reference
       const postsCollectionRef = collection(db, "posts");
-
-      // Add formData as a new document
-      await addDoc(postsCollectionRef, {
+      const docRef = await addDoc(postsCollectionRef, {
         ...formData,
         id: Date.now().toString(),
       });
 
+      setAllPosts((prev) => [
+        ...prev,
+        { ...formData, firestoreId: docRef.id }, // Realtime UI update
+      ]);
+
       console.log("✅ Post added to Firestore successfully!");
 
-      // Reset formData
       setFormData({
         id: "",
         status: "",
@@ -52,8 +51,7 @@ export default function page() {
         image: "",
       });
 
-      router.push("/admin/all-posts")
-
+      router.push("/admin/all-posts");
     } catch (error) {
       console.error("❌ Error adding post:", error);
     }
