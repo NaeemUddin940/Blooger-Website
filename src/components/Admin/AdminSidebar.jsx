@@ -32,22 +32,30 @@ export default function AdminSidebar({
       <div className="space-y-3">
         <button
           onClick={() => handleSetStatus(selectedPost._id, "featured")}
-          className="w-full bg-violet-500 text-white py-3 rounded-lg shadow-md hover:bg-violet-600 cursor-pointer transition-colors duration-200 font-semibold">
+          className={`w-full ${
+            selectedPost.status === "featured" ? "hidden" : "block"
+          } bg-violet-500 text-white py-3 rounded-lg shadow-md hover:bg-violet-600 cursor-pointer transition-colors duration-200 font-semibold`}>
           Set As Featured
         </button>
         <button
           onClick={() => handleSetStatus(selectedPost._id, "latest")}
-          className="w-full bg-fuchsia-500 text-white py-3 rounded-lg shadow-md hover:bg-fuchsia-600 cursor-pointer transition-colors duration-200 font-semibold">
+          className={`w-full ${
+            selectedPost.status === "latest" ? "hidden" : "block"
+          } bg-fuchsia-500 text-white py-3 rounded-lg shadow-md hover:bg-fuchsia-600 cursor-pointer transition-colors duration-200 font-semibold`}>
           Set As Latest
         </button>
         <button
           onClick={() => handleSetStatus(selectedPost._id, "popular")}
-          className="w-full bg-teal-500 text-white py-3 rounded-lg shadow-md hover:bg-teal-600 cursor-pointer transition-colors duration-200 font-semibold">
+          className={`w-full ${
+            selectedPost.status === "popular" ? "hidden" : "block"
+          } bg-teal-500 text-white py-3 rounded-lg shadow-md hover:bg-teal-600 cursor-pointer transition-colors duration-200 font-semibold`}>
           Set As Popular
         </button>
         <button
           onClick={() => handleSetStatus(selectedPost._id, "normal")}
-          className="w-full bg-gray-400 text-white py-3 rounded-lg shadow-md hover:bg-gray-500 cursor-pointer transition-colors duration-200 font-semibold">
+          className={`w-full ${
+            selectedPost.status === "normal" ? "hidden" : "block"
+          } bg-gray-400 text-white py-3 rounded-lg shadow-md hover:bg-gray-500 cursor-pointer transition-colors duration-200 font-semibold`}>
           Set As Normal
         </button>
       </div>
@@ -60,7 +68,7 @@ export default function AdminSidebar({
             onClick={() => {
               handleSetCategory(selectedPost._id, cat.title);
             }}
-            className="w-full py-3 bg-teal-500 cursor-pointer text-black rounded-lg shadow-md hover:opacity-80 transition-colors duration-200 font-semibold">
+            className={`w-full ${selectedPost.category === cat.title ? "hidden" : "block"} py-3 bg-teal-500 cursor-pointer text-black rounded-lg shadow-md hover:opacity-80 transition-colors duration-200 font-semibold`}>
             Set as {useCapitalize(cat.title)}
           </button>
         ))}
