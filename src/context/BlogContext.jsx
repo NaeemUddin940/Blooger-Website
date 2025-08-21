@@ -8,8 +8,9 @@ const BlogContext = createContext();
 export const BlogContextProvider = ({ children }) => {
   // All State Declaration
   const [allposts, setAllPosts] = useState([]);
-  const [heroArticles, setHeroArticles] = useState([]);
+  const [bigPost, setBigPost] = useState([]);
   const [category, setCategory] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [statusPostId, setStatusPostId] = useState(null);
   const [formData, setFormData] = useState({
     id: "",
@@ -27,6 +28,7 @@ export const BlogContextProvider = ({ children }) => {
     image: "",
   });
 
+  
   // All Filter Based On categorised in page
   const HealthPosts = posts.filter((post) => post.category === "Health");
   const Reviews = posts.filter((post) => post.category === "Reviews");
@@ -42,6 +44,7 @@ export const BlogContextProvider = ({ children }) => {
 
   const getPosts = async () => {
     try {
+      setLoading(true);
       const data = await getDocs(collectionRef);
 
       const filteredData = data.docs.map((doc) => {
@@ -51,14 +54,17 @@ export const BlogContextProvider = ({ children }) => {
         };
       });
       setAllPosts(filteredData);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching posts:", error);
+      setLoading(false);
     }
   };
 
   const categoryListRef = collection(db, "categoryList");
 
   const getCategory = async () => {
+    setLoading(true);
     try {
       const data = await getDocs(categoryListRef);
       const categories = data.docs.map((doc) => ({
@@ -66,22 +72,21 @@ export const BlogContextProvider = ({ children }) => {
         ...doc.data(),
       }));
       setCategory(categories);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching categories:", error);
+      setLoading(false);
     }
   };
 
-  // function handleClick(id) {
-  //   setStatusPostId(id);
-  // }
   // Hero Article
-  const heroArticleRef = collection(db, "heroArticle");
+  const bigPostRef = collection(db, "heroArticle");
 
-  const getArticle = async () => {
+  const getBigPost = async () => {
     try {
-      const data = await getDocs(heroArticleRef);
-      const articles = data.docs.map((doc) => doc.data());
-      setHeroArticles(articles);
+      const data = await getDocs(bigPostRef);
+      const posts = data.docs.map((doc) => doc.data());
+      setBigPost(posts);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
@@ -90,7 +95,7 @@ export const BlogContextProvider = ({ children }) => {
   useEffect(() => {
     getCategory();
     getPosts();
-    getArticle();
+    getBigPost();
   }, []);
 
   const state = {
@@ -104,14 +109,15 @@ export const BlogContextProvider = ({ children }) => {
     travelSection,
     latestPost,
     popularPost,
-    // handleClick,
+    loading,
+    setLoading,
     statusPostId,
     setStatusPostId,
     allposts,
     setAllPosts,
     formData,
     setFormData,
-    heroArticles,
+    bigPost,
   };
   return <BlogContext.Provider value={state}>{children}</BlogContext.Provider>;
 };

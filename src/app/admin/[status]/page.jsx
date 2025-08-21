@@ -19,6 +19,7 @@ export default function Page() {
     setCategory,
     statusPostId,
     setStatusPostId,
+    loading,
   } = useBlogContext();
 
   const selectedPost = allposts.find((post) => post._id === statusPostId);
@@ -65,24 +66,29 @@ export default function Page() {
 
   const filteredPosts = allposts.filter((post) => post.status === status);
 
+  const postToShow = status === "all-posts" ? allposts : filteredPosts;
   return (
     <div>
       {status === "category-lists" ? (
         <CategoryList />
       ) : (
         <div className="grid grid-cols-1 xl:grid-cols-2 px-5">
-          {(allposts || filteredPosts).length > 0 ? (
-            (status === "all-posts" ? allposts : filteredPosts).map((post) => (
+          {loading ? (
+            <div className="flex justify-center items-center mt-30">
+              <p className="text-5xl dark:text-teal-600">Loading....</p>
+            </div>
+          ) : postToShow.length === 0 ? (
+            <div className="flex justify-center items-center mt-30">
+              <p className="text-5xl dark:text-teal-600">No posts found</p>
+            </div>
+          ) : (
+            postToShow.map((post) => (
               <AdminPostCard
                 key={post._id}
                 post={post}
                 setStatusPostId={setStatusPostId}
               />
             ))
-          ) : (
-            <div className="flex justify-center items-center mt-30">
-              <p className="text-5xl dark:text-teal-600">No posts available</p>
-            </div>
           )}
         </div>
       )}

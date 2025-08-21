@@ -1,7 +1,7 @@
 export const posts = [
   {
     id: 1,
-    isFeatured: true,
+    status: "featured",
     category: "Laptop",
     title: "Best Laptops of 2025",
     author: "John Doe",
@@ -10,8 +10,7 @@ export const posts = [
     date: "2025-08-01",
     image:
       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/w187-h125-p-k-no-nu/pbt66.jpg=w72-h72-p-k-no-nu",
-    isLatest: true,
-    Popular: true,
+ 
   },
   {
     id: 2,

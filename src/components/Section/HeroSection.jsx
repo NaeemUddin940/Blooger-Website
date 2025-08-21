@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-
 const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
 
 // const heroArticles = [
@@ -49,12 +48,24 @@ const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
 // ];
 
 export function HeroSection() {
- const {heroArticles} = useBlogContext()
+  const { allposts } = useBlogContext();
 
-  const featuredArticle = heroArticles.find((article) => article.isFeatured);
-  const sideArticles = heroArticles.filter((article) => !article.isFeatured);
+  const featuredPost = allposts.filter((post) => post.status === "featured");
+
+  const uniqueCategory = [
+    ...new Set(featuredPost.map((post) => post.category)),
+  ];
+
+  const categoryWisedFeaturedPost = uniqueCategory
+    .map((category) => featuredPost.find((post) => post.category === category))
+    .slice(0, 4);
+
+  const article1 = categoryWisedFeaturedPost[0];
+  const article2 = categoryWisedFeaturedPost[1];
+  const article3 = categoryWisedFeaturedPost[2];
+  const article4 = categoryWisedFeaturedPost[3];
+
   const pathName = usePathname();
-  const [article2, article3, article4] = sideArticles;
 
   return (
     <div>
@@ -82,19 +93,19 @@ export function HeroSection() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-4 gap-2 mt-2">
             {/* Item 1 */}
-
-            {featuredArticle && (
+            {article1 && (
               <Link
-                href={`/${featuredArticle.category}/${featuredArticle.id}`}
+                key={article1.id}
+                href={`/${article1.category}/${article1.id}`}
                 className="lg:col-span-2 group md:col-span-2 lg:row-span-4 h-40 md:h-70 lg:h-125">
-                <FeaturedArticle article={featuredArticle} />
+                <FeaturedArticle article={article1} />
               </Link>
             )}
 
             {/* Item 2 */}
             {article2 && (
               <Link
-                href={"#"}
+                href={`/${article2.category}/${article2.id}`}
                 className="lg:col-span-2 group lg:row-span-2 lg:col-start-3 h-40 md:h-[100%]">
                 <SideArticle article={article2} />
               </Link>
@@ -103,7 +114,7 @@ export function HeroSection() {
             {/* Item 3 */}
             {article3 && (
               <Link
-                href={"#"}
+                href={`/${article3.category}/${article3.id}`}
                 className="lg:row-span-2 group lg:col-start-3 lg:row-start-3 h-40 md:h-[100%]">
                 <SideArticle article={article3} />
               </Link>
@@ -112,7 +123,7 @@ export function HeroSection() {
             {/* Item 4 */}
             {article4 && (
               <Link
-                href={"#"}
+                href={`/${article4.category}/${article4.id}`}
                 className="lg:row-span-2 group md:col-span-2 lg:col-start-4 lg:row-start-3 h-40 md:h-[100%]">
                 <SideArticle article={article4} />
               </Link>

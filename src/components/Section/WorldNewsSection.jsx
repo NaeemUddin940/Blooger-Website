@@ -6,17 +6,35 @@ import { useBlogContext } from "@/context/BlogContext";
 import Image from "next/image";
 
 export const WorldNewsSection = () => {
-  const { allposts } = useBlogContext();
-  const HealthPosts = allposts.filter((post) => post.category === "Health");
-  const featuredPost = HealthPosts.filter((post) => post.isFeatured);
-  const HealthNormalPosts = HealthPosts.filter((post) => !post.isFeatured);
+  const { allposts, category } = useBlogContext();
+
+  // const uniquesCategory = [...new Set(allposts.map((post) => post.category))];
+
+  // const categoryWisePosts = uniquesCategory.map((category) =>
+  //   allposts.filter((post) => post.category === category)
+  // );
+
+  // const firstCategoryPost = categoryWisePosts[0];
+
+  const HealthPosts = allposts.filter(
+    (post) => post.category === category[0].title
+  );
+
+  const featuredPost = HealthPosts.filter((post) => post.status === "featured");
+
+  const HealthNormalPosts = HealthPosts.filter(
+    (post) => post.status !== "featured"
+  );
 
   return (
     <div>
-      <ContentHeaderAndViewAll
-        HeaderTitle="World News"
-        path={`/all-posts/health`}
-      />
+      {category.length > 0 && category[0]?.title && (
+        <ContentHeaderAndViewAll
+          key={category[0]?.id}
+          HeaderTitle={category[0]?.title}
+          path={`/all-posts/${category[0]?.title.toLowerCase()}`}
+        />
+      )}
 
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
