@@ -5,18 +5,14 @@ import {
   IconChartBar,
   IconDashboard,
   IconFolder,
-  IconHelp,
   IconInnerShadowTop,
   IconListDetails,
-  IconSearch,
-  IconSettings,
   IconUsers,
 } from "@tabler/icons-react";
 import { User as UserIcon } from "lucide-react"; // renamed to avoid clash
 import Link from "next/link";
 
 import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 
 import {

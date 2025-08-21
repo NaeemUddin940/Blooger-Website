@@ -2,15 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import {
-  EditIcon,
-  Globe,
-  LogOutIcon,
-  Menu,
-  Search,
-  SettingsIcon,
-  UserIcon,
-} from "lucide-react";
+import { Globe, LogOutIcon, Menu, Search, UserIcon } from "lucide-react";
 
 import {
   NavigationMenu,

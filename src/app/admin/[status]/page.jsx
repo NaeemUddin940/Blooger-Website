@@ -1,13 +1,11 @@
 "use client";
 import { useParams } from "next/navigation";
-import Image from "next/image";
 import { useBlogContext } from "../../../context/BlogContext";
 import { cn } from "@/lib/utils";
 import { XIcon } from "lucide-react";
 import { db } from "../../../Firebase/Firebase";
 import CategoryList from "../../../components/Admin/CategoryList";
 import { doc, updateDoc } from "firebase/firestore";
-import { useCapitalize } from "../../../Hooks/useCapitalize";
 import AdminPostCard from "../../../components/Admin/AdminPostCard";
 import AdminSidebar from "../../../components/Admin/AdminSidebar";
 
