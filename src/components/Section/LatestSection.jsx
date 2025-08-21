@@ -1,12 +1,13 @@
 "use client";
 import ContentHeaderAndViewAll from "../ui/ContentHeaderAndViewAll";
-import { posts } from "@/Data/db";
 import HorizontalPostBigCard from "@/components/PostCard/HorizontalPostBigCard";
 import { useLoadMore } from "@/Hooks/useLoadMore.js";
 import { Button } from "../ui/button";
+import { useBlogContext } from "@/context/BlogContext";
 
 export const LatestSection = () => {
-  const latestPost = posts.filter((post) => post.isLatest);
+  const { allposts } = useBlogContext();
+  const latestPost = allposts.filter((post) => post.status === "latest");
   const { post, hasMore, loadMore } = useLoadMore(latestPost, 4, 4);
 
   return (
@@ -26,7 +27,7 @@ export const LatestSection = () => {
 
       {/* Load More Button */}
       <div className="flex justify-center mt-4">
-        {hasMore && <Button onClick={loadMore}>Load More</Button>}
+        {hasMore && <Button className="cursor-pointer" onClick={loadMore}>Load More</Button>}
       </div>
     </div>
   );

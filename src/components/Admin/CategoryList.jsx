@@ -14,7 +14,7 @@ export default function page() {
           <TabsList>
             {category.map((cat) => (
               <TabsTrigger
-                key={cat?.id}
+                key={cat?._id}
                 onClick={() => setTabId(cat?.id)}
                 value={cat?.title}>
                 {cat?.title}

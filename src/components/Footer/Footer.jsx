@@ -10,7 +10,7 @@ export const Footer = () => {
   const popular = posts.filter((post) => post.Popular).slice(0, 3);
 
   return (
-    <footer className="px-2">
+    <footer className="px-5">
       <div className="lg:w-5xl mx-auto mt-5 border-t-1 border-gray-50">
         {/* Top section with categories and posts */}
         <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-8 border-b border-gray-700">

@@ -65,7 +65,9 @@ export default function Page() {
 
   const filteredPosts = allposts.filter((post) => post.status === status);
 
-  const postToShow = status === "all-posts" ? allposts : filteredPosts;
+  const postToShow = (status === "all-posts" ? allposts : filteredPosts).sort(
+    (a, b) => b.createdAt - a.createdAt
+  );
   return (
     <div>
       {status === "category-lists" ? (
@@ -83,7 +85,7 @@ export default function Page() {
           ) : (
             postToShow.map((post) => (
               <AdminPostCard
-                key={post.title}
+                key={post.id}
                 post={post}
                 setStatusPostId={setStatusPostId}
               />
