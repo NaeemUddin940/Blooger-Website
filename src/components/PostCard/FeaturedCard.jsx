@@ -15,7 +15,7 @@ export default function FeaturedCard({ post }) {
           alt={post.title}
           className="w-full h-48 object-cover"
         />
-        <span className="absolute bottom-4 left-4 bg-teal-400  text-white text-xs font-bold px-3 py-1 rounded-full">
+        <span className="absolute bottom-4 left-4 bg-teal-600  text-white text-xs font-bold px-3 py-1 rounded-full">
           {post.category}
         </span>
       </div>

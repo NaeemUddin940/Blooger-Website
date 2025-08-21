@@ -142,11 +142,11 @@ function FeaturedArticle({ article }) {
       <img
         src={article.image}
         alt={article.title}
-        className="absolute group-hover:scale-125 transition-transform duration-300 inset-0 w-full h-full object-cover"
+        className="absolute group-hover:scale-110 transition-transform duration-200 inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
       <div className="absolute bottom-0 left-0 lg:p-8 p-2">
-        <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+        <span className="bg-teal-600 text-gray-100 text-xs font-bold px-3 py-1 rounded-full">
           {article.category}
         </span>
         <h2 className="mt-2 lg:text-3xl line-clamp-2 hover:text-blue-500 text-white font-bold leading-tight">
@@ -175,7 +175,7 @@ function SideArticle({ article }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black"></div>
       <div className="absolute bottom-0 left-0 p-4">
-        <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+        <span className="bg-teal-600 text-gray-100 text-xs font-bold px-2 py-1 rounded-full">
           {article.category}
         </span>
         <h3 className="mt-1 text-base hover:text-blue-500 text-white font-bold line-clamp-2 leading-tight">

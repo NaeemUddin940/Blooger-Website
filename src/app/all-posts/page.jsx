@@ -1,7 +1,5 @@
 "use client";
 import Link from "next/link";
-// import { useParams } from "next/navigation";
-import { posts } from "../../Data/db";
 import HorizontalPostBigCard from "../../components/PostCard/HorizontalPostBigCard";
 import {
   Breadcrumb,
@@ -11,8 +9,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useBlogContext } from "@/context/BlogContext";
 
 export default function page() {
+  const { allposts } = useBlogContext();
   return (
     <div>
       <div className="mt-5">
@@ -36,7 +36,7 @@ export default function page() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      {posts.map((post) => (
+      {allposts.map((post) => (
         <HorizontalPostBigCard key={post.id} post={post} />
       ))}
     </div>

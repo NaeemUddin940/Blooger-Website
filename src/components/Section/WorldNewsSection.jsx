@@ -50,7 +50,7 @@ export const WorldNewsSection = () => {
                 className="w-full h-60 object-cover"
               />
               {/* Tag over the image */}
-              <span className="absolute bottom-4 left-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              <span className="absolute bottom-4 left-4 bg-teal-600 text-gray-300 text-xs font-bold px-3 py-1 rounded-full">
                 {featuredPost.category}
               </span>
             </div>

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import SocialMedia from "../../../components/ui/SocialMedia";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-import { posts } from "../../../Data/db";
 import { useParams } from "next/navigation";
 import {
   Breadcrumb,
