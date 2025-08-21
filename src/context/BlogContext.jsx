@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { posts } from "@/Data/db";
 import { db } from "@/Firebase/Firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -10,6 +10,7 @@ export const BlogContextProvider = ({ children }) => {
   const [allposts, setAllPosts] = useState([]);
   const [heroArticles, setHeroArticles] = useState([]);
   const [category, setCategory] = useState([]);
+  const [statusPostId, setStatusPostId] = useState(null);
   const [formData, setFormData] = useState({
     id: "",
     status: "",
@@ -43,18 +44,17 @@ export const BlogContextProvider = ({ children }) => {
     try {
       const data = await getDocs(collectionRef);
 
-      const filteredData = data.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
+      const filteredData = data.docs.map((doc) => {
+        return {
+          _id: doc.id,
+          ...doc.data(),
+        };
+      });
       setAllPosts(filteredData);
     } catch (error) {
       console.error("Error fetching posts:", error);
     }
   };
-
-  getPosts();
 
   const categoryListRef = collection(db, "categoryList");
 
@@ -66,16 +66,14 @@ export const BlogContextProvider = ({ children }) => {
         ...doc.data(),
       }));
       setCategory(categories);
-      
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
   };
 
-  getCategory();
-  function handleClick() {
-    setStatusPostId(null);
-  }
+  // function handleClick(id) {
+  //   setStatusPostId(id);
+  // }
   // Hero Article
   const heroArticleRef = collection(db, "heroArticle");
 
@@ -88,7 +86,12 @@ export const BlogContextProvider = ({ children }) => {
       console.error("Error fetching articles:", error);
     }
   };
-  getArticle();
+
+  useEffect(() => {
+    getCategory();
+    getPosts();
+    getArticle();
+  }, []);
 
   const state = {
     HealthPosts,
@@ -101,8 +104,11 @@ export const BlogContextProvider = ({ children }) => {
     travelSection,
     latestPost,
     popularPost,
-    handleClick,
+    // handleClick,
+    statusPostId,
+    setStatusPostId,
     allposts,
+    setAllPosts,
     formData,
     setFormData,
     heroArticles,
