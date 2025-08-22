@@ -24,19 +24,19 @@ export default function TopNavbar() {
         </div>
         <div className="flex gap-5">
           <Link href="#" className="hover:text-[#1877F2]">
-            <Facebook size={20}/>
+            <Facebook size={20} />
           </Link>
           <Link href="#" className="hover:text-[#FF0000]">
-            <Youtube size={20}/>
+            <Youtube size={20} />
           </Link>
           <Link href="#" className="hover:text-[#1DA1F2]">
-            <Twitter size={20}/>
+            <Twitter size={20} />
           </Link>
           <Link href="#" className="hover:text-[#E4405F]">
-            <Instagram size={20}/>
+            <Instagram size={20} />
           </Link>
           <Link href="#" className="hover:text-[#0A66C2]">
-            <Linkedin size={20}/>
+            <Linkedin size={20} />
           </Link>
         </div>
       </div>

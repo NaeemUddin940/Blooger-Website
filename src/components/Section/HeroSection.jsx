@@ -4,51 +4,29 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const trendingData = "How We Know Disinfectants Should Kill the Covid-19";
-
-// const heroArticles = [
-//   {
-//     id: 1,
-//     isFeatured: true,
-//     category: "APPLE",
-//     title: "11 of Best Laptops Evaluated Based on Budget",
-//     author: "by John Doe",
-//     date: "August 02, 2021",
-//     image:
-//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5O0ZY2WIUUAlZZC1w0fk2DRsAIiW2bqh1NrdKtCa4v3BibsgoJFnA_f6jEYLAMXKbDu8sMIMhwrD0vKXj7-JElNqK87Pxi0joMtMElNRaAFFGD-AvNzMw2fn02QfwSWw7UPBsD899wTI/s16000/pbt66.jpg",
-//   },
-//   {
-//     id: 2,
-//     isFeatured: false,
-//     category: "LAPTOPS",
-//     title: "Apple Watch Series 5 is the Best One Yet By Consumer",
-//     date: "August 02, 2021",
-//     image:
-//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgf8-arWDMvbTeZBWVxA4Ky1H6aExuTk9SEJNdjPnPWgW4O7YXw3iQW6KvRvVr6Fz9crqCwp1YgkIbi3pHFs2xlIiA9GwPsEdIPkdilF28j964yXzX59AU_4NMHTVfUOudE7Kc5vnb_-0/s16000/pbt65.jpg",
-//   },
-//   {
-//     id: 3,
-//     isFeatured: false,
-//     category: "LAPTOPS",
-//     title: "Here's What People Think of iOS 13 New Dark Mode",
-//     date: "August 02, 2021",
-//     image:
-//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUqASiDM5EEA5bWE5BxvKpAmitDCN37MT2LFNcgKY4i7K1EGip8XfmW1_s-IDaqD1aXN2Xfad5iOmNzF6SDWEG3wtlCGKAKtAa3iDMGrjlqYq-L528jopspUzR_yB3DheeAqK5PGpWeGI/s16000/pbt61.jpg",
-//   },
-//   {
-//     id: 4,
-//     isFeatured: false,
-//     category: "APPLE",
-//     title: "18 Practices for Building Responsive Web Applications",
-//     date: "August 02, 2021",
-//     image:
-//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKUIl2yc8d5warqlbvzvhxrk4yzGK0FXr4bnPDnW1iKNiJqg5YqvCuYFD4xX1q383w-wU_WJaN_5ZcCiNVDYSk26rQQo-iup04BZUdSkiDqbRuHWgYE9PmHpVjj_lyb1ozr3j4glvrfVs/s16000/pbt62.jpg",
-//   },
-// ];
+import { useEffect, useState } from "react";
 
 export function HeroSection() {
+  const pathName = usePathname();
   const { allposts } = useBlogContext();
+
+  let newHeadings = allposts.map((post) => post.title);
+  const [headingIndex, setHeadingIndex] = useState(0);
+
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimatingOut(true);
+
+      setTimeout(() => {
+        setHeadingIndex((prevIndex) => (prevIndex + 1) % newHeadings.length);
+        setIsAnimatingOut(false);
+      }, 500);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const featuredPost = allposts.filter((post) => post.status === "featured");
 
@@ -65,8 +43,6 @@ export function HeroSection() {
   const article3 = categoryWisedFeaturedPost[2];
   const article4 = categoryWisedFeaturedPost[3];
 
-  const pathName = usePathname();
-
   return (
     <div>
       {pathName === "/" && (
@@ -74,12 +50,21 @@ export function HeroSection() {
           {/* Trending Section */}
           <div className="flex mt-4 items-center border-1 justify-between bg-secondery shadow-xl p-4 rounded-lg">
             <div className="flex items-center space-x-4 ">
-              <span className="font-bold text-sm text-white px-2 py-1 bg-black">
+              <span className="font-bold text-sm bg-black text-white dark:text-black px-2 py-1 dark:bg-white">
                 TRENDING
               </span>
-              <span className="text-gray-500 text-sm lg:text-lg line-clamp-1">
-                {trendingData}
-              </span>
+              <h1
+                className={`
+                   dark:text-gray-400 text-xl lg:text-lg line-clamp-1
+                    transition-all duration-500 ease-in-out transform
+                    ${
+                      isAnimatingOut
+                        ? "opacity-0 -translate-y-2"
+                        : "opacity-100 translate-y-0"
+                    }
+                `}>
+                {newHeadings[headingIndex]}
+              </h1>
             </div>
             <div className="flex space-x-2 text-gray-500">
               <button className="hover:bg-violet-500 text-foreground cursor-pointer transition duration-200">
