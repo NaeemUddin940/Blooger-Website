@@ -25,7 +25,7 @@ export default function page() {
       const postsCollectionRef = collection(db, "posts");
       const docRef = await addDoc(postsCollectionRef, {
         ...formData,
-        id: Date.now().toString(),
+        _id: doc.id,
       });
 
       setAllPosts((prev) => [
@@ -135,7 +135,7 @@ export default function page() {
                 value={formData.image}
                 onChange={handleChange}
                 className="w-full px-4 py-2 rounded-lg bg-background border-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="https://placehold.co/800x600"
+                placeholder="For Testing Purpous Use Only Unsplash Image Address"
                 required
               />
             </div>

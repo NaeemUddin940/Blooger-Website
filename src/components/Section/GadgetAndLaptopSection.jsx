@@ -46,6 +46,7 @@ const FeaturedSection = ({ data, HeaderTitle, link }) => {
       <div className="overflow-hidden shadow-sm hover:shadow-lg flex flex-col hover:rounded-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out">
         {data
           .filter((post) => post.status === "featured")
+          .slice(0, 1)
           .map((post) => (
             <FeaturedCard key={post.id} post={post} />
           ))}

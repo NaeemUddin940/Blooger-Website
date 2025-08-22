@@ -56,7 +56,7 @@ export const WorldNewsSection = () => {
             </div>
             <div className="px-2 flex-1 flex flex-col justify-between">
               <div>
-                <h1 className="text-2xl mt-5 md:text-2xl line-clamp-2 hover:text-teal-400 font-extrabold leading-tight text-foreground">
+                <h1 className="text-2xl mt-3 md:text-2xl line-clamp-2 hover:text-teal-400 font-extrabold leading-tight text-foreground">
                   {featuredPost.title}
                 </h1>
                 <p className="text-sm text-primary mt-2">
@@ -65,9 +65,6 @@ export const WorldNewsSection = () => {
                     {featuredPost.author}
                   </span>{" "}
                   {featuredPost.date}
-                </p>
-                <p className="text-primary text-base mt-4">
-                  {featuredPost.description}
                 </p>
               </div>
             </div>

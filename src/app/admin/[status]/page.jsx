@@ -57,7 +57,7 @@ export default function Page() {
         )
       );
 
-      console.log("Category updated successfully!");
+      alert("Category updated successfully!");
     } catch (error) {
       console.error("Error updating category:", error.message);
     }
@@ -65,9 +65,8 @@ export default function Page() {
 
   const filteredPosts = allposts.filter((post) => post.status === status);
 
-  const postToShow = (status === "all-posts" ? allposts : filteredPosts).sort(
-    (a, b) => b.createdAt - a.createdAt
-  );
+  const postToShow = status === "all-posts" ? allposts : filteredPosts;
+  console.log(postToShow);
   return (
     <div>
       {status === "category-lists" ? (
@@ -85,7 +84,7 @@ export default function Page() {
           ) : (
             postToShow.map((post) => (
               <AdminPostCard
-                key={post.id}
+                key={post._id}
                 post={post}
                 setStatusPostId={setStatusPostId}
               />

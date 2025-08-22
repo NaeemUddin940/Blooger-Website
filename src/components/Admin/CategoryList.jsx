@@ -14,7 +14,7 @@ export default function page() {
           <TabsList>
             {category.map((cat) => (
               <TabsTrigger
-                key={cat?._id}
+                key={cat?.id}
                 onClick={() => setTabId(cat?.id)}
                 value={cat?.title}>
                 {cat?.title}
@@ -23,12 +23,12 @@ export default function page() {
           </TabsList>
 
           {category.map((cat) => (
-            <TabsContent key={cat?.title} value={cat?.title}>
+            <TabsContent key={cat?.title} value={cat?.title} className="gird grid">
               {allposts
                 .filter((post) => post.category === cat?.title)
                 .map((post) => (
                   <AdminPostCard
-                    key={post?.id}
+                    key={post?.title}
                     post={post}
                     setStatusPostId={setStatusPostId}
                   />

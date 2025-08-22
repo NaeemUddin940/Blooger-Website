@@ -3,11 +3,17 @@ import { posts } from "@/Data/db";
 import SocialMedia from "@/components/ui/SocialMedia";
 import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
 import Categories from "../Sidebar/Categories";
+import { useBlogContext } from "@/context/BlogContext";
 
 // Main Footer component for the footer
 export const Footer = () => {
-  const latest = posts.filter((post) => post.isLatest).slice(0, 3);
-  const popular = posts.filter((post) => post.Popular).slice(0, 3);
+  const { allposts } = useBlogContext();
+  const latest = allposts
+    .filter((post) => post.status === "latest")
+    .slice(0, 3);
+  const popular = allposts
+    .filter((post) => post.status === "popular")
+    .slice(0, 3);
 
   return (
     <footer className="px-2">

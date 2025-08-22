@@ -11,18 +11,20 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
+import { useBlogContext } from "@/context/BlogContext";
 
 export default function page() {
+  const { allposts } = useBlogContext();
   const { post } = useParams();
   const capitalizeLetter = post.charAt(0).toUpperCase() + post.slice(1);
 
   let filtered;
   if (capitalizeLetter === "Latest") {
-    filtered = posts.filter((post) => post.isLatest);
+    filtered = allposts.filter((post) => post.status === "latest");
   } else if (capitalizeLetter === "Popular") {
-    filtered = posts.filter((post) => post.Popular);
+    filtered = allposts.filter((post) => post.status === "popilar");
   } else {
-    filtered = posts.filter((post) => post.category === capitalizeLetter);
+    filtered = allposts.filter((post) => post.category === capitalizeLetter);
   }
 
   return (
