@@ -22,7 +22,11 @@ export default function page() {
   if (capitalizeLetter === "Latest") {
     filtered = allposts.filter((post) => post.status === "latest");
   } else if (capitalizeLetter === "Popular") {
-    filtered = allposts.filter((post) => post.status === "popilar");
+    filtered = allposts.filter((post) => post.status === "popular");
+  } else if (capitalizeLetter === "Featured") {
+    filtered = allposts.filter((post) => post.status === "featured");
+  } else if (capitalizeLetter === "Normal") {
+    filtered = allposts.filter((post) => post.status === "normal");
   } else {
     filtered = allposts.filter((post) => post.category === capitalizeLetter);
   }

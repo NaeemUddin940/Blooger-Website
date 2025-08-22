@@ -43,12 +43,13 @@ const FeaturedSection = ({ data, HeaderTitle, link }) => {
       <ContentHeaderAndViewAll HeaderTitle={HeaderTitle} path={link} />
 
       {/* Featured Article */}
+      {/* Featured Article */}
       <div className="overflow-hidden shadow-sm hover:shadow-lg flex flex-col hover:rounded-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out">
         {data
           .filter((post) => post.status === "featured")
           .slice(0, 1)
-          .map((post) => (
-            <FeaturedCard key={post.id} post={post} />
+          .map((post, index) => (
+            <FeaturedCard key={`${post.id}-${index}`} post={post} />
           ))}
       </div>
 
@@ -56,8 +57,8 @@ const FeaturedSection = ({ data, HeaderTitle, link }) => {
       <div className="flex flex-col gap-4">
         {data
           .filter((post) => post.status !== "featured")
-          .map((post) => (
-            <HorizontalPostSmallCard key={post.id} post={post} />
+          .map((post, index) => (
+            <HorizontalPostSmallCard key={`${post.id}-${index}`} post={post} />
           ))}
       </div>
     </div>

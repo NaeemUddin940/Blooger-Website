@@ -1,5 +1,4 @@
 import React from "react";
-import { posts } from "@/Data/db";
 import SocialMedia from "@/components/ui/SocialMedia";
 import { HorizontalPostSmallCard } from "../PostCard/HorizontalPostSmallCard";
 import Categories from "../Sidebar/Categories";
@@ -31,11 +30,13 @@ export const Footer = () => {
               LATEST POSTS
             </h3>
             <div className="flex flex-col gap-4">
-              {latest.map((post) => (
-                <HorizontalPostSmallCard key={post.id} post={post} />
+              {latest.map((post, index) => (
+                <HorizontalPostSmallCard
+                  key={`${post.id}-${index}`}
+                  post={post}
+                />
               ))}
             </div>
-            {/* <Button>Load More</Button> */}
           </div>
 
           {/* Popular Posts */}
@@ -44,8 +45,11 @@ export const Footer = () => {
               POPULAR POSTS
             </h3>
             <div className="flex flex-col gap-4">
-              {popular.map((post) => (
-                <HorizontalPostSmallCard key={post.id} post={post} />
+              {popular.map((post, index) => (
+                <HorizontalPostSmallCard
+                  key={`${post.id}-${index}`}
+                  post={post}
+                />
               ))}
             </div>
           </div>

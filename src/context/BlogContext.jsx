@@ -30,14 +30,14 @@ export const BlogContextProvider = ({ children }) => {
   });
 
   // All Filter Based On categorised in page
-  const HealthPosts = posts.filter((post) => post.category === "Health");
-  const Reviews = posts.filter((post) => post.category === "Reviews");
-  const podcastSection = posts.filter((post) => post.category === "Podcast");
-  const gadgetSection = posts.filter((post) => post.category === "Gadget");
-  const laptopSection = posts.filter((post) => post.category === "Laptop");
-  const travelSection = posts.filter((post) => post.category === "Travel");
-  const latestPost = posts.filter((post) => post.isLatest);
-  const popularPost = posts.filter((post) => post.Popular);
+  // const HealthPosts = posts.filter((post) => post.category === "Health");
+  // const Reviews = posts.filter((post) => post.category === "Reviews");
+  // const podcastSection = posts.filter((post) => post.category === "Podcast");
+  // const gadgetSection = posts.filter((post) => post.category === "Gadget");
+  // const laptopSection = posts.filter((post) => post.category === "Laptop");
+  // const travelSection = posts.filter((post) => post.category === "Travel");
+  // const latestPost = posts.filter((post) => post.isLatest);
+  // const popularPost = posts.filter((post) => post.Popular);
 
   // Get Posts From Firebase
   const collectionRef = collection(db, "posts");
@@ -79,38 +79,16 @@ export const BlogContextProvider = ({ children }) => {
     }
   };
 
-  // Hero Article
-  const bigPostRef = collection(db, "heroArticle");
-
-  const getBigPost = async () => {
-    try {
-      const data = await getDocs(bigPostRef);
-      const posts = data.docs.map((doc) => doc.data());
-      setBigPost(posts);
-    } catch (error) {
-      console.error("Error fetching articles:", error);
-    }
-  };
-
   useEffect(() => {
     getCategory();
     getPosts();
-    getBigPost();
   }, []);
 
   const state = {
-    HealthPosts,
-    Reviews,
     category,
     setCategory,
-    podcastSection,
-    gadgetSection,
-    laptopSection,
-    travelSection,
-    latestPost,
     tabId,
     setTabId,
-    popularPost,
     loading,
     setLoading,
     statusPostId,
@@ -119,7 +97,6 @@ export const BlogContextProvider = ({ children }) => {
     setAllPosts,
     formData,
     setFormData,
-    bigPost,
   };
   return <BlogContext.Provider value={state}>{children}</BlogContext.Provider>;
 };

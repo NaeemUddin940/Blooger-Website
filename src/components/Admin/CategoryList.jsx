@@ -8,7 +8,7 @@ export default function page() {
   const { category, allposts, setStatusPostId, setTabId } = useBlogContext();
 
   return (
-    <div className="px-5">
+    <div className="px-5 grid grid-cols-2">
       {category.length > 0 && (
         <Tabs defaultValue={category[0].title} className="flex flex-col">
           <TabsList>
@@ -23,7 +23,7 @@ export default function page() {
           </TabsList>
 
           {category.map((cat) => (
-            <TabsContent key={cat?.title} value={cat?.title} className="gird grid">
+            <TabsContent key={cat?.title} value={cat?.title}>
               {allposts
                 .filter((post) => post.category === cat?.title)
                 .map((post) => (

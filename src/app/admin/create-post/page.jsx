@@ -24,13 +24,13 @@ export default function page() {
     try {
       const postsCollectionRef = collection(db, "posts");
       const docRef = await addDoc(postsCollectionRef, {
+        // _id: doc.id,
         ...formData,
-        _id: doc.id,
       });
 
       setAllPosts((prev) => [
         ...prev,
-        { ...formData, firestoreId: docRef.id }, // Realtime UI update
+        { ...formData, _id: docRef.id }, // Realtime UI update
       ]);
 
       console.log("✅ Post added to Firestore successfully!");

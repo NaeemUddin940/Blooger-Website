@@ -21,8 +21,8 @@ export const LatestSection = () => {
 
       {/* List of articles */}
       <div className="flex flex-col gap-4">
-        {post.map((post) => (
-          <HorizontalPostBigCard key={post.id} post={post} />
+        {post.map((post, index) => (
+          <HorizontalPostBigCard key={index} post={post} />
         ))}
       </div>
 
