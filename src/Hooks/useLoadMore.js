@@ -1,14 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function useLoadMore(posts, initialPost, nextPost) {
   const [visibleCount, setVisibleCount] = useState(initialPost);
-  const [post, setPosts] = useState(posts.slice(0, visibleCount));
+  const [post, setPosts] = useState(posts.slice(0, initialPost));
+
+  useEffect(() => {
+    
+    const newPosts = posts.slice(0, visibleCount);
+    if (newPosts.length !== post.length) {
+      setPosts(newPosts);
+    }
+  }, [posts, visibleCount]);
 
   const loadMore = () => {
-    const nextCount = visibleCount + nextPost;
-    setPosts(posts.slice(0, nextCount));
-    setVisibleCount(nextCount);
+    setVisibleCount((prev) => prev + nextPost);
   };
 
   const hasMore = visibleCount < posts.length;

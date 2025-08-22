@@ -8,7 +8,8 @@ import { useBlogContext } from "@/context/BlogContext";
 export const LatestSection = () => {
   const { allposts } = useBlogContext();
   const latestPost = allposts.filter((post) => post.status === "latest");
-  const { post, hasMore, loadMore } = useLoadMore(latestPost, 4, 4);
+  const { post, hasMore, loadMore } = useLoadMore(latestPost || [], 4, 4);
+
 
   return (
     <div>
@@ -27,7 +28,11 @@ export const LatestSection = () => {
 
       {/* Load More Button */}
       <div className="flex justify-center mt-4">
-        {hasMore && <Button className="cursor-pointer" onClick={loadMore}>Load More</Button>}
+        {hasMore && (
+          <Button className="cursor-pointer" onClick={loadMore}>
+            Load More
+          </Button>
+        )}
       </div>
     </div>
   );
