@@ -33,7 +33,7 @@ export default function MobileCard({ post, setStatusPostId }) {
                 {useCapitalize(post.status)}
               </span>
             </div>
-            <div className="text-gray-500 text-xs sm:text-sm flex justify-between items-center space-x-4 pt-4 border-t border-gray-200">
+            <div className="text-gray-500 text-xs sm:text-sm  space-x-4 pt-4 border-t space-y-3 border-gray-200">
               <div className="flex items-center space-x-1">
                 <LucideUser size={14} className="text-gray-400" />
                 <span>{post.author}</span>
