@@ -8,6 +8,7 @@ import CategoryList from "../../../components/Admin/CategoryList";
 import { doc, updateDoc } from "firebase/firestore";
 import AdminPostCard from "../../../components/Admin/AdminPostCard";
 import AdminSidebar from "../../../components/Admin/AdminSidebar";
+import MobileCard from "../../../components/Admin/MobileCard";
 
 export default function Page() {
   const { status } = useParams();
@@ -46,7 +47,6 @@ export default function Page() {
 
   // Update post category
   const handleSetCategory = async (postId, newCategory) => {
-    console.log(postId, newCategory);
     try {
       const postRef = doc(db, "posts", postId);
       await updateDoc(postRef, { category: newCategory });
@@ -66,7 +66,7 @@ export default function Page() {
   const filteredPosts = allposts.filter((post) => post.status === status);
 
   const postToShow = status === "all-posts" ? allposts : filteredPosts;
-  console.log(postToShow);
+
   return (
     <div>
       {status === "category-lists" ? (
@@ -74,20 +74,21 @@ export default function Page() {
       ) : (
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 px-5">
           {loading ? (
-            <div className="flex justify-center items-center mt-30">
-              <p className="text-5xl dark:text-teal-600">Loading....</p>
-            </div>
-          ) : postToShow.length === 0 ? (
-            <div className="flex justify-center items-center mt-30">
-              <p className="text-5xl dark:text-teal-600">No posts found</p>
-            </div>
+            postToShow.length === 0 ? (
+              <div className="flex justify-center items-center mt-30">
+                <p className="text-5xl dark:text-teal-600">No posts found</p>
+              </div>
+            ) : (
+              <div className="flex justify-center items-center mt-30">
+                <p className="text-5xl dark:text-teal-600">Loading....</p>
+              </div>
+            )
           ) : (
-            postToShow.map((post) => (
-              <AdminPostCard
-                key={post._id}
-                post={post}
-                setStatusPostId={setStatusPostId}
-              />
+            postToShow.map((post, index) => (
+              <div key={index}>
+                <AdminPostCard post={post} setStatusPostId={setStatusPostId} />
+                <MobileCard post={post} setStatusPostId={setStatusPostId} />
+              </div>
             ))
           )}
         </div>

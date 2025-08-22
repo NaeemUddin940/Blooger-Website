@@ -26,7 +26,7 @@ export default function AdminPostCard({ post, setStatusPostId }) {
   };
 
   return (
-    <div className="flex justify-between shadow-sm p-2 dark:shadow-gray-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out items-start gap-5 cursor-pointer my-3">
+    <div className="hidden md:flex justify-between shadow-sm p-2 dark:shadow-gray-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out items-start gap-5 cursor-pointer my-3">
       <div
         onClick={() => setStatusPostId(post._id)}
         className="flex gap-5 w-9/10">

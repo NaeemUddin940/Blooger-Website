@@ -6,8 +6,6 @@ import { LatestSection } from "@/components/Section/LatestSection";
 import { VideosSection } from "@/components/Section/VideosSection";
 import PodcastsSections from "@/components/Section/PodcastsSections";
 
-
-
 export default function Home() {
   return (
     <main className="px-2 lg:px-0">

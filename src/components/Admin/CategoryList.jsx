@@ -3,12 +3,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { useBlogContext } from "../../context/BlogContext";
 import AdminPostCard from "./AdminPostCard";
+import MobileCard from "./MobileCard";
 
 export default function page() {
   const { category, allposts, setStatusPostId, setTabId } = useBlogContext();
 
   return (
-    <div className="px-5 grid grid-cols-2">
+    <div className="px-5 ">
       {category.length > 0 && (
         <Tabs defaultValue={category[0].title} className="flex flex-col">
           <TabsList>
@@ -23,15 +24,17 @@ export default function page() {
           </TabsList>
 
           {category.map((cat) => (
-            <TabsContent key={cat?.title} value={cat?.title}>
+            <TabsContent key={cat?.title} value={cat?.title} className="md:grid space-y-5 grid-cols-2 gap-x-5">
               {allposts
                 .filter((post) => post.category === cat?.title)
-                .map((post) => (
-                  <AdminPostCard
-                    key={post?.title}
-                    post={post}
-                    setStatusPostId={setStatusPostId}
-                  />
+                .map((post, index) => (
+                  <div key={index}>
+                    <AdminPostCard
+                      post={post}
+                      setStatusPostId={setStatusPostId}
+                    />
+                    <MobileCard post={post} setStatusPostId={setStatusPostId} />
+                  </div>
                 ))}
             </TabsContent>
           ))}
